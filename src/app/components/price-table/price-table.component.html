@@ -1,0 +1,19 @@
+<div class="overflow-x-auto">
+  <table class="min-w-full divide-y-2 divide-gray-200">
+    <thead class="ltr:text-left rtl:text-right">
+      <tr class="*:font-medium *:text-gray-900">
+        <th class="px-3 py-2 whitespace-nowrap">Nome</th>
+        <th class="px-3 py-2 whitespace-nowrap">Prezzo</th>
+      </tr>
+    </thead>
+
+    <tbody class="divide-y divide-gray-200">
+      @for (prodotto of menu; track $index) {
+        <tr class="*:text-gray-900 *:first:font-medium">
+          <td class="px-3 py-2 whitespace-nowrap">{{ prodotto.prodotto }}</td>
+          <td class="px-3 py-2 whitespace-nowrap">{{ prodotto.prezzo.toFixed(2) }} €</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

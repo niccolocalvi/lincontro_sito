@@ -1,0 +1,15 @@
+<!-- Button to Open Modal -->
+  <button onclick="modalCaffetteria.showModal()" class="px-6 py-3 text-white bg-blue-600 rounded-lg shadow-lg hover:bg-blue-700 transition">
+    Caffetteria
+  </button>
+
+  <!-- Modal -->
+  <dialog onclick="modalCaffetteria.close()" id="modalCaffetteria" class="p-6 bg-white rounded-lg shadow-lg w-[80%] h-[80vh] m-auto ">
+    <div class="flex justify-between items-center mb-4">
+      <h2 class="text-xl font-bold">Caffetteria</h2>
+      <button onclick="modalCaffetteria.close()" class="text-gray-600 hover:text-gray-900 text-2xl">&times;</button>
+    </div>
+    <div>
+      <app-price-table [menu]="caffetteriaMenu"></app-price-table>
+    </div>
+</dialog>
