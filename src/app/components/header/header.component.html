@@ -1,23 +1,33 @@
-    <nav class="flex items-center py-8 px-14 justify-between text-white">
-      <div class="flex items-center">
-        <h1 class="text-5xl font-bold text-[#E08826] ">L'incontro</h1>
-        <div class="ml-10">
-          <ul class="md:flex space-x-8 hidden ">
-            <li><a href="#home" class="text-white font-semibold">Home</a></li>
-            <li><a href="#chi siamo" class="text-white font-semibold">Chi siamo</a></li>
-            <li><a href="#menu" class="text-white font-semibold">Menu</a></li>
-            <li><a href="#eventi" class="text-white font-semibold">Eventi</a></li>
-            <li><a href="#dove trovarci" class="text-white font-semibold">Dove trovarci</a></li>
-             <li><a href="#info e contatti" class="text-white font-semibold">Info e contatti</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="lg:flex hidden items-center space-x-3 py-3 px-6 bg-[#E08826] text-white rounded-lg  transition-all duration-400 transform hover:scale-105 cursor-pointer hover:shadow-lg">
-    <button >Scopri subito i nostri eventi </button>
-    <span>
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 19l-7-7 7-7m8 14l-7-7 7-7" />
-    </svg>
-    </span>
-      </div>
-      </nav>
+
+<header class="w-full grid grid-cols-3 items-center px-6 py-4 bg-white shadow-md">
+  
+  <!-- 1. SINISTRA: Logo / H1 -->
+  <div class="flex items-center justify-start">
+    <h1 class="text-2xl font-bold text-gray-900">L'Incontro</h1>
+  </div>
+
+  <!-- 2. CENTRO: Navigazione -->
+  <nav class="flex justify-center">
+    <ul class="md:flex space-x-8 hidden items-center">
+      <li><a href="#home" class="text-gray-900 font-semibold hover:text-[#C19A6B] transition-colors">Home</a></li>
+      <li><a href="#chi-siamo" class="text-gray-900 font-semibold hover:text-[#C19A6B] transition-colors">Chi siamo</a></li>
+      <li><a href="#menu" class="text-gray-900 font-semibold hover:text-[#C19A6B] transition-colors">Menu</a></li>
+      <li><a href="#eventi" class="text-gray-900 font-semibold hover:text-[#C19A6B] transition-colors">Eventi</a></li>
+      <li><a href="#dove-trovarci" class="text-gray-900 font-semibold hover:text-[#C19A6B] transition-colors">Dove trovarci</a></li>
+      <li><a href="#info-e-contatti" class="text-gray-900 font-semibold hover:text-[#C19A6B] transition-colors">Info e contatti</a></li>
+    </ul>
+  </nav>
+
+  <!-- 3. DESTRA: Pulsante -->
+  <div class="flex items-center justify-end">
+    <div class="lg:flex hidden items-center space-x-3 py-2 px-4 bg-[#C19A6B] text-white rounded-lg transition-all duration-400 transform hover:scale-105 cursor-pointer hover:shadow-lg">
+      <button>Scopri subito i nostri eventi</button>
+      <span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 19l-7-7 7-7m8 14l-7-7 7-7" />
+        </svg>
+      </span>
+    </div>
+  </div>
+
+</header>
