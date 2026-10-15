@@ -1,7 +1,15 @@
-<div id="menu" class="flex flex-row items-center justify-center w-full  py-12 px-4 md:px-8 lg:px-16 gap-14">
+<!-- Contenitore unico per la sezione menu -->
+<div class="mt-36">
+  
+  <!-- Titolo ingrandito con strong per il grassetto -->
+  <h1 id="menu" class="scroll-mt-32 text-4xl lg:text-5xl font-extrabold text-center mb-6 text-[#C19A6B]">
+    Scopri i nostri <strong>menu</strong>
+  </h1>
 
-  <app-modal-caffetteria></app-modal-caffetteria>
-
-  <app-modal-drink></app-modal-drink>
+  <!-- Blocco dei popup dei menu -->
+  <div class="flex flex-row items-center justify-center w-full py-6 px-4 md:px-8 lg:px-16 gap-14">
+    <app-modal-caffetteria></app-modal-caffetteria>
+    <app-modal-drink></app-modal-drink>
+  </div>
 
 </div>
