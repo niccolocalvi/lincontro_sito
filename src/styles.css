@@ -1,3 +1,18 @@
-/* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: 'MioFontPersonalizzato';
+  src: url('./assets/fonts/Stars&Love-BottomHeavy.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Questa classe collega il nome del font all'HTML */
+.font-custom {
+  font-family: 'MioFontPersonalizzato', sans-serif !important;
+}
+
+body {
+  font-family: 'Trocchi', serif;
+}
+
 
 @import 'tailwindcss';
