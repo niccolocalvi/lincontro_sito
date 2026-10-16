@@ -1,7 +1,74 @@
-<div>
+<!-- Contenitore unico per la sezione menu (Altezza adattabile su mobile) -->
+<div id="menu" class="scroll-mt-32 relative w-full h-[450px] sm:h-[600px] overflow-hidden mt-36 shadow-2xl">
 
-  <app-modal-caffetteria></app-modal-caffetteria>
+  <!-- CAROSELLO DI SFONDO (Immagini in scorrimento continuo) -->
+  <div class="absolute inset-0 flex w-max animate-infinite-scroll">
+    
+    <!-- === PRIMA SERIE DI IMMAGINI (Larghezza ridotta su mobile: w-[220px] invece di w-[400px]) === -->
+    <div class="w-[220px] sm:w-[400px] h-full flex-shrink-0">
+      <img src="https://lh3.googleusercontent.com/grass-cs/AABkmLe2P52M5gBsc7z9fQavMbuMjjtypXJb_9N0qwaWhJ1jHlSUvagySgKOXVdrt4fj21tPqwRbvCpKwsgps55ImcjR12p7KZPbPSs1112wdyrSDdkaUsLy2VFlCvjlpykSsEK7hMmeY137fTH3=w215-h280-p-k-no" alt="Menu 1" class="w-full h-full object-cover">
+    </div>
+    <div class="w-[220px] sm:w-[400px] h-full flex-shrink-0">
+      <img src="https://lh3.googleusercontent.com/grass-cs/AABkmLfVC_ipIcISDxZR3At5iLh79CakN_CWm04wBM4Apa1x1KP59lkfklsVgXfzI7whY0T73PQU4dJOvA4tkpPqeS7t0yPcHFyZpz932AGoid2mi9E125Nh1vJ3Bvd7YLZeWh_SD7B7w4FVf-10=w215-h280-p-k-no" alt="Menu 2" class="w-full h-full object-cover">
+    </div>
+    <div class="w-[220px] sm:w-[400px] h-full flex-shrink-0">
+      <img src="https://lh3.googleusercontent.com/grass-cs/AABkmLfK-bK-zA2DOZdHfEt1lMjZexILllMCKOA4zXbSnqYjoGsTdPPVIfSRafYVeqKNguFIo_di5l8tTjLtFM07piZ48eNYnDrU2aIU7ELUlWx-qEWrGW-iFZLOO8H_gcZ5PFHQKkmgkXccLXQ=w215-h280-p-k-no" alt="Menu 3" class="w-full h-full object-cover">
+    </div>
+    <div class="w-[220px] sm:w-[400px] h-full flex-shrink-0">
+      <img src="https://lh3.googleusercontent.com/grass-cs/AABkmLfKxl3u72C4C6Qr7wovI1dpnuNE3eLa3I5Wronhf-34JT6zilY7g80Hd3KVxHluXQEk4sCTb2-o87Fyz2PlUR--Wlioej4dyR6tIdGAEz4ZR7qZZBbsBFaN6JV-1_D-qokbWneh9Kk2cD0=w215-h280-p-k-no" alt="Menu 4" class="w-full h-full object-cover">
+    </div>
+    <div class="w-[220px] sm:w-[400px] h-full flex-shrink-0">
+      <img src="/foto-cappuccino-menu.jpeg" alt="Menu Cappuccino" class="w-full h-full object-cover">
+    </div>
+    <div class="w-[220px] sm:w-[400px] h-full flex-shrink-0">
+      <img src="/foto-natale-menu.jpeg" alt="Menu Natale" class="w-full h-full object-cover">
+    </div>
+    <div class="w-[220px] sm:w-[400px] h-full flex-shrink-0">
+      <img src="/foto-te-menu.jpeg" alt="Menu Tè" class="w-full h-full object-cover">
+    </div>
 
-  <app-modal-drink></app-modal-drink>
+    <!-- === SECONDA SERIE DI IMMAGINI (Duplicata identica per garantire il loop continuo) === -->
+    <div class="w-[220px] sm:w-[400px] h-full flex-shrink-0">
+      <img src="https://lh3.googleusercontent.com/grass-cs/AABkmLe2P52M5gBsc7z9fQavMbuMjjtypXJb_9N0qwaWhJ1jHlSUvagySgKOXVdrt4fj21tPqwRbvCpKwsgps55ImcjR12p7KZPbPSs1112wdyrSDdkaUsLy2VFlCvjlpykSsEK7hMmeY137fTH3=w215-h280-p-k-no" alt="Menu 1" class="w-full h-full object-cover">
+    </div>
+    <div class="w-[220px] sm:w-[400px] h-full flex-shrink-0">
+      <img src="https://lh3.googleusercontent.com/grass-cs/AABkmLfVC_ipIcISDxZR3At5iLh79CakN_CWm04wBM4Apa1x1KP59lkfklsVgXfzI7whY0T73PQU4dJOvA4tkpPqeS7t0yPcHFyZpz932AGoid2mi9E125Nh1vJ3Bvd7YLZeWh_SD7B7w4FVf-10=w215-h280-p-k-no" alt="Menu 2" class="w-full h-full object-cover">
+    </div>
+    <div class="w-[220px] sm:w-[400px] h-full flex-shrink-0">
+      <img src="https://lh3.googleusercontent.com/grass-cs/AABkmLfK-bK-zA2DOZdHfEt1lMjZexILllMCKOA4zXbSnqYjoGsTdPPVIfSRafYVeqKNguFIo_di5l8tTjLtFM07piZ48eNYnDrU2aIU7ELUlWx-qEWrGW-iFZLOO8H_gcZ5PFHQKkmgkXccLXQ=w215-h280-p-k-no" alt="Menu 3" class="w-full h-full object-cover">
+    </div>
+    <div class="w-[220px] sm:w-[400px] h-full flex-shrink-0">
+      <img src="https://lh3.googleusercontent.com/grass-cs/AABkmLfKxl3u72C4C6Qr7wovI1dpnuNE3eLa3I5Wronhf-34JT6zilY7g80Hd3KVxHluXQEk4sCTb2-o87Fyz2PlUR--Wlioej4dyR6tIdGAEz4ZR7qZZBbsBFaN6JV-1_D-qokbWneh9Kk2cD0=w215-h280-p-k-no" alt="Menu 4" class="w-full h-full object-cover">
+    </div>
+    <div class="w-[220px] sm:w-[400px] h-full flex-shrink-0">
+      <img src="/foto-cappuccino-menu.jpeg" alt="Menu Cappuccino" class="w-full h-full object-cover">
+    </div>
+    <div class="w-[220px] sm:w-[400px] h-full flex-shrink-0">
+      <img src="/foto-natale-menu.jpeg" alt="Menu Natale" class="w-full h-full object-cover">
+    </div>
+    <div class="w-[220px] sm:w-[400px] h-full flex-shrink-0">
+      <img src="/foto-te-menu.jpeg" alt="Menu Tè" class="w-full h-full object-cover">
+    </div>
+
+  </div>
+
+  <!-- OVERLAY SCURO SOPRA LE IMMAGINI (Fisso) -->
+  <div class="absolute inset-0 bg-black/60 z-10 pointer-events-none"></div>
+
+  <!-- CONTENUTO IN PRIMO PIANO (Titolo e Bottoni fissi sopra le immagini scorrevoli) -->
+  <div class="absolute inset-0 z-20 flex flex-col items-center justify-center px-4 text-center pointer-events-auto">
+    
+    <!-- Titolo fisso -->
+    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-6 sm:mb-8 text-[#C19A6B] font-custom drop-shadow-md">
+      Scopri i nostri <strong>menu</strong>
+    </h1>
+
+    <!-- Blocco dei popup dei menu fissi (Colonna su mobile, Riga su schermi più grandi) -->
+    <div class="flex flex-col sm:flex-row items-center justify-center w-full gap-4 sm:gap-8">
+      <app-modal-caffetteria></app-modal-caffetteria>
+      <app-modal-drink></app-modal-drink>
+    </div>
+
+  </div>
 
 </div>

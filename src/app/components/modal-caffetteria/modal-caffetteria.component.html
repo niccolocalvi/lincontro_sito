@@ -1,15 +1,206 @@
 <!-- Button to Open Modal -->
-  <button onclick="modalCaffetteria.showModal()" class="px-6 py-3 text-white bg-blue-600 rounded-lg shadow-lg hover:bg-blue-700 transition">
-    Caffetteria
-  </button>
+<button onclick="modalCaffetteria.showModal()" class="px-6 py-3 text-white bg-[#FF8C00] rounded-lg shadow-lg cursor-pointer hover:shadow-lg no-underline transition transform hover:scale-105">
+  Caffetteria
+</button>
 
-  <!-- Modal -->
-  <dialog onclick="modalCaffetteria.close()" id="modalCaffetteria" class="p-6 bg-white rounded-lg shadow-lg w-[80%] h-[80vh] m-auto ">
-    <div class="flex justify-between items-center mb-4">
-      <h2 class="text-xl font-bold">Caffetteria</h2>
-      <button onclick="modalCaffetteria.close()" class="text-gray-600 hover:text-gray-900 text-2xl">&times;</button>
+<!-- Modal -->
+<dialog onclick="modalCaffetteria.close()" id="modalCaffetteria" class="p-6 bg-white rounded-lg shadow-lg w-[80%] h-[80vh] m-auto">
+  
+  <div class="flex justify-between items-center mb-6 border-b pb-4">
+    <h2 class="text-2xl font-bold font-custom text-[#C19A6B]">Caffetteria</h2>
+    <button onclick="modalCaffetteria.close()" class="text-gray-600 hover:text-gray-900 text-3xl font-bold cursor-pointer">&times;</button>
+  </div>
+
+  <!-- Intestazione delle colonne (Nome e Costo sopra) -->
+  <div class="flex justify-between items-center pb-2 mb-2 border-b-2 border-gray-200 font-bold text-gray-700 px-1">
+    <span>Nome:</span>
+    <span>costo:</span>
+  </div>
+
+  <!-- Contenitore della lista elementi del menu -->
+  <div class="space-y-4 overflow-y-auto max-h-[50vh] pr-2">
+    
+    <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
+      <span class="text-lg font-medium text-gray-800">Caffè</span>
+      <span class="text-lg font-bold text-[#C19A6B]">1,20€</span>
     </div>
-    <div>
-      <app-price-table [menu]="caffetteriaMenu"></app-price-table>
+
+    <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
+      <span class="text-lg font-medium text-gray-800">Deca</span>
+      <span class="text-lg font-bold text-[#C19A6B]">+00,30€</span>
     </div>
+
+    <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
+      <span class="text-lg font-medium text-gray-800">Doppio</span>
+      <span class="text-lg font-bold text-[#C19A6B]">+1,00€</span>
+    </div>
+
+    <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
+      <span class="text-lg font-medium text-gray-800">Corretto</span>
+      <span class="text-lg font-bold text-[#C19A6B]">+00,50€</span>
+      </div>
+
+      <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
+      <span class="text-lg font-medium text-gray-800">Freddo</span>
+      <span class="text-lg font-bold text-[#C19A6B]">+00,60€</span>
+    </div>
+    
+
+    <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
+      <span class="text-lg font-medium text-gray-800">Americano</span>
+      <span class="text-lg font-bold text-[#C19A6B]">+00,50€</span>
+    </div>
+
+    <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
+      <span class="text-lg font-medium text-gray-800">Cappuccino</span>
+      <span class="text-lg font-bold text-[#C19A6B]">1,50€</span>
+    </div>
+
+    <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
+      <span class="text-lg font-medium text-gray-800">Deca</span>
+      <span class="text-lg font-bold text-[#C19A6B]">+00,30€</span>
+    </div>
+
+    <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
+      <span class="text-lg font-medium text-gray-800">No Lattosio</span>
+      <span class="text-lg font-bold text-[#C19A6B]">+00,30€</span>
+    </div>
+
+    <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
+      <span class="text-lg font-medium text-gray-800">Orzo</span>
+      <span class="text-lg font-bold text-[#C19A6B]">+00,30€</span>
+    </div>
+
+    <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
+      <span class="text-lg font-medium text-gray-800">Latte</span>
+      <span class="text-lg font-bold text-[#C19A6B]">1,50€</span>
+    </div>
+
+    <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
+      <span class="text-lg font-medium text-gray-800">Macchiato</span>
+      <span class="text-lg font-bold text-[#C19A6B]">+00,30€</span>
+    </div>
+
+    <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
+      <span class="text-lg font-medium text-gray-800">Cioccolato</span>
+      <span class="text-lg font-bold text-[#C19A6B]">+00,20€</span>
+    </div>
+
+    <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
+      <span class="text-lg font-medium text-gray-800">Caffè</span>
+      <span class="text-lg font-bold text-[#C19A6B]">+00,30€</span>
+    </div>
+
+    <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
+      <span class="text-lg font-medium text-gray-800">Freddo</span>
+      <span class="text-lg font-bold text-[#C19A6B]">+00,20€</span>
+    </div>
+
+    <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
+      <span class="text-lg font-medium text-gray-800">No Lattosio</span>
+      <span class="text-lg font-bold text-[#C19A6B]">+00,30€</span>
+    </div>
+
+    <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
+      <span class="text-lg font-medium text-gray-800">Ginseng & Orzo</span>
+      <span class="text-lg font-bold text-[#C19A6B]">1,30€</span>
+    </div>
+
+    <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
+      <span class="text-lg font-medium text-gray-800">Grande</span>
+      <span class="text-lg font-bold text-[#C19A6B]">+00,20€</span>
+    </div>
+
+    <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
+      <span class="text-lg font-medium text-gray-800">Tè & Infusi</span>
+      <span class="text-lg font-bold text-[#C19A6B]">2,00€</span>
+    </div>
+
+    <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
+      <span class="text-lg font-medium text-gray-800">Cioccolata</span>
+      <span class="text-lg font-bold text-[#C19A6B]">3,00€</span>
+    </div>
+
+    <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
+      <span class="text-lg font-medium text-gray-800">Panna</span>
+      <span class="text-lg font-bold text-[#C19A6B]">+00,50€</span>
+    </div>
+
+    <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
+      <span class="text-lg font-medium text-gray-800">Cornetto</span>
+      <span class="text-lg font-bold text-[#C19A6B]">1,00€</span>
+    </div>
+
+    <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
+      <span class="text-lg font-medium text-gray-800">Farcito</span>
+      <span class="text-lg font-bold text-[#C19A6B]">+00,30€</span>
+    </div>
+
+    <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
+      <span class="text-lg font-medium text-gray-800">Special</span>
+      <span class="text-lg font-bold text-[#C19A6B]">+00,50€</span>
+    </div>
+
+    <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
+      <span class="text-lg font-medium text-gray-800">Mini</span>
+      <span class="text-lg font-bold text-[#C19A6B]">-00,20€</span>
+    </div>
+
+    <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
+      <span class="text-lg font-medium text-gray-800">Ciambellone</span>
+      <span class="text-lg font-bold text-[#C19A6B]">1,50€</span>
+    </div>
+
+    <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
+      <span class="text-lg font-medium text-gray-800">Crostata</span>
+      <span class="text-lg font-bold text-[#C19A6B]">+00,50€</span>
+    </div>
+
+    <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
+      <span class="text-lg font-medium text-gray-800">Vegana</span>
+      <span class="text-lg font-bold text-[#C19A6B]">+0,50€</span>
+    </div>
+
+    <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
+      <span class="text-lg font-medium text-gray-800">Torta</span>
+      <span class="text-lg font-bold text-[#C19A6B]">+0,50€</span>
+    </div>
+
+    <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
+      <span class="text-lg font-medium text-gray-800">Biscotti</span>
+      <span class="text-lg font-bold text-[#C19A6B]">A Partire da 00,30€</span>
+    </div>
+
+    <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
+      <span class="text-lg font-medium text-gray-800">Al Kg</span>
+      <span class="text-lg font-bold text-[#C19A6B]">00,30€</span>
+    </div>
+
+    <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
+      <span class="text-lg font-medium text-gray-800">Tramezino</span>
+      <span class="text-lg font-bold text-[#C19A6B]">2,50€</span>
+    </div>
+
+    <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
+      <span class="text-lg font-medium text-gray-800">Toast</span>
+      <span class="text-lg font-bold text-[#C19A6B]">3,50€</span>
+    </div>
+
+    <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
+      <span class="text-lg font-medium text-gray-800">Colazione Caffè o Cappuccino Cornetto Succo o Spremuta</span>
+      <span class="text-lg font-bold text-[#C19A6B]">4,50€</span>
+    </div>
+
+    <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
+      <span class="text-lg font-medium text-gray-800">Pranzo Primo o Secondo Bibita Caffè</span>
+      <span class="text-lg font-bold text-[#C19A6B]">9,00€</span>
+    </div>
+
+    <!-- Se preferisci continuare ad usare il componente dinamico app-price-table, 
+         assicurati che all'interno di quel componente tu stia usando la stessa struttura flex justify-between -->
+    <!-- 
+    <app-price-table [menu]="caffetteriaMenu"></app-price-table> 
+    -->
+
+  </div>
 </dialog>
