@@ -2,15 +2,24 @@
 
   <app-header></app-header>
 
-  <div class="bg-[url(https://images.pexels.com/photos/851555/pexels-photo-851555.jpeg)] text-white py-2 px-4 text-center w-full h-[75vh] bg-cover bg-center bg-no-repeat ">
+  <!-- Sezione Hero con l'id="home" e l'effetto ombra -->
+<div id="home" class="relative bg-[url('https://img.magnific.com/foto-premium/tazza-di-caffe-con-latte-art-su-tavolo-di-legno-in-caffetteria_1103513-805.jpg?semt=ais_hybrid&w=740&q=80')] text-white py-2 px-4 text-center w-full h-[75vh] bg-cover bg-center bg-no-repeat shadow-2xl mb-16">
 
-    <div class="container px-4 flex-col lg:flex mt-10 items-start justify-center lg:justify-start gap-5">
+  <!-- Overlay scuro -->
+  <div class="absolute inset-0 bg-black/60 z-0"></div>
 
-      <h1 class="text-4xl lg:text-6xl font-bold">Perche la vita è fatta di <span class="text-green-700">Incontri</span></h1>
-      <p class="text-xl mb-10">Scopri come ogni incontro può cambiare la tua vita</p>
-      <button class="bg-green-500 text-white text-2xl font-medium px-4 py-2 rounded shadow">Leggi il menu</button>
+  <!-- Contenuto in primo piano (z-10) rispetto all'overlay -->
+  <div class="relative z-10 container px-4 flex-col lg:flex mt-10 items-start justify-center lg:justify-start gap-6">
 
-    </div>
+    <h1 class="text-5xl lg:text-7xl font-bold font-custom leading-tight">
+      Perch<span class="font-custom">e'</span> la vita <span class="font-custom">e'</span> fatta di <span class="text-[#C19A6B] font-custom">Incontri</span>
+    </h1>
+    <p class="text-2xl mb-10 font-medium">Scopri come ogni incontro può cambiare la tua vita</p>
+    
+    <!-- Pulsante -->
+    <a href="#menu" class="bg-[#FF8C00] text-white text-2xl font-medium px-6 py-3 rounded shadow inline-block transition-transform duration-300 hover:scale-105 no-underline">
+      Leggi il menu
+    </a>
 
   </div>
 
