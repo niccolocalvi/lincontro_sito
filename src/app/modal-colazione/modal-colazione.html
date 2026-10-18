@@ -1,0 +1,25 @@
+<button onclick="modalColazione.showModal()" class="px-6 py-3 text-white bg-[#FF8C00] rounded-lg shadow-lg cursor-pointer hover:shadow-lg no-underline transition transform hover:scale-105">
+  Colazione
+</button>
+
+<!-- Modal -->
+<dialog onclick="modalColazione.close()" id="modalColazione" class="p-6 bg-white rounded-lg shadow-lg w-[80%] h-[80vh] m-auto">
+  
+  <div class="flex justify-between items-center mb-6 border-b pb-4">
+    <h2 class="text-2xl font-bold font-custom text-[#C19A6B]">Colazione</h2>
+    <button onclick="modalColazione.close()" class="text-gray-600 hover:text-gray-900 text-3xl font-bold cursor-pointer">&times;</button>
+  </div>
+
+  <!-- Intestazione delle colonne (Nome e Costo sopra) -->
+  <div class="flex justify-between items-center pb-2 mb-2 border-b-2 border-gray-200 font-bold text-gray-700 px-1">
+    <span>Nome:</span>
+    <span>costo:</span>
+  </div>
+
+  <!-- Contenitore della lista elementi del menu -->
+  <div class="space-y-4 overflow-y-auto max-h-[50vh] pr-2">
+    
+    <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
+      <span class="text-lg font-medium text-gray-800">Caffè o Cappuccino, Cornetto, Succo o Spremuta </span>
+      <span class="text-lg font-bold text-[#C19A6B]">4,00€</span>
+    </div>

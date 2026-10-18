@@ -18,7 +18,7 @@
       </ul>
     </nav>
 
-    <!-- 3. DESTRA: Pulsante Eventi (Desktop) + Hamburger (SOLO Mobile) -->
+    <!-- 3. DESTRA: Pulsante Eventi (Desktop) + Hamburger/X (SOLO Mobile) -->
     <div class="flex items-center justify-end space-x-4">
       
       <!-- Pulsante Eventi (Visibile solo da lg in su) -->
@@ -31,32 +31,43 @@
         </span>
       </a>
 
-      <!-- Pulsante Hamburger: visibile SOLO su telefono grazie a md:hidden -->
-      <button (click)="toggleMenu()" aria-label="Menu" class="md:hidden text-gray-800 hover:text-[#C19A6B] focus:outline-none p-2">
-        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-        </svg>
+      <!-- Pulsante Hamburger / X: visibile SOLO su telefono -->
+      <button (click)="toggleMenu()" aria-label="Menu" class="md:hidden text-gray-800 hover:text-[#C19A6B] focus:outline-none p-2 relative z-50">
+        @if (!isMenuOpen) {
+          <!-- Icona Hamburger -->
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        } @else {
+          <!-- Icona a "X" (Chiudi) -->
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        }
       </button>
 
     </div>
   </div>
 
-  <!-- 4. MENU A TENDINA MOBILE: visibile SOLO su telefono quando isMenuOpen è true -->
-  <div [class.hidden]="!isMenuOpen" class="md:hidden bg-white border-t border-gray-100 px-6 py-4 shadow-xl">
-    <ul class="flex flex-col space-y-4 text-base font-semibold text-gray-900">
-      <li><a href="#home" (click)="toggleMenu()" class="block hover:text-[#C19A6B] transition-colors">Home</a></li>
-      <li><a href="#chi-siamo" (click)="toggleMenu()" class="block hover:text-[#C19A6B] transition-colors">Chi siamo</a></li>
-      <li><a href="#menu" (click)="toggleMenu()" class="block hover:text-[#C19A6B] transition-colors">Menu</a></li>
-      <li><a href="#eventi" (click)="toggleMenu()" class="block hover:text-[#C19A6B] transition-colors">Eventi</a></li>
-      <li><a href="#dove-trovarci" (click)="toggleMenu()" class="block hover:text-[#C19A6B] transition-colors">Dove trovarci</a></li>
-      <li><a href="#info-e-contatti" (click)="toggleMenu()" class="block hover:text-[#C19A6B] transition-colors">Info e contatti</a></li>
-    </ul>
-    
-    <div class="mt-4 pt-4 border-t border-gray-100">
-      <a href="#eventi" (click)="toggleMenu()" class="flex justify-center items-center space-x-2 py-2.5 px-4 bg-[#FF8C00] text-white rounded-lg font-bold text-sm shadow-md">
-        <span>Scopri subito i nostri eventi</span>
-      </a>
+  <!-- 4. MENU A TENDINA MOBILE A SCHERMO INTERO: visibile SOLO su telefono quando isMenuOpen è true -->
+  @if (isMenuOpen) {
+    <div class="md:hidden fixed inset-x-0 top-[73px] bottom-0 bg-white z-40 px-6 py-8 flex flex-col justify-between shadow-2xl overflow-y-auto">
+      <ul class="flex flex-col space-y-6 text-xl font-semibold text-gray-900 text-center mt-4">
+        <li><a href="#home" (click)="toggleMenu()" class="block hover:text-[#C19A6B] transition-colors">Home</a></li>
+        <li><a href="#chi-siamo" (click)="toggleMenu()" class="block hover:text-[#C19A6B] transition-colors">Chi siamo</a></li>
+        <li><a href="#menu" (click)="toggleMenu()" class="block hover:text-[#C19A6B] transition-colors">Menu</a></li>
+        <li><a href="#eventi" (click)="toggleMenu()" class="block hover:text-[#C19A6B] transition-colors">Eventi</a></li>
+        <li><a href="#dove-trovarci" (click)="toggleMenu()" class="block hover:text-[#C19A6B] transition-colors">Dove trovarci</a></li>
+        <li><a href="#info-e-contatti" (click)="toggleMenu()" class="block hover:text-[#C19A6B] transition-colors">Info e contatti</a></li>
+      </ul>
+      
+      <div class="mt-8 pt-6 border-t border-gray-200 text-center pb-8">
+        <app-button 
+  text="Vai agli Eventi" 
+  href="#eventi" 
+  customClass="text-base px-4 py-2 w-full text-center">
+</app-button>
+      </div>
     </div>
-  </div>
+  }
 </header>
-
