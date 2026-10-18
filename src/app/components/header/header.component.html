@@ -9,7 +9,6 @@
     <!-- 2. CENTRO: Navigazione Desktop (Nascosta su mobile, visibile da md in su) -->
     <nav class="flex justify-center">
       <ul class="hidden md:flex space-x-8 items-center text-lg">
-        <li><a href="#home" class="text-gray-900 font-semibold hover:text-[#C19A6B] transition-colors">Home</a></li>
         <li><a href="#chi-siamo" class="text-gray-900 font-semibold hover:text-[#C19A6B] transition-colors">Chi siamo</a></li>
         <li><a href="#menu" class="text-gray-900 font-semibold hover:text-[#C19A6B] transition-colors">Menu</a></li>
         <li><a href="#eventi" class="text-gray-900 font-semibold hover:text-[#C19A6B] transition-colors">Eventi</a></li>
@@ -20,6 +19,11 @@
 
     <!-- 3. DESTRA: Pulsante Eventi (Desktop) + Hamburger/X (SOLO Mobile) -->
     <div class="flex items-center justify-end space-x-4">
+
+
+      <a href="https://wa.me/393343874529?text=Ciao!%20Vorrei%20prenotare%20un%20tavolo.%0A%0A%2ANome%2A:%20%0A%2AData%2A:%20%0A%2AOra%2A:%20%0A%2ANumero%20persone%2A:%20" target="_blank" rel="noopener noreferrer">
+        Prenota Ora
+      </a>
 
       <!-- Pulsante Eventi (Visibile solo da lg in su) -->
       <a href="#eventi" class="hidden lg:flex items-center space-x-3 py-2 px-4 bg-[#FF8C00] text-white rounded-lg transition-all duration-400 transform hover:scale-105 cursor-pointer hover:shadow-lg no-underline">
@@ -53,7 +57,6 @@
   @if (isMenuOpen) {
     <div class="md:hidden fixed inset-x-0 top-[73px] bottom-0 bg-white z-40 px-6 py-8 flex flex-col justify-between shadow-2xl overflow-y-auto">
       <ul class="flex flex-col space-y-6 text-xl font-semibold text-gray-900 text-center mt-4">
-        <li><a href="#home" (click)="toggleMenu()" class="block hover:text-[#C19A6B] transition-colors">Home</a></li>
         <li><a href="#chi-siamo" (click)="toggleMenu()" class="block hover:text-[#C19A6B] transition-colors">Chi siamo</a></li>
         <li><a href="#menu" (click)="toggleMenu()" class="block hover:text-[#C19A6B] transition-colors">Menu</a></li>
         <li><a href="#eventi" (click)="toggleMenu()" class="block hover:text-[#C19A6B] transition-colors">Eventi</a></li>
