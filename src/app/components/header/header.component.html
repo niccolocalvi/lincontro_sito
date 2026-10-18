@@ -1,6 +1,6 @@
-<header class="w-full bg-white shadow-md relative z-50">
+<header class="w-full bg-white shadow-md relative z-50 sticky top-0">
   <div class="w-full grid grid-cols-[auto_1fr_auto] items-center px-6 py-4">
-    
+
     <!-- 1. SINISTRA: Logo -->
     <div class="flex items-center justify-start">
       <img src="incontro_logo_orizzontale.png" alt="incontro_logo_orizzontale" class="h-12 w-auto" />
@@ -20,7 +20,7 @@
 
     <!-- 3. DESTRA: Pulsante Eventi (Desktop) + Hamburger/X (SOLO Mobile) -->
     <div class="flex items-center justify-end space-x-4">
-      
+
       <!-- Pulsante Eventi (Visibile solo da lg in su) -->
       <a href="#eventi" class="hidden lg:flex items-center space-x-3 py-2 px-4 bg-[#FF8C00] text-white rounded-lg transition-all duration-400 transform hover:scale-105 cursor-pointer hover:shadow-lg no-underline">
         <span>Scopri subito i nostri eventi</span>
@@ -60,11 +60,11 @@
         <li><a href="#dove-trovarci" (click)="toggleMenu()" class="block hover:text-[#C19A6B] transition-colors">Dove trovarci</a></li>
         <li><a href="#info-e-contatti" (click)="toggleMenu()" class="block hover:text-[#C19A6B] transition-colors">Info e contatti</a></li>
       </ul>
-      
+
       <div class="mt-8 pt-6 border-t border-gray-200 text-center pb-8">
-        <app-button 
-  text="Vai agli Eventi" 
-  href="#eventi" 
+        <app-button
+  text="Vai agli Eventi"
+  href="#eventi"
   customClass="text-base px-4 py-2 w-full text-center">
 </app-button>
       </div>
