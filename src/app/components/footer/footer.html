@@ -2,26 +2,44 @@
   <div class="grid gap-10 row-gap-6 mb-8 sm:grid-cols-2 lg:grid-cols-4">
     <div class="sm:col-span-2">
       <a href="/" aria-label="Go home" title="Company" class="inline-flex items-center">
-        
-        <img src="incontro_logo_orizzontale.png" alt="incontro_logo_orizzontale" class="h-12 w-auto" />
+        <img
+          src="incontro_logo_orizzontale.png"
+          alt="incontro_logo_orizzontale"
+          class="h-12 w-auto"
+        />
       </a>
       <div class="mt-6 lg:max-w-sm">
         <p class="text-sm text-gray-800">
-          Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.
+          Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
+          laudantium, totam rem aperiam.
         </p>
         <p class="mt-4 text-sm text-gray-800">
-          Eaque ipsa quae ab illo  veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+          Eaque ipsa quae ab illo veritatis et quasi architecto beatae vitae dicta sunt explicabo.
         </p>
       </div>
     </div>
     <div class="space-y-2 text-sm">
       <p class="text-base font-bold tracking-wide text-gray-900">Contatti</p>
       <div class="flex">
-        <a href="tel:850-123-5021" aria-label="Our phone" title="Our phone" class="transition-colors duration-300 text-deep-purple-accent-400 hover:text-deep-purple-800">(+39) 334 387 4529</a>
+        <a
+          href="tel:{{ getdatiAttivita().telefono.trim() }}"
+          aria-label="Our phone"
+          title="Our phone"
+          class="transition-colors duration-300 text-deep-purple-accent-400 hover:text-deep-purple-800"
+          >{{ getdatiAttivita().telefono }}</a
+        >
       </div>
       <div class="flex">
-        <a href="https://maps.app.goo.gl/J79WPkw8Fy7UP7zr9" target="_blank" rel="noopener noreferrer" aria-label="Our address" title="Our address" class="transition-colors duration-300 text-deep-purple-accent-400 hover:text-deep-purple-800">
-          Largo Claudio Monteverdi, 00052 Valcanneto RM
+        <a
+          href="https://maps.app.goo.gl/J79WPkw8Fy7UP7zr9"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Our address"
+          title="Our address"
+          class="transition-colors duration-300 text-deep-purple-accent-400 hover:text-deep-purple-800"
+        >
+          {{ getdatiAttivita().via }} {{ getdatiAttivita().civico }}, {{ getdatiAttivita().cap }}
+          {{ getdatiAttivita().citta }} {{ getdatiAttivita().provincia }}
         </a>
       </div>
     </div>
@@ -29,7 +47,13 @@
       <span class="text-base font-bold tracking-wide text-gray-900">Social</span>
       <div class="flex items-center justify-start mt-1 space-x-3">
         <!-- Collegamento Instagram -->
-        <a href="https://www.instagram.com/lincontro_valcanneto/" target="_blank" rel="noopener noreferrer" class="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-400" aria-label="Instagram">
+        <a
+          href="https://www.instagram.com/lincontro_valcanneto/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-400"
+          aria-label="Instagram"
+        >
           <svg viewBox="0 0 30 30" fill="currentColor" class="h-6">
             <circle cx="15" cy="15" r="4"></circle>
             <path
@@ -38,7 +62,13 @@
           </svg>
         </a>
         <!-- Collegamento Facebook -->
-        <a href="https://www.facebook.com/tuapagina" target="_blank" rel="noopener noreferrer" class="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-400" aria-label="Facebook">
+        <a
+          href="https://www.facebook.com/tuapagina"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-400"
+          aria-label="Facebook"
+        >
           <svg viewBox="0 0 24 24" fill="currentColor" class="h-5">
             <path
               d="M22,0H2C0.895,0,0,0.895,0,2v20c0,1.105,0.895,2,2,2h11v-9h-3v-4h3V8.413c0-3.1,1.893-4.788,4.659-4.788 c1.325,0,2.463,0.099,2.795,0.143v3.24l-1.918,0.001c-1.504,0-1.795,0.715-1.795,1.763V11h4.44l-1,4h-3.44v9H22c1.105,0,2-0.895,2-2 V2C24,0.895,23.105,0,22,0z"
@@ -47,9 +77,12 @@
         </a>
       </div>
       <p class="mt-4 text-sm text-gray-500">
-        Inizia a seguirci sui nostri canali social per rimanere sempre aggiornato sui prossimi eventi e le novità del nostro bar!
+        Inizia a seguirci sui nostri canali social per rimanere sempre aggiornato sui prossimi
+        eventi e le novità del nostro bar!
       </p>
     </div>
   </div>
   <div class="flex flex-col-reverse justify-between pt-5 pb-10 border-t lg:flex-row">
-    <p class="text-sm text-gray-600">
+    <p class="text-sm text-gray-600"></p>
+  </div>
+</div>
