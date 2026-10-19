@@ -1,20 +1,57 @@
-<!-- Pulsante Aperitivo -->
-<button
-  onclick="modalDrinks.showModal()"
-  class="px-8 py-3 text-white bg-amber-600 rounded-full shadow-lg font-semibold hover:bg-amber-700 transition transform hover:scale-105 cursor-pointer"
->
-  Aperitivo
-</button>
+<!-- Card Aperitivo & Drinks -->
+<div class="max-w-2xl w-full bg-[#f8f4ed] rounded-3xl overflow-hidden shadow-lg border border-stone-200 flex flex-col sm:flex-row items-stretch">
+  
+  <!-- Colonna di Sinistra: Foto -->
+  <div class="relative w-full sm:w-1/2 min-h-[220px] bg-[#C19A6B] flex items-end p-4">
+    <!-- <img src="assets/images/aperitivo.jpg" alt="Apericena e cocktail" class="absolute inset-0 w-full h-full object-cover" /> -->
+    <span class="relative z-10 text-white/90 text-xs font-mono tracking-wide">
+      <img src="foto-drink-menu.jpeg" alt="Apericena e cocktail" class="w-full h-full object-cover rounded-3xl" />
+    </span>
+  </div>
+
+  <!-- Colonna di Destra: Dettagli e Testi -->
+  <div class="w-full sm:w-1/2 p-6 sm:p-8 flex flex-col justify-between gap-6">
+    <div>
+
+      <!-- Titolo -->
+      <h3 class="text-3xl sm:text-4xl font-serif text-stone-900 leading-tight mb-3">
+        Aperitivo &<br />Drinks
+      </h3>
+
+      <!-- Descrizione -->
+      <p class="text-stone-600 text-sm sm:text-base leading-relaxed">
+        Cocktail, birra alla spina e taglieri, ai tavoli dentro e fuori.
+      </p>
+    </div>
+
+    <!-- Bottone Call to Action che apre il modale -->
+    <div class="pt-2">
+      <button
+        type="button"
+        (click)="modalDrinks.showModal()"
+        class="inline-flex items-center gap-2 bg-[#221710] hover:bg-[#35251b] text-white text-sm font-semibold px-6 py-3 rounded-full transition-all shadow-sm cursor-pointer"
+      >
+        <span>Sfoglia il menu</span>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+</div>
 
 <!-- Modale Aperitivo -->
 <dialog
+  #modalDrinks
   id="modalDrinks"
   class="p-8 bg-[#faf8f5] rounded-3xl shadow-2xl w-[90%] max-w-5xl max-h-[90vh] overflow-y-auto m-auto backdrop:bg-black/40"
 >
   <!-- Tasto di Chiusura -->
   <div class="flex justify-end">
     <button
-      onclick="modalDrinks.close()"
+      type="button"
+      (click)="modalDrinks.close()"
       class="w-10 h-10 rounded-full bg-stone-200 hover:bg-stone-300 flex items-center justify-center text-gray-700 text-2xl font-bold cursor-pointer transition"
     >
       &times;
