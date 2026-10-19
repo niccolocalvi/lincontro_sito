@@ -1,143 +1,153 @@
 <!-- Button to Open Modal -->
-<button onclick="modalDrinks.showModal()" class="px-6 py-3 text-white bg-[#FF8C00] rounded-lg shadow-lg cursor-pointer hover:shadow-lg no-underline transition transform hover:scale-105">
+<button
+  onclick="modalDrinks.showModal()"
+  class="px-6 py-3 text-white bg-primary rounded-btn shadow-lg cursor-pointer hover:shadow-lg no-underline transition transform hover:scale-105"
+>
   Aperitivo
 </button>
 
 <!-- Modal -->
-<dialog onclick="modalDrinks.close()" id="modalDrinks" class="p-6 bg-white rounded-lg shadow-lg w-[80%] h-[80vh] m-auto">
-  
+<dialog
+  onclick="modalDrinks.close()"
+  id="modalDrinks"
+  class="p-6 bg-surface rounded-card shadow-lg w-[80%] h-[80vh] m-auto"
+>
   <div class="flex justify-between items-center mb-6 border-b pb-4">
-    <h2 class="text-2xl font-bold font-custom text-[#C19A6B]">Drinks</h2>
-    <button onclick="modalDrinks.close()" class="text-gray-600 hover:text-gray-900 text-3xl font-bold cursor-pointer">&times;</button>
+    <h2 class="text-2xl font-bold font-custom text-accent">Drinks</h2>
+    <button
+      onclick="modalDrinks.close()"
+      class="text-gray-600 hover:text-gray-900 text-3xl font-bold cursor-pointer"
+    >
+      &times;
+    </button>
   </div>
 
   <!-- Intestazione delle colonne (Nome e Costo sopra) -->
-  <div class="flex justify-between items-center pb-2 mb-2 border-b-2 border-gray-200 font-bold text-gray-700 px-1">
+  <div
+    class="flex justify-between items-center pb-2 mb-2 border-b-2 border-gray-200 font-bold text-gray-700 px-1"
+  >
     <span>Nome:</span>
     <span>costo:</span>
   </div>
 
   <!-- Contenitore della lista elementi del menu -->
   <div class="space-y-4 overflow-y-auto max-h-[50vh] pr-2">
-    
     <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
       <span class="text-lg font-medium text-gray-800">Bibita Vetro</span>
-      <span class="text-lg font-bold text-[#C19A6B]">2,50€</span>
+      <span class="text-lg font-bold text-accent">2,50€</span>
     </div>
 
     <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
       <span class="text-lg font-medium text-gray-800">Bibita Lattina</span>
-      <span class="text-lg font-bold text-[#C19A6B]">2,00€</span>
+      <span class="text-lg font-bold text-accent">2,00€</span>
     </div>
 
     <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
       <span class="text-lg font-medium text-gray-800">Fuze Tea</span>
-      <span class="text-lg font-bold text-[#C19A6B]">2,50€ </span>
+      <span class="text-lg font-bold text-accent">2,50€ </span>
     </div>
     <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
       <span class="text-lg font-medium text-gray-800">Thè Freddo</span>
-      <span class="text-lg font-bold text-[#C19A6B]">2,00€</span>
+      <span class="text-lg font-bold text-accent">2,00€</span>
     </div>
 
     <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
       <span class="text-lg font-medium text-gray-800">Limonata</span>
-      <span class="text-lg font-bold text-[#C19A6B]">2,00€</span>
+      <span class="text-lg font-bold text-accent">2,00€</span>
     </div>
 
     <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
       <span class="text-lg font-medium text-gray-800">Acqua 1/5 lt.</span>
-      <span class="text-lg font-bold text-[#C19A6B]">2,00€</span>
+      <span class="text-lg font-bold text-accent">2,00€</span>
     </div>
     <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
       <span class="text-lg font-medium text-gray-800">Acqua 1.5 lt.</span>
-      <span class="text-lg font-bold text-[#C19A6B]">4,00€</span>
+      <span class="text-lg font-bold text-accent">4,00€</span>
     </div>
 
     <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
       <span class="text-lg font-medium text-gray-800">Energy Drink</span>
-      <span class="text-lg font-bold text-[#C19A6B]">3,00€</span>
+      <span class="text-lg font-bold text-accent">3,00€</span>
     </div>
 
     <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
       <span class="text-lg font-medium text-gray-800">Spritz</span>
-      <span class="text-lg font-bold text-[#C19A6B]">6,00€</span>
+      <span class="text-lg font-bold text-accent">6,00€</span>
     </div>
 
     <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
       <span class="text-lg font-medium text-gray-800">Spritz di Sarah</span>
-      <span class="text-lg font-bold text-[#C19A6B]">7,00€</span>
+      <span class="text-lg font-bold text-accent">7,00€</span>
     </div>
     <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
       <span class="text-lg font-medium text-gray-800">Americano</span>
-      <span class="text-lg font-bold text-[#C19A6B]">6,00€</span>
+      <span class="text-lg font-bold text-accent">6,00€</span>
     </div>
 
     <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
       <span class="text-lg font-medium text-gray-800">Negroni</span>
-      <span class="text-lg font-bold text-[#C19A6B]">6,00€</span>
+      <span class="text-lg font-bold text-accent">6,00€</span>
     </div>
 
     <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
       <span class="text-lg font-medium text-gray-800">Gin Tonic</span>
-      <span class="text-lg font-bold text-[#C19A6B]">6,00€</span>
+      <span class="text-lg font-bold text-accent">6,00€</span>
     </div>
     <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
       <span class="text-lg font-medium text-gray-800">London Mule</span>
-      <span class="text-lg font-bold text-[#C19A6B]">8,00€</span>
+      <span class="text-lg font-bold text-accent">8,00€</span>
     </div>
 
     <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
       <span class="text-lg font-medium text-gray-800">Moscow Mule</span>
-      <span class="text-lg font-bold text-[#C19A6B]">8,00€</span>
+      <span class="text-lg font-bold text-accent">8,00€</span>
     </div>
 
     <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
       <span class="text-lg font-medium text-gray-800">Martini Cocktail</span>
-      <span class="text-lg font-bold text-[#C19A6B]">7,00€</span>
+      <span class="text-lg font-bold text-accent">7,00€</span>
     </div>
     <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
       <span class="text-lg font-medium text-gray-800">Espresso Martini</span>
-      <span class="text-lg font-bold text-[#C19A6B]">7,00€</span>
+      <span class="text-lg font-bold text-accent">7,00€</span>
     </div>
 
     <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
       <span class="text-lg font-medium text-gray-800">Boulevardier</span>
-      <span class="text-lg font-bold text-[#C19A6B]">6,00€</span>
+      <span class="text-lg font-bold text-accent">6,00€</span>
     </div>
 
     <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
       <span class="text-lg font-medium text-gray-800">Signature</span>
-      <span class="text-lg font-bold text-[#C19A6B]">9,00€</span>
+      <span class="text-lg font-bold text-accent">9,00€</span>
     </div>
     <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
       <span class="text-lg font-medium text-gray-800">Analcolico</span>
-      <span class="text-lg font-bold text-[#C19A6B]">7,00€</span>
+      <span class="text-lg font-bold text-accent">7,00€</span>
     </div>
 
     <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
       <span class="text-lg font-medium text-gray-800">Vergin Tonic</span>
-      <span class="text-lg font-bold text-[#C19A6B]">6,00€</span>
+      <span class="text-lg font-bold text-accent">6,00€</span>
     </div>
 
     <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
       <span class="text-lg font-medium text-gray-800">Vergin Colada</span>
-      <span class="text-lg font-bold text-[#C19A6B]">6,00€</span>
+      <span class="text-lg font-bold text-accent">6,00€</span>
     </div>
     <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
       <span class="text-lg font-medium text-gray-800">Spina Piccola</span>
-      <span class="text-lg font-bold text-[#C19A6B]">3,00€</span>
+      <span class="text-lg font-bold text-accent">3,00€</span>
     </div>
 
     <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
       <span class="text-lg font-medium text-gray-800">Spina Media</span>
-      <span class="text-lg font-bold text-[#C19A6B]">5,00€</span>
+      <span class="text-lg font-bold text-accent">5,00€</span>
     </div>
 
     <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
       <span class="text-lg font-medium text-gray-800">Spina con Gassosa</span>
-      <span class="text-lg font-bold text-[#C19A6B]">4,00/6,00€</span>
+      <span class="text-lg font-bold text-accent">4,00/6,00€</span>
     </div>
-
-    </div>
-
+  </div>
 </dialog>

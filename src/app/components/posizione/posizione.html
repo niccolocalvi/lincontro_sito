@@ -1,32 +1,36 @@
 <div id="dove-trovarci" class="w-full py-10 flex flex-col items-center justify-center">
-
   <div class="w-full max-w-5xl h-[450px] px-4 relative">
-    
     <!-- Se NON c'è il consenso, mostra il box dei cookie -->
     @if (!mapConsent) {
-      <div class="absolute inset-0 z-10 bg-black/80 rounded-lg flex flex-col items-center justify-center text-center p-6 text-white">
+      <div
+        class="absolute inset-0 z-10 bg-black/80 rounded-lg flex flex-col items-center justify-center text-center p-6 text-white"
+      >
         <p class="text-sm md:text-base mb-4 max-w-md">
-          Per visualizzare la mappa di Google Maps e accettare i cookie associati, clicca sul pulsante sottostante.
+          Per visualizzare la mappa di Google Maps e accettare i cookie associati, clicca sul
+          pulsante sottostante.
         </p>
-        <button (click)="acceptMap()" class="px-6 py-3 bg-[#FF8C00] text-white font-bold rounded-lg shadow-lg hover:scale-105 transition cursor-pointer">
+        <button
+          (click)="acceptMap()"
+          class="px-6 py-3 bg-primary text-white font-bold rounded-lg shadow-lg hover:scale-105 transition cursor-pointer"
+        >
           Attiva Mappa e Consenti Cookie
         </button>
       </div>
-    } 
-    
+    }
+
     <!-- Se C'È il consenso, mostra la mappa -->
     @if (mapConsent) {
       <iframe
-        class="w-full h-full rounded-lg shadow-lg border-0" 
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2967.467843697647!2d12.152816775886183!3d41.94728516107992!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132f542c37f4964f%3A0x6da1167ae50c4914!2sLargo%20Claudio%20Monteverdi%2C%2019%2C%2000052%20Valcanneto%20RM!5e0!3m2!1sit!2sit!4v1791898820851!5m2!1sit!2sit" 
-        width="600" 
-        height="450" 
-        style="border:0;" 
-        allowfullscreen="" 
-        loading="lazy" 
-        referrerpolicy="strict-origin-when-cross-origin">
+        class="w-full h-full rounded-lg shadow-lg border-0"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2967.467843697647!2d12.152816775886183!3d41.94728516107992!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132f542c37f4964f%3A0x6da1167ae50c4914!2sLargo%20Claudio%20Monteverdi%2C%2019%2C%2000052%20Valcanneto%20RM!5e0!3m2!1sit!2sit!4v1791898820851!5m2!1sit!2sit"
+        width="600"
+        height="450"
+        style="border: 0"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="strict-origin-when-cross-origin"
+      >
       </iframe>
     }
-
   </div>
 </div>

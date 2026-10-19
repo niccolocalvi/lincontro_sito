@@ -1,3 +1,6 @@
+@import 'tailwindcss';
+@import './theme.css';
+
 @font-face {
   font-family: 'MioFontPersonalizzato';
   src: url('./assets/fonts/Stars&Love-BottomHeavy.ttf') format('truetype');
@@ -5,7 +8,7 @@
   font-style: normal;
 }
 
-/* Questa classe collega il nome del font all'HTML */
+/* Classe legacy – ora usa anche `font-custom` di Tailwind (definito in theme.css) */
 .font-custom {
   font-family: 'MioFontPersonalizzato', sans-serif !important;
 }
@@ -35,6 +38,3 @@ body {
 .animate-infinite-scroll:hover {
   animation-play-state: paused;
 }
-
-
-@import 'tailwindcss';

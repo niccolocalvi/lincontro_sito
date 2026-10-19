@@ -1,75 +1,165 @@
-<header class="w-full bg-white shadow-md relative z-50 sticky top-0">
+<header class="w-full bg-surface shadow-md relative z-50 sticky top-0">
   <div class="w-full grid grid-cols-[auto_1fr_auto] items-center px-6 py-4">
-
     <!-- 1. SINISTRA: Logo -->
     <div class="flex items-center justify-start">
-      <img src="incontro_logo_orizzontale.png" alt="incontro_logo_orizzontale" class="h-12 w-auto" />
+      <img
+        src="incontro_logo_orizzontale.png"
+        alt="incontro_logo_orizzontale"
+        class="h-12 w-auto"
+      />
     </div>
 
     <!-- 2. CENTRO: Navigazione Desktop (Nascosta su mobile, visibile da md in su) -->
     <nav class="flex justify-center">
       <ul class="hidden md:flex space-x-8 items-center text-lg">
-        <li><a href="#chi-siamo" class="text-gray-900 font-semibold hover:text-[#C19A6B] transition-colors">Chi siamo</a></li>
-        <li><a href="#menu" class="text-gray-900 font-semibold hover:text-[#C19A6B] transition-colors">Menu</a></li>
-        <li><a href="#eventi" class="text-gray-900 font-semibold hover:text-[#C19A6B] transition-colors">Eventi</a></li>
-        <li><a href="#dove-trovarci" class="text-gray-900 font-semibold hover:text-[#C19A6B] transition-colors">Dove trovarci</a></li>
-        <li><a href="#info-e-contatti" class="text-gray-900 font-semibold hover:text-[#C19A6B] transition-colors">Info e contatti</a></li>
+        <li>
+          <a
+            href="#chi-siamo"
+            class="text-gray-900 font-semibold hover:text-accent transition-colors"
+            >Chi siamo</a
+          >
+        </li>
+        <li>
+          <a href="#menu" class="text-gray-900 font-semibold hover:text-accent transition-colors"
+            >Menu</a
+          >
+        </li>
+        <li>
+          <a href="#eventi" class="text-gray-900 font-semibold hover:text-accent transition-colors"
+            >Eventi</a
+          >
+        </li>
+        <li>
+          <a
+            href="#dove-trovarci"
+            class="text-gray-900 font-semibold hover:text-accent transition-colors"
+            >Dove trovarci</a
+          >
+        </li>
+        <li>
+          <a
+            href="#info-e-contatti"
+            class="text-gray-900 font-semibold hover:text-accent transition-colors"
+            >Info e contatti</a
+          >
+        </li>
       </ul>
     </nav>
 
     <!-- 3. DESTRA: Pulsante Eventi (Desktop) + Hamburger/X (SOLO Mobile) -->
     <div class="flex items-center justify-end space-x-4">
-
-
-      <a href="https://wa.me/393343874529?text=Ciao!%20Vorrei%20prenotare%20un%20tavolo.%0A%0A%2ANome%2A:%20%0A%2AData%2A:%20%0A%2AOra%2A:%20%0A%2ANumero%20persone%2A:%20" target="_blank" rel="noopener noreferrer">
+      <a
+        href="https://wa.me/393343874529?text=Ciao!%20Vorrei%20prenotare%20un%20tavolo.%0A%0A%2ANome%2A:%20%0A%2AData%2A:%20%0A%2AOra%2A:%20%0A%2ANumero%20persone%2A:%20"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         Prenota Ora
       </a>
 
       <!-- Pulsante Eventi (Visibile solo da lg in su) -->
-      <a href="#eventi" class="hidden lg:flex items-center space-x-3 py-2 px-4 bg-[#FF8C00] text-white rounded-lg transition-all duration-400 transform hover:scale-105 cursor-pointer hover:shadow-lg no-underline">
+      <a
+        href="#eventi"
+        class="hidden lg:flex items-center space-x-3 py-2 px-4 bg-primary text-white rounded-btn transition-all duration-normal transform hover:scale-105 hover:bg-primary-hover cursor-pointer hover:shadow-lg no-underline"
+      >
         <span>Scopri subito i nostri eventi</span>
         <span>
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 19l-7-7 7-7m8 14l-7-7 7-7" />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M11 19l-7-7 7-7m8 14l-7-7 7-7"
+            />
           </svg>
         </span>
       </a>
 
       <!-- Pulsante Hamburger / X: visibile SOLO su telefono -->
-      <button (click)="toggleMenu()" aria-label="Menu" class="md:hidden text-gray-800 hover:text-[#C19A6B] focus:outline-none p-2 relative z-50">
+      <button
+        (click)="toggleMenu()"
+        aria-label="Menu"
+        class="md:hidden text-gray-800 hover:text-accent focus:outline-none p-2 relative z-50"
+      >
         @if (!isMenuOpen) {
           <!-- Icona Hamburger -->
           <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
           </svg>
         } @else {
           <!-- Icona a "X" (Chiudi) -->
           <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"
+            />
           </svg>
         }
       </button>
-
     </div>
   </div>
 
   <!-- 4. MENU A TENDINA MOBILE A SCHERMO INTERO: visibile SOLO su telefono quando isMenuOpen è true -->
   @if (isMenuOpen) {
-    <div class="md:hidden fixed inset-x-0 top-[73px] bottom-0 bg-white z-40 px-6 py-8 flex flex-col justify-between shadow-2xl overflow-y-auto">
+    <div
+      class="md:hidden fixed inset-x-0 top-[73px] bottom-0 bg-surface z-40 px-6 py-8 flex flex-col justify-between shadow-2xl overflow-y-auto"
+    >
       <ul class="flex flex-col space-y-6 text-xl font-semibold text-gray-900 text-center mt-4">
-        <li><a href="#chi-siamo" (click)="toggleMenu()" class="block hover:text-[#C19A6B] transition-colors">Chi siamo</a></li>
-        <li><a href="#menu" (click)="toggleMenu()" class="block hover:text-[#C19A6B] transition-colors">Menu</a></li>
-        <li><a href="#eventi" (click)="toggleMenu()" class="block hover:text-[#C19A6B] transition-colors">Eventi</a></li>
-        <li><a href="#dove-trovarci" (click)="toggleMenu()" class="block hover:text-[#C19A6B] transition-colors">Dove trovarci</a></li>
-        <li><a href="#info-e-contatti" (click)="toggleMenu()" class="block hover:text-[#C19A6B] transition-colors">Info e contatti</a></li>
+        <li>
+          <a
+            href="#chi-siamo"
+            (click)="toggleMenu()"
+            class="block hover:text-accent transition-colors"
+            >Chi siamo</a
+          >
+        </li>
+        <li>
+          <a href="#menu" (click)="toggleMenu()" class="block hover:text-accent transition-colors"
+            >Menu</a
+          >
+        </li>
+        <li>
+          <a href="#eventi" (click)="toggleMenu()" class="block hover:text-accent transition-colors"
+            >Eventi</a
+          >
+        </li>
+        <li>
+          <a
+            href="#dove-trovarci"
+            (click)="toggleMenu()"
+            class="block hover:text-accent transition-colors"
+            >Dove trovarci</a
+          >
+        </li>
+        <li>
+          <a
+            href="#info-e-contatti"
+            (click)="toggleMenu()"
+            class="block hover:text-accent transition-colors"
+            >Info e contatti</a
+          >
+        </li>
       </ul>
 
       <div class="mt-8 pt-6 border-t border-gray-200 text-center pb-8">
         <app-button
-  text="Vai agli Eventi"
-  href="#eventi"
-  customClass="text-base px-4 py-2 w-full text-center">
-</app-button>
+          text="Vai agli Eventi"
+          href="#eventi"
+          customClass="text-base px-4 py-2 w-full text-center"
+        >
+        </app-button>
       </div>
     </div>
   }

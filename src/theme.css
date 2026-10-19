@@ -1,0 +1,63 @@
+/* ============================================================
+   TEMA – L'Incontro
+   File centralizzato per colori, font, spaziature e animazioni.
+   Modifica i valori qui per aggiornare tutto il sito in un colpo solo.
+   ============================================================ */
+
+@theme {
+  /* ── Colori principali ─────────────────────────────────── */
+
+  /* Arancione CTA – bottoni, badge, call-to-action */
+  --color-primary: #ff8c00;
+  --color-primary-hover: #e67e00; /* placeholder – regola a piacere */
+  --color-primary-light: #ffa733; /* placeholder – variante chiara */
+
+  /* Marrone/Oro accento – titoli, dettagli, prezzi, icone */
+  --color-accent: #c19a6b;
+  --color-accent-hover: #a9845a; /* placeholder – regola a piacere */
+  --color-accent-light: #d4b48e; /* placeholder – variante chiara */
+
+  /* Blu scuro – link social (Facebook) */
+  --color-dark: #1e2d4a;
+
+  /* Sfondi */
+  --color-surface: #ffffff; /* sfondo sezioni */
+  --color-surface-alt: #f9f6f1; /* placeholder – sfondo alternativo caldo */
+  --color-overlay: rgba(0, 0, 0, 0.6); /* overlay scuro su immagini */
+
+  /* Testo */
+  --color-body: #374151; /* gray-700 – testo corpo */
+  --color-heading: #111827; /* gray-900 – titoli / testo forte */
+  --color-muted: #6b7280; /* gray-500 – testo secondario */
+
+  /* ── Font ───────────────────────────────────────────────── */
+
+  --font-body: 'Trocchi', serif;
+  --font-custom: 'MioFontPersonalizzato', sans-serif;
+
+  /* ── Border radius ──────────────────────────────────────── */
+
+  --radius-btn: 0.5rem; /* 8px – bordi bottoni */
+  --radius-card: 0.75rem; /* 12px – bordi card/modal */
+  --radius-img: 0.5rem; /* 8px – bordi immagini */
+
+  /* ── Ombre ──────────────────────────────────────────────── */
+
+  --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  --shadow-btn: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+
+  /* ── Transizioni ────────────────────────────────────────── */
+
+  --transition-fast: 200ms ease;
+  --transition-normal: 300ms ease;
+  --transition-slow: 400ms ease;
+
+  /* ── Spaziature custom (placeholder) ────────────────────── */
+
+  --spacing-section: 3rem; /* padding verticale sezioni */
+  --spacing-section-lg: 6rem; /* padding verticale sezioni grandi */
+
+  /* ── Animazioni ─────────────────────────────────────────── */
+
+  --animate-infinite-scroll: infinite-scroll 25s linear infinite;
+}
