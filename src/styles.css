@@ -2,19 +2,30 @@
 @import './theme.css';
 
 @font-face {
-  font-family: 'MioFontPersonalizzato';
+  font-family: 'Stars&Love';
   src: url('./assets/fonts/Stars&Love-BottomHeavy.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
-/* Classe legacy – ora usa anche `font-custom` di Tailwind (definito in theme.css) */
-.font-custom {
-  font-family: 'MioFontPersonalizzato', sans-serif !important;
+@font-face {
+  font-family: 'Stars&Love';
+  src: url('./assets/fonts/Stars&Love-BottomHeavy.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Classi utility per il font personalizzato Stars&Love */
+.font-custom,
+.font-stars,
+.font-stars-love {
+  font-family: 'Stars&Love', 'Stars&Love', cursive, sans-serif !important;
 }
 
 body {
-  font-family: 'Trocchi', serif;
+  font-family: var(--font-body);
+  background-color: var(--color-page);
+  color: var(--color-body);
 }
 
 /* 1. Definizione dei fotogrammi dell'animazione */
