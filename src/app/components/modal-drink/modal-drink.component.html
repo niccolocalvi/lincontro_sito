@@ -1,153 +1,122 @@
-<!-- Button to Open Modal -->
+<!-- Pulsante Aperitivo -->
 <button
   onclick="modalDrinks.showModal()"
-  class="px-6 py-3 text-white bg-primary rounded-btn shadow-lg cursor-pointer hover:shadow-lg no-underline transition transform hover:scale-105"
+  class="px-8 py-3 text-white bg-amber-600 rounded-full shadow-lg font-semibold hover:bg-amber-700 transition transform hover:scale-105 cursor-pointer"
 >
   Aperitivo
 </button>
 
-<!-- Modal -->
+<!-- Modale Aperitivo -->
 <dialog
-  onclick="modalDrinks.close()"
   id="modalDrinks"
-  class="p-6 bg-surface rounded-card shadow-lg w-[80%] h-[80vh] m-auto"
+  class="p-8 bg-[#faf8f5] rounded-3xl shadow-2xl w-[90%] max-w-5xl max-h-[90vh] overflow-y-auto m-auto backdrop:bg-black/40"
 >
-  <div class="flex justify-between items-center mb-6 border-b pb-4">
-    <h2 class="text-2xl font-bold font-custom text-accent">Drinks</h2>
+  <!-- Tasto di Chiusura -->
+  <div class="flex justify-end">
     <button
       onclick="modalDrinks.close()"
-      class="text-gray-600 hover:text-gray-900 text-3xl font-bold cursor-pointer"
+      class="w-10 h-10 rounded-full bg-stone-200 hover:bg-stone-300 flex items-center justify-center text-gray-700 text-2xl font-bold cursor-pointer transition"
     >
       &times;
     </button>
   </div>
 
-  <!-- Intestazione delle colonne (Nome e Costo sopra) -->
-  <div
-    class="flex justify-between items-center pb-2 mb-2 border-b-2 border-gray-200 font-bold text-gray-700 px-1"
-  >
-    <span>Nome:</span>
-    <span>costo:</span>
+  <!-- Intestazione -->
+  <div class="mb-6">
+    <p class="italic text-amber-700 font-serif text-lg">/ i nostri menu</p>
+    <h2 class="text-3xl md:text-4xl font-serif font-bold text-stone-900">
+      Aperitivo & Drinks
+    </h2>
+    <p class="text-sm text-stone-500 mt-1">
+      Cocktail, birra alla spina e taglieri, ai tavoli dentro e fuori
+    </p>
   </div>
 
-  <!-- Contenitore della lista elementi del menu -->
-  <div class="space-y-4 overflow-y-auto max-h-[50vh] pr-2">
-    <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
-      <span class="text-lg font-medium text-gray-800">Bibita Vetro</span>
-      <span class="text-lg font-bold text-accent">2,50€</span>
+  <div class="space-y-8">
+    <!-- Banner Combo Aperitivo -->
+    <div class="bg-[#241712] text-white p-4 rounded-xl flex justify-between items-center shadow-md">
+      <div>
+        <span class="text-xs uppercase tracking-wider text-amber-500 font-bold block mb-1">Combo Aperitivo</span>
+        <span class="text-sm md:text-base font-semibold">Tagliere per 2 persone + 2 Spritz</span>
+      </div>
+      <span class="text-2xl font-serif font-bold text-amber-100">22,00 €</span>
     </div>
 
-    <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
-      <span class="text-lg font-medium text-gray-800">Bibita Lattina</span>
-      <span class="text-lg font-bold text-accent">2,00€</span>
+    <!-- Griglia 2 Colonne -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6 text-stone-800">
+      
+      <!-- Colonna Sinistra -->
+      <div class="space-y-6">
+        <!-- Cocktail -->
+        <div>
+          <h3 class="text-lg font-serif font-bold mb-2">Cocktail</h3>
+          <div class="space-y-1.5 text-sm">
+            <div class="flex justify-between border-b border-dotted border-stone-300 pb-1"><span>Spritz</span><span class="font-semibold">6,00 €</span></div>
+            <div class="flex justify-between border-b border-dotted border-stone-300 pb-1"><span>Spritz di Sarah</span><span class="font-semibold">7,00 €</span></div>
+            <div class="flex justify-between border-b border-dotted border-stone-300 pb-1"><span>Americano</span><span class="font-semibold">6,00 €</span></div>
+            <div class="flex justify-between border-b border-dotted border-stone-300 pb-1"><span>Negroni</span><span class="font-semibold">6,00 €</span></div>
+            <div class="flex justify-between border-b border-dotted border-stone-300 pb-1"><span>Gin Tonic</span><span class="font-semibold">6,00 €</span></div>
+            <div class="flex justify-between border-b border-dotted border-stone-300 pb-1"><span>Boulevardier</span><span class="font-semibold">6,00 €</span></div>
+            <div class="flex justify-between border-b border-dotted border-stone-300 pb-1"><span>Martini Cocktail</span><span class="font-semibold">7,00 €</span></div>
+            <div class="flex justify-between border-b border-dotted border-stone-300 pb-1"><span>Espresso Martini</span><span class="font-semibold">7,00 €</span></div>
+            <div class="flex justify-between border-b border-dotted border-stone-300 pb-1"><span>London Mule</span><span class="font-semibold">8,00 €</span></div>
+            <div class="flex justify-between border-b border-dotted border-stone-300 pb-1"><span>Moscow Mule</span><span class="font-semibold">8,00 €</span></div>
+            <div class="flex justify-between border-b border-dotted border-stone-300 pb-1"><span>Signature</span><span class="font-semibold">9,00 €</span></div>
+          </div>
+        </div>
+
+        <!-- Birra alla Spina -->
+        <div>
+          <h3 class="text-lg font-serif font-bold mb-2">Birra alla spina</h3>
+          <div class="space-y-1.5 text-sm">
+            <div class="flex justify-between border-b border-dotted border-stone-300 pb-1"><span>Piccola</span><span class="font-semibold">3,00 €</span></div>
+            <div class="flex justify-between border-b border-dotted border-stone-300 pb-1"><span>Media</span><span class="font-semibold">5,00 €</span></div>
+            <div class="flex justify-between border-b border-dotted border-stone-300 pb-1"><span>Con gassosa</span><span class="font-semibold">4,00 / 6,00 €</span></div>
+          </div>
+        </div>
+
+        <!-- Taglieri -->
+        <div>
+          <h3 class="text-lg font-serif font-bold mb-2">Taglieri</h3>
+          <div class="space-y-1.5 text-sm">
+            <div class="flex justify-between border-b border-dotted border-stone-300 pb-1"><span>Tagliere</span><span class="font-semibold">12,00 €</span></div>
+            <div class="flex justify-between border-b border-dotted border-stone-300 pb-1"><span>Tagliere per 2 + 2 Spritz</span><span class="font-semibold">22,00 €</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Colonna Destra -->
+      <div class="space-y-6">
+        <!-- Analcolici -->
+        <div>
+          <h3 class="text-lg font-serif font-bold mb-2">Analcolici</h3>
+          <div class="space-y-1.5 text-sm">
+            <div class="flex justify-between border-b border-dotted border-stone-300 pb-1"><span>Analcolico</span><span class="font-semibold">7,00 €</span></div>
+            <div class="flex justify-between border-b border-dotted border-stone-300 pb-1"><span>Virgin Tonic</span><span class="font-semibold">6,00 €</span></div>
+            <div class="flex justify-between border-b border-dotted border-stone-300 pb-1"><span>Virgin Colada</span><span class="font-semibold">6,00 €</span></div>
+          </div>
+        </div>
+
+        <!-- Bibite -->
+        <div>
+          <h3 class="text-lg font-serif font-bold mb-2">Bibite</h3>
+          <div class="space-y-1.5 text-sm">
+            <div class="flex justify-between border-b border-dotted border-stone-300 pb-1"><span>Bibita in vetro</span><span class="font-semibold">2,50 €</span></div>
+            <div class="flex justify-between border-b border-dotted border-stone-300 pb-1"><span>Bibita in lattina</span><span class="font-semibold">2,00 €</span></div>
+            <div class="flex justify-between border-b border-dotted border-stone-300 pb-1"><span>Fuze Tea</span><span class="font-semibold">2,50 €</span></div>
+            <div class="flex justify-between border-b border-dotted border-stone-300 pb-1"><span>Tè freddo</span><span class="font-semibold">2,00 €</span></div>
+            <div class="flex justify-between border-b border-dotted border-stone-300 pb-1"><span>Limonata</span><span class="font-semibold">2,00 €</span></div>
+            <div class="flex justify-between border-b border-dotted border-stone-300 pb-1"><span>Energy drink</span><span class="font-semibold">3,00 €</span></div>
+            <div class="flex justify-between border-b border-dotted border-stone-300 pb-1"><span>Acqua [0,5 lt]</span><span class="font-semibold">1,00 €</span></div>
+            <div class="flex justify-between border-b border-dotted border-stone-300 pb-1"><span>Acqua 1,5 lt</span><span class="font-semibold">2,00 €</span></div>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
-      <span class="text-lg font-medium text-gray-800">Fuze Tea</span>
-      <span class="text-lg font-bold text-accent">2,50€ </span>
-    </div>
-    <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
-      <span class="text-lg font-medium text-gray-800">Thè Freddo</span>
-      <span class="text-lg font-bold text-accent">2,00€</span>
-    </div>
-
-    <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
-      <span class="text-lg font-medium text-gray-800">Limonata</span>
-      <span class="text-lg font-bold text-accent">2,00€</span>
-    </div>
-
-    <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
-      <span class="text-lg font-medium text-gray-800">Acqua 1/5 lt.</span>
-      <span class="text-lg font-bold text-accent">2,00€</span>
-    </div>
-    <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
-      <span class="text-lg font-medium text-gray-800">Acqua 1.5 lt.</span>
-      <span class="text-lg font-bold text-accent">4,00€</span>
-    </div>
-
-    <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
-      <span class="text-lg font-medium text-gray-800">Energy Drink</span>
-      <span class="text-lg font-bold text-accent">3,00€</span>
-    </div>
-
-    <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
-      <span class="text-lg font-medium text-gray-800">Spritz</span>
-      <span class="text-lg font-bold text-accent">6,00€</span>
-    </div>
-
-    <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
-      <span class="text-lg font-medium text-gray-800">Spritz di Sarah</span>
-      <span class="text-lg font-bold text-accent">7,00€</span>
-    </div>
-    <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
-      <span class="text-lg font-medium text-gray-800">Americano</span>
-      <span class="text-lg font-bold text-accent">6,00€</span>
-    </div>
-
-    <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
-      <span class="text-lg font-medium text-gray-800">Negroni</span>
-      <span class="text-lg font-bold text-accent">6,00€</span>
-    </div>
-
-    <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
-      <span class="text-lg font-medium text-gray-800">Gin Tonic</span>
-      <span class="text-lg font-bold text-accent">6,00€</span>
-    </div>
-    <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
-      <span class="text-lg font-medium text-gray-800">London Mule</span>
-      <span class="text-lg font-bold text-accent">8,00€</span>
-    </div>
-
-    <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
-      <span class="text-lg font-medium text-gray-800">Moscow Mule</span>
-      <span class="text-lg font-bold text-accent">8,00€</span>
-    </div>
-
-    <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
-      <span class="text-lg font-medium text-gray-800">Martini Cocktail</span>
-      <span class="text-lg font-bold text-accent">7,00€</span>
-    </div>
-    <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
-      <span class="text-lg font-medium text-gray-800">Espresso Martini</span>
-      <span class="text-lg font-bold text-accent">7,00€</span>
-    </div>
-
-    <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
-      <span class="text-lg font-medium text-gray-800">Boulevardier</span>
-      <span class="text-lg font-bold text-accent">6,00€</span>
-    </div>
-
-    <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
-      <span class="text-lg font-medium text-gray-800">Signature</span>
-      <span class="text-lg font-bold text-accent">9,00€</span>
-    </div>
-    <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
-      <span class="text-lg font-medium text-gray-800">Analcolico</span>
-      <span class="text-lg font-bold text-accent">7,00€</span>
-    </div>
-
-    <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
-      <span class="text-lg font-medium text-gray-800">Vergin Tonic</span>
-      <span class="text-lg font-bold text-accent">6,00€</span>
-    </div>
-
-    <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
-      <span class="text-lg font-medium text-gray-800">Vergin Colada</span>
-      <span class="text-lg font-bold text-accent">6,00€</span>
-    </div>
-    <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
-      <span class="text-lg font-medium text-gray-800">Spina Piccola</span>
-      <span class="text-lg font-bold text-accent">3,00€</span>
-    </div>
-
-    <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
-      <span class="text-lg font-medium text-gray-800">Spina Media</span>
-      <span class="text-lg font-bold text-accent">5,00€</span>
-    </div>
-
-    <div class="flex justify-between items-baseline w-full py-2 border-b border-gray-100 px-1">
-      <span class="text-lg font-medium text-gray-800">Spina con Gassosa</span>
-      <span class="text-lg font-bold text-accent">4,00/6,00€</span>
-    </div>
+    <!-- Note Allergeni -->
+    <p class="text-xs text-stone-500 pt-4 border-t border-stone-200">
+      [Nota allergeni: chiedi al personale l'elenco degli allergeni presenti nei prodotti.] Bevi responsabilmente.
+    </p>
   </div>
 </dialog>
