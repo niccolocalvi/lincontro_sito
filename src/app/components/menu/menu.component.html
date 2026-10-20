@@ -1,19 +1,18 @@
-<!-- Contenitore unico per la sezione menu (Altezza adattabile su mobile) -->
+<!-- Contenitore unico per la sezione menu (Altezza dinamica per evitare sovrapposizioni su mobile) -->
 <div
   id="menu"
-  class=" relative w-full h-[450px] sm:h-[600px]  mt-36 "
+  class="block w-full clear-both h-auto min-h-fit mt-12 sm:mt-24 py-8 px-4"
 >
-    <!-- Titolo fisso -->
-    <h1
-      class="text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-6 sm:mb-8 text-accent font-custom drop-shadow-md items-center justify-center text-center"
-    >
-      Scopri i nostri <strong>menu</strong>
-    </h1>
+  <!-- Titolo fisso -->
+  <h1
+    class="text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-6 sm:mb-8 text-accent font-custom drop-shadow-md items-center justify-center text-center"
+  >
+    Scopri i nostri <strong>menu</strong>
+  </h1>
 
-    <!-- Blocco dei popup dei menu fissi (Colonna su mobile, Riga su schermi più grandi) -->
-    <div class="flex flex-col sm:flex-row items-center justify-center w-full gap-4 sm:gap-8">
-      <app-modal-caffetteria></app-modal-caffetteria>
-      <app-modal-drink></app-modal-drink>
-    </div>
+  <!-- Blocco dei popup dei menu fissi (Colonna su mobile, Riga su schermi più grandi) -->
+  <div class="flex flex-col lg:flex-row items-center justify-center w-full gap-6 sm:gap-8 max-w-7xl mx-auto">
+    <app-modal-caffetteria class="w-full lg:w-1/2"></app-modal-caffetteria>
+    <app-modal-drink class="w-full lg:w-1/2"></app-modal-drink>
   </div>
-
+</div>
