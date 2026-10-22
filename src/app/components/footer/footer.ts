@@ -8,10 +8,9 @@ import { Dati_attivitaService } from '../../services/dati_attivita/dati_attivita
   styleUrl: './footer.css',
 })
 export class Footer {
-
   dataAttivita: any;
 
-  constructor(private datiAttivitaService: Dati_attivitaService) { }
+  constructor(private datiAttivitaService: Dati_attivitaService) {}
 
   getdatiAttivita() {
     return this.datiAttivitaService.datiAttivita;
