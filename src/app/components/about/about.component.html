@@ -1,26 +1,62 @@
-<div id="chi-siamo" class="w-full py-12 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        <!-- Contenitore principale: Colonna su mobile, affiancato su Desktop (md) -->
-        <div class="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12 w-full">
-            
-            <!-- Testo -->
-            <div class="flex flex-col gap-4 w-full md:w-1/2 text-left">
-                <h1 class="text-3xl sm:text-4xl font-bold font-custom" style="color: #C19A6B;">
-                    Chi siamo
-                </h1>
-                <p class="text-base sm:text-lg text-gray-600 leading-relaxed">
-                    L'Incontro nasce nel 2023 dal desiderio di creare un punto di ritrovo per le persone dove ogni cosa può accadere, è situato a Valcanneto (RM) in Largo Claudio Monteverdi 19. Offre eventi a tema e serate con musica dal vivo, dispone di tavoli all'aperto e al chiuso, dove è possibile consumare apericena e cocktail, inoltre il BAR è fornito di gastronomia e pasticceria. Il nostro team è sempre disponibile per qualsiasi evenienza e pronto a preparare ciò che desideri.
-                </p>
-            </div>
+<div id="chi-siamo" class="w-full py-12 bg-surface">
+  <!-- Sfrutta tutta la larghezza orizzontale mantenendo un margine laterale interno -->
+  <div class="w-full max-w-full px-6 md:px-12 lg:px-16">
+    
+    <!-- Griglia responsive: flex-col su mobile, grid su desktop -->
+    <div class="flex flex-col lg:grid lg:grid-cols-12 gap-8 lg:gap-24 items-center w-full justify-between">
+      
+      <!-- 1. TESTO (Mobile: 1° elemento | Desktop: Colonna centrale) -->
+      <div class="order-1 lg:order-2 lg:col-span-4 flex flex-col gap-4 text-center justify-self-center w-full">
+        <h2 class="text-3xl sm:text-4xl font-bold font-custom text-accent">
+          Chi siamo
+        </h2>
+        <p class="text-sm sm:text-base text-muted leading-relaxed text-justify">
+          L'Incontro nasce nel 2023 dal desiderio di creare un punto di ritrovo per le persone dove ogni cosa può accadere, è situato a Valcanneto (RM) in Largo Claudio Monteverdi 19. Offre eventi a tema e serate con musica dal vivo, dispone di tavoli all'aperto e al chiuso, dove è possibile consumare apericena e cocktail, inoltre il BAR è fornito di gastronomia e pasticceria. Il nostro team è sempre disponibile per qualsiasi evenienza e pronto a preparare ciò che desideri.
+        </p>
+      </div>
 
-            <!-- Immagine (Intera, ben proporzionata e senza tagli strani) -->
-            <div class="w-full md:w-1/2">
-                <div class="w-full h-[320px] sm:h-[400px] md:h-[450px] overflow-hidden rounded-lg shadow-lg">
-                    <img src="foto-about.jpeg" alt="foto-about" class="w-full h-full object-cover" />
-                </div>
-            </div>
-
+      <!-- 2. IMMAGINE (Mobile: 2° elemento | Desktop: Colonna destra) -->
+      <div class="order-2 lg:order-3 lg:col-span-5 w-full justify-self-end">
+        <div class="w-full h-[320px] sm:h-[400px] md:h-[420px] overflow-hidden rounded-2xl shadow-xl">
+          <img src="foto-about.jpeg" alt="foto-about" class="w-full h-full object-cover" />
         </div>
+      </div>
+
+      <!-- 3. ICONE (Mobile: 3° elemento SOTTO L'IMMAGINE | Desktop: Colonna sinistra) -->
+      <div class="order-3 lg:order-1 lg:col-span-3 flex flex-col gap-5 w-full items-center lg:items-start justify-self-start">
+        
+        <!-- Box 1: Musica dal vivo -->
+        <div class="bg-white rounded-2xl px-5 py-4 shadow-md border border-stone-100 flex items-center gap-4 w-full max-w-[280px] transition-transform hover:scale-105">
+          <div class="text-[#c19a6b] text-3xl shrink-0">
+            <i class="fa-solid fa-music"></i>
+          </div>
+          <span class="text-stone-900 font-bold text-sm sm:text-base leading-snug">
+            Musica dal vivo
+          </span>
+        </div>
+
+        <!-- Box 2: Apericena e cocktail -->
+        <div class="bg-white rounded-2xl px-5 py-4 shadow-md border border-stone-100 flex items-center gap-4 w-full max-w-[280px] transition-transform hover:scale-105">
+          <div class="text-[#c19a6b] text-3xl shrink-0">
+            <i class="fa-solid fa-martini-glass"></i>
+          </div>
+          <span class="text-stone-900 font-bold text-sm sm:text-base leading-snug">
+            Apericena e cocktail
+          </span>
+        </div>
+
+        <!-- Box 3: Tavoli dentro e fuori -->
+        <div class="bg-white rounded-2xl px-5 py-4 shadow-md border border-stone-100 flex items-center gap-4 w-full max-w-[280px] transition-transform hover:scale-105">
+          <div class="text-[#c19a6b] text-3xl shrink-0">
+            <i class="fa-solid fa-chair"></i>
+          </div>
+          <span class="text-stone-900 font-bold text-sm sm:text-base leading-snug">
+            Tavoli dentro e fuori
+          </span>
+        </div>
+
+      </div>
+
     </div>
+  </div>
 </div>

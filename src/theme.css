@@ -1,0 +1,177 @@
+/* ============================================================
+   TEMA – Bar L'Incontro (Design definitivo Landing & Modali)
+   File centralizzato per Tailwind CSS v4 (@theme).
+
+   Font Ufficiali del Brand:
+     - Trocchi (serif): font primario per body, titoli e testi
+     - Stars&Love (custom font in assets/fonts): font per accenti calligrafici,
+       titoli decorativi e logo
+
+   Colori e parametri estratti dal prototipo definitivo:
+     - Palette caffè scuro, crema caldo, arancio CTA, ambra, oro
+     - Border Radius: da pill/badge (999px) fino a 32px
+     - Ombre, bordi e spaziature di sezione
+   ============================================================ */
+
+@theme {
+  /* ── 1. Tipografia & Font Ufficiali ───────────────────────── */
+
+  /* Font Primario del Brand (Trocchi) – per body, titoli e navigazione */
+  --font-body: 'Trocchi', Georgia, serif;
+  --font-serif: 'Trocchi', Georgia, serif;
+  --font-sans: 'Trocchi', Georgia, serif;
+  --font-heading: 'Trocchi', Georgia, serif;
+  --font-trocchi: 'Trocchi', Georgia, serif;
+
+  /* Font Personalizzato Calligrafico (Stars&Love) – per logo e accenti decorativi */
+  --font-script: 'Stars&Love', 'Stars&Love', cursive, sans-serif;
+  --font-cursive: 'Stars&Love', 'Stars&Love', cursive, sans-serif;
+  --font-custom: 'Stars&Love', 'Stars&Love', cursive, sans-serif;
+  --font-stars: 'Stars&Love', 'Stars&Love', cursive, sans-serif;
+  --font-stars-love: 'Stars&Love', 'Stars&Love', cursive, sans-serif;
+
+  /* ── 2. Palette Colori ────────────────────────────────────── */
+
+  /* 2.1 Colori Brand Primari & Accenti (Arancio / Ambra / Oro) */
+  /* Arancio vivo CTA (bottoni principali, badge promo, indicatori attivi, pallini combo) */
+  --color-primary: #e8821e;
+  --color-primary-hover: #b4570b;
+  --color-primary-light: #f5a65b;
+  --color-primary-dark: #8a4a10;
+
+  /* Alias di accento principale */
+  --color-accent: #e8821e;
+  --color-accent-hover: #b4570b;
+  --color-accent-light: #f5a65b;
+  --color-accent-dark: #8a4a10;
+
+  /* Ambra caldo per titoli calligrafici su sfondo chiaro ("Chi siamo") e icone */
+  --color-accent-amber: #b4570b;
+  --color-accent-amber-hover: #8a4a10;
+
+  /* Oro/sabbia per dettagli eleganti ("Valcanneto dal 2023", "Café & Bistrot" nel footer) */
+  --color-accent-gold: #d9b98e;
+  --color-accent-gold-light: #d9c8b4;
+
+  /* Varianti colore accento dal tema originale (disponibili per personalizzazioni) */
+  --color-accent-warm: #d9a35b;
+  --color-accent-terracotta: #c9603a;
+
+  /* 2.2 Toni Scuri (Marrone Caffè / Dark Theme di Hero, Eventi, Footer) */
+  /* Sfondo principale sezioni scure (Hero, Card Eventi grande, Footer, barre combo) */
+  --color-dark: #24170f;
+  --color-brand-dark: #24170f;
+  --color-brand-dark-soft: #3a2c23; /* overlay modale / contenitore dialog */
+  --color-brand-dark-card: #4a3426; /* card interne scure, box foto hero ed eventi */
+  --color-brand-dark-accent: #6b4a34; /* box foto bancone / accenti scuri */
+  --color-brand-dark-border: #3e2c21; /* bordi e divisori su sfondo scuro */
+  --color-brand-dark-muted: #6b5546; /* bordi bottoni outline su sfondo scuro */
+
+  /* 2.3 Toni Chiari & Sfondi (Crema, Avorio, Superfici) */
+  /* Sfondo globale dell'intera pagina (#F7F1E8) */
+  --color-page: #f7f1e8;
+  --color-cream: #f7f1e8;
+
+  /* Superficie chiara card & sezioni (Header, Card Chi siamo, Container Menu, Dialog Modali) */
+  --color-surface: #fffcf7;
+  --color-surface-warm: #fffcf7;
+
+  /* Superficie card interne calde (card menu colazione/aperitivo) */
+  --color-surface-card: #f7f1e8;
+
+  /* Superficie morbida secondaria (pulsante chiusura X modale, chip) */
+  --color-surface-soft: #f2e9dc;
+
+  /* Sfondi contenitori speciali (box mappa e placeholder foto chi siamo) */
+  --color-surface-map: #e3d5c2;
+  --color-surface-sand: #d9c6ae;
+  --color-surface-tan: #e0d0be;
+  --color-surface-alt: #f7f1e8;
+
+  /* Overlay */
+  --color-overlay: rgba(36, 23, 15, 0.7);
+
+  /* 2.4 Bordi e Divisori */
+  /* Bordo standard chiaro per header, card, divisori (#E7DCCB) */
+  --color-border: #e7dccb;
+  --color-border-light: #e7dccb;
+
+  /* Bordo sottile / divisorio orari */
+  --color-border-subtle: #efe6d8;
+
+  /* Bordo puntinato per separatori di prezzo nel menu */
+  --color-border-dotted: #cdbba4;
+
+  /* Bordo su sfondo scuro (hero, footer, eventi) */
+  --color-border-dark: #3e2c21;
+  --color-border-dark-light: #6b5546;
+
+  /* 2.5 Testi su Sfondo Chiaro */
+  /* Titoli e testi forti su fondo chiaro */
+  --color-heading: #24170f;
+
+  /* Corpo del testo e paragrafi descrittivi */
+  --color-body: #5a4334;
+  --color-body-dark: #3b2a20;
+
+  /* Testo secondario, orari, didascalie */
+  --color-muted: #6b5546;
+  --color-muted-light: #8a6a4a;
+  --color-muted-lighter: #9c8573;
+
+  /* 2.6 Testi su Sfondo Scuro (Hero, Eventi, Footer) */
+  --color-text-on-dark: #fffcf7; /* Titoli e testo principale bianco caldo */
+  --color-text-on-dark-body: #e9dccb; /* Paragrafo hero */
+  --color-text-on-dark-soft: #e0d0be; /* Paragrafo eventi */
+  --color-text-on-dark-muted: #d9c8b4; /* Dettagli footer e orari hero */
+  --color-text-on-dark-dim: #b8a28e; /* Didascalie eventi / date secondarie */
+  --color-text-on-dark-subtle: #9c8573; /* Label uppercase "Apriamo alle", copyright */
+
+  /* ── 3. Border Radius ─────────────────────────────────────── */
+
+  /* Bottoni a pillola, badge promo, icone rotonde */
+  --radius-full: 999px;
+  --radius-pill: 999px;
+  --radius-btn: 999px;
+
+  /* Card e sezioni secondo il design */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px; /* Card feature chi siamo (16px) */
+  --radius-xl: 18px; /* Banner combo colazione nelle modali (18px) */
+  --radius-2xl: 20px; /* Box foto bancone hero, box interno mappa (20px) */
+  --radius-3xl: 24px; /* Card menu, card combo (24px) */
+  --radius-4xl: 28px; /* Card chi siamo, box contatti, box mappa, modali (28px) */
+  --radius-section: 32px; /* Container grande eventi (32px) */
+
+  /* Alias semantici */
+  --radius-card: 24px;
+  --radius-card-lg: 28px;
+  --radius-modal: 28px;
+
+  /* ── 4. Ombre (Box Shadows) ───────────────────────────────── */
+
+  /* Ombra profonda modale menu */
+  --shadow-modal: 0 30px 80px rgba(20, 12, 8, 0.45);
+
+  /* Ombra calda morbida per card ed elementi in rilievo */
+  --shadow-card: 0 4px 20px rgba(36, 23, 15, 0.08);
+  --shadow-card-hover: 0 12px 32px rgba(36, 23, 15, 0.12);
+  --shadow-btn: 0 2px 8px rgba(232, 130, 30, 0.25);
+
+  /* ── 5. Transizioni ───────────────────────────────────────── */
+
+  --transition-fast: 150ms ease;
+  --transition-normal: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ── 6. Spaziature Layout di Sezione ──────────────────────── */
+
+  --spacing-section-py: 112px; /* padding verticale standard sezioni menu */
+  --spacing-section-py-lg: 120px; /* padding verticale sezioni chi siamo / eventi */
+  --spacing-container-max: 1240px; /* max-width del contenitore centrale */
+
+  /* ── 7. Animazioni ────────────────────────────────────────── */
+
+  --animate-infinite-scroll: infiniteScroll 25s linear infinite;
+}

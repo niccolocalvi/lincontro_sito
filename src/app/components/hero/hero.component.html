@@ -1,26 +1,65 @@
 <div>
+  <!-- Sezione Hero: min-h-[75vh] con fallback a 600px per contenere sempre tutto su mobile -->
+  <div
+    id="home"
+    class="relative bg-[url('https://img.magnific.com/foto-premium/tazza-di-caffe-con-latte-art-su-tavolo-di-legno-in-caffetteria_1103513-805.jpg?semt=ais_hybrid&w=740&q=80')] text-white py-8 px-4 text-center w-full min-h-[75vh] min-h-[600px] bg-cover bg-center bg-no-repeat shadow-2xl mb-12 sm:mb-16 flex flex-col justify-center items-start overflow-hidden"
+  >
+    <!-- Overlay scuro -->
+    <div class="absolute inset-0 bg-overlay z-0"></div>
 
-  <app-header></app-header>
+    <!-- Contenuto in primo piano -->
+    <div
+      class="relative z-10 container mx-auto px-2 sm:px-4 flex flex-col items-start justify-center gap-3 sm:gap-5 text-left"
+    >
+      <h1 class="text-3xl sm:text-5xl lg:text-7xl font-bold font-custom leading-tight">
+        Perch<span class="font-custom">e'</span> la vita <span class="font-custom">e'</span> fatta
+        di <span class="text-accent font-custom">Incontri</span>
+      </h1>
+      
+      <p class="text-base sm:text-2xl font-medium">
+        Scopri come ogni incontro può cambiare la tua vita
+      </p>
 
-  <!-- Sezione Hero con l'id="home" e l'effetto ombra -->
-<div id="home" class="relative bg-[url('https://img.magnific.com/foto-premium/tazza-di-caffe-con-latte-art-su-tavolo-di-legno-in-caffetteria_1103513-805.jpg?semt=ais_hybrid&w=740&q=80')] text-white py-2 px-4 text-center w-full h-[75vh] bg-cover bg-center bg-no-repeat shadow-2xl mb-16">
+      <!-- Pulsante -->
+      <app-button text="Vai al Menu" href="#menu"></app-button>
 
-  <!-- Overlay scuro -->
-  <div class="absolute inset-0 bg-black/60 z-0"></div>
+      <!-- CONTAINER BADGE: Formato compatto su mobile per rimanere 100% dentro l'Hero -->
+      <div class="flex flex-col sm:flex-row flex-wrap gap-2.5 sm:gap-4 mt-2 w-full max-w-2xl">
+        
+        <!-- BADGE ORARI DI APERTURA -->
+        <div class="flex items-center gap-2.5 bg-stone-900/85 backdrop-blur-md px-3.5 py-2 sm:px-5 sm:py-3 rounded-xl sm:rounded-2xl border sm:border-2 border-[#c19a6b] shadow-xl transition-transform hover:scale-105">
+          <!-- Icona ridotta su mobile -->
+          <div class="bg-[#c19a6b]/20 p-1.5 sm:p-2.5 rounded-full text-[#c19a6b] text-base sm:text-2xl flex items-center justify-center shrink-0">
+            <i class="fa-regular fa-clock"></i>
+          </div>
+          
+          <!-- Testo ridotto su mobile -->
+          <div class="text-left text-xs sm:text-base leading-tight sm:leading-snug">
+            <span class="block text-[10px] sm:text-xs uppercase tracking-wider text-[#c19a6b] font-bold">Orari di Apertura</span>
+            <span class="text-white font-medium">
+              Lun - Sab: <strong class="text-[#c19a6b] font-bold">05:30</strong> | Dom: <strong class="text-[#c19a6b] font-bold">06:30</strong>
+            </span>
+          </div>
+        </div>
 
-  <!-- Contenuto in primo piano (z-10) rispetto all'overlay -->
-  <div class="relative z-10 container px-4 flex-col lg:flex mt-10 items-start justify-center lg:justify-start gap-6">
+        <!-- BADGE POSIZIONE / INDIRIZZO -->
+        <div class="flex items-center gap-2.5 bg-stone-900/85 backdrop-blur-md px-3.5 py-2 sm:px-5 sm:py-3 rounded-xl sm:rounded-2xl border sm:border-2 border-[#c19a6b] shadow-xl transition-transform hover:scale-105">
+          <!-- Icona ridotta su mobile -->
+          <div class="bg-[#c19a6b]/20 p-1.5 sm:p-2.5 rounded-full text-[#c19a6b] text-base sm:text-2xl flex items-center justify-center shrink-0">
+            <i class="fa-solid fa-map-pin"></i>
+          </div>
+          
+          <!-- Testo ridotto su mobile -->
+          <div class="text-left text-xs sm:text-base leading-tight sm:leading-snug">
+            <span class="block text-[10px] sm:text-xs uppercase tracking-wider text-[#c19a6b] font-bold">Dove Siamo</span>
+            <span class="text-white font-medium">
+              Largo Claudio Monteverdi 19, <strong class="text-[#c19a6b] font-bold">Valcanneto (RM)</strong>
+            </span>
+          </div>
+        </div>
 
-    <h1 class="text-5xl lg:text-7xl font-bold font-custom leading-tight">
-      Perch<span class="font-custom">e'</span> la vita <span class="font-custom">e'</span> fatta di <span class="text-[#C19A6B] font-custom">Incontri</span>
-    </h1>
-    <p class="text-2xl mb-10 font-medium">Scopri come ogni incontro può cambiare la tua vita</p>
-    
-    <!-- Pulsante -->
-    <a href="#menu" class="bg-[#FF8C00] text-white text-2xl font-medium px-6 py-3 rounded shadow inline-block transition-transform duration-300 hover:scale-105 no-underline">
-      Leggi il menu
-    </a>
+      </div>
 
+    </div>
   </div>
-
 </div>
