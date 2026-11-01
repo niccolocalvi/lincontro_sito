@@ -7,59 +7,85 @@
     <!-- Overlay scuro -->
     <div class="absolute inset-0 bg-overlay z-0"></div>
 
-    <!-- Contenuto in primo piano -->
+    <!-- Contenuto in primo piano: Grid a 2 colonne su desktop (testo a sinistra, badge a destra) -->
     <div
-      class="relative z-10 container mx-auto px-2 sm:px-4 flex flex-col items-start justify-center gap-3 sm:gap-5 text-left"
+      class="relative z-10 w-full container mx-auto px-2 sm:px-4 lg:px-8 lg:grid lg:grid-cols-2 lg:gap-8 lg:items-center text-left"
     >
-      <h1 class="text-3xl sm:text-5xl lg:text-7xl font-bold font-custom leading-tight">
-        Perch<span class="font-custom">e'</span> la vita <span class="font-custom">e'</span> fatta
-        di <span class="text-accent font-custom">Incontri</span>
-      </h1>
-      
-      <p class="text-base sm:text-2xl font-medium">
-        Scopri come ogni incontro può cambiare la tua vita
-      </p>
+      <!-- Colonna Sinistra: Testo e Pulsante -->
+      <div class="flex flex-col items-start justify-center gap-3 sm:gap-5 w-full">
+        <h1
+          class="text-3xl sm:text-5xl lg:text-7xl font-bold font-custom leading-tight text-left pl-2 sm:pl-4 lg:pl-0"
+        >
+          Perch<span class="font-custom">e'</span> la vita <span class="font-custom">e'</span> fatta
+          di <span class="text-accent font-custom">Incontri</span>
+        </h1>
 
-      <!-- Pulsante -->
-      <app-button text="Vai al Menu" href="#menu"></app-button>
+        <p class="text-base sm:text-2xl font-medium pl-2 sm:pl-4 lg:pl-0">
+          Scopri come ogni incontro può cambiare la tua vita
+        </p>
 
-      <!-- CONTAINER BADGE: Formato compatto su mobile per rimanere 100% dentro l'Hero -->
-      <div class="flex flex-col sm:flex-row flex-wrap gap-2.5 sm:gap-4 mt-2 w-full max-w-2xl">
-        
+        <!-- Pulsante -->
+        <div class="pl-2 sm:pl-4 lg:pl-0">
+          <app-button text="Vai al Menu" href="#menu"></app-button>
+        </div>
+      </div>
+
+      <!-- Colonna Destra: I due Badge spostati a destra su desktop con effetto Glass pronunciato -->
+      <div
+        class="flex flex-col gap-3 sm:gap-4 mt-6 lg:mt-0 w-full max-w-sm lg:ml-auto pl-2 sm:pl-4 lg:pl-0"
+      >
         <!-- BADGE ORARI DI APERTURA -->
-        <div class="flex items-center gap-2.5 bg-stone-900/85 backdrop-blur-md px-3.5 py-2 sm:px-5 sm:py-3 rounded-xl sm:rounded-2xl border sm:border-2 border-[#c19a6b] shadow-xl transition-transform hover:scale-105">
-          <!-- Icona ridotta su mobile -->
-          <div class="bg-[#c19a6b]/20 p-1.5 sm:p-2.5 rounded-full text-[#c19a6b] text-base sm:text-2xl flex items-center justify-center shrink-0">
-            <i class="fa-regular fa-clock"></i>
+        <div
+          class="flex items-center gap-3 bg-stone-950/25 p-4 rounded-xl border border-[#c19a6b]/50 backdrop-blur-2xl shadow-2xl transition-transform hover:scale-105 w-full text-left"
+          style="backdrop-filter: blur(22px); -webkit-backdrop-filter: blur(22px)"
+        >
+          <!-- Icona nel box dedicato -->
+          <div class="flex-shrink-0">
+            <div
+              class="flex items-center justify-center h-12 w-12 rounded-md text-[#c19a6b] shadow-sm bg-[#c19a6b]/20 backdrop-blur-md text-xl"
+            >
+              <i class="fa-regular fa-clock"></i>
+            </div>
           </div>
-          
-          <!-- Testo ridotto su mobile -->
-          <div class="text-left text-xs sm:text-base leading-tight sm:leading-snug">
-            <span class="block text-[10px] sm:text-xs uppercase tracking-wider text-[#c19a6b] font-bold">Orari di Apertura</span>
-            <span class="text-white font-medium">
-              Lun - Sab: <strong class="text-[#c19a6b] font-bold">05:30</strong> | Dom: <strong class="text-[#c19a6b] font-bold">06:30</strong>
+
+          <!-- Testo -->
+          <div class="flex flex-col leading-tight">
+            <span class="text-[11px] uppercase tracking-wider text-[#c19a6b] font-bold mb-0.5"
+              >Orari di Apertura</span
+            >
+            <span class="text-white text-xs sm:text-sm font-medium">
+              Lun - Sab: <strong class="text-[#c19a6b] font-bold">05:30</strong> | Dom:
+              <strong class="text-[#c19a6b] font-bold">06:30</strong>
             </span>
           </div>
         </div>
 
         <!-- BADGE POSIZIONE / INDIRIZZO -->
-        <div class="flex items-center gap-2.5 bg-stone-900/85 backdrop-blur-md px-3.5 py-2 sm:px-5 sm:py-3 rounded-xl sm:rounded-2xl border sm:border-2 border-[#c19a6b] shadow-xl transition-transform hover:scale-105">
-          <!-- Icona ridotta su mobile -->
-          <div class="bg-[#c19a6b]/20 p-1.5 sm:p-2.5 rounded-full text-[#c19a6b] text-base sm:text-2xl flex items-center justify-center shrink-0">
-            <i class="fa-solid fa-map-pin"></i>
+        <div
+          class="flex items-center gap-3 bg-stone-950/25 p-4 rounded-xl border border-[#c19a6b]/50 backdrop-blur-2xl shadow-2xl transition-transform hover:scale-105 w-full text-left"
+          style="backdrop-filter: blur(22px); -webkit-backdrop-filter: blur(22px)"
+        >
+          <!-- Icona nel box dedicato -->
+          <div class="flex-shrink-0">
+            <div
+              class="flex items-center justify-center h-12 w-12 rounded-md text-[#c19a6b] shadow-sm bg-[#c19a6b]/20 backdrop-blur-md text-xl"
+            >
+              <i class="fa-solid fa-map-pin"></i>
+            </div>
           </div>
-          
-          <!-- Testo ridotto su mobile -->
-          <div class="text-left text-xs sm:text-base leading-tight sm:leading-snug">
-            <span class="block text-[10px] sm:text-xs uppercase tracking-wider text-[#c19a6b] font-bold">Dove Siamo</span>
-            <span class="text-white font-medium">
-              Largo Claudio Monteverdi 19, <strong class="text-[#c19a6b] font-bold">Valcanneto (RM)</strong>
+
+          <!-- Testo -->
+          <div class="flex flex-col leading-tight">
+            <span class="text-[11px] uppercase tracking-wider text-[#c19a6b] font-bold mb-0.5"
+              >Dove Siamo</span
+            >
+            <span class="text-white text-xs sm:text-sm font-medium">
+              Largo Claudio Monteverdi 19,
+              <strong class="text-[#c19a6b] font-bold">Valcanneto (RM)</strong>
             </span>
           </div>
         </div>
-
       </div>
-
     </div>
   </div>
 </div>
