@@ -30,19 +30,22 @@
         </div>
       </div>
 
-      <!-- Colonna Destra: I due Badge spostati a destra su desktop con effetto Glass pronunciato -->
+      <!-- Colonna Destra: Badge Liquid Glass Luminoso ad Alta Leggibilità -->
       <div
         class="flex flex-col gap-3 sm:gap-4 mt-6 lg:mt-0 w-full max-w-sm lg:ml-auto pl-2 sm:pl-4 lg:pl-0"
       >
         <!-- BADGE ORARI DI APERTURA -->
         <div
-          class="flex items-center gap-3 bg-stone-950/25 p-4 rounded-xl border border-[#c19a6b]/50 backdrop-blur-2xl shadow-2xl transition-transform hover:scale-105 w-full text-left"
-          style="backdrop-filter: blur(22px); -webkit-backdrop-filter: blur(22px)"
+          class="flex items-center gap-3.5 bg-white/75 p-4 rounded-2xl border border-white shadow-[0_12px_35px_rgba(0,0,0,0.3),inset_0_1px_2px_rgba(255,255,255,0.9)] backdrop-blur-xl transition-all duration-300 hover:bg-white/85 hover:scale-105 w-full text-left"
+          style="
+            backdrop-filter: blur(24px) saturate(190%);
+            -webkit-backdrop-filter: blur(24px) saturate(190%);
+          "
         >
-          <!-- Icona nel box dedicato -->
+          <!-- Icona -->
           <div class="flex-shrink-0">
             <div
-              class="flex items-center justify-center h-12 w-12 rounded-md text-[#c19a6b] shadow-sm bg-[#c19a6b]/20 backdrop-blur-md text-xl"
+              class="flex items-center justify-center h-12 w-12 rounded-xl text-accent bg-white/90 border border-white shadow-sm text-xl font-bold"
             >
               <i class="fa-regular fa-clock"></i>
             </div>
@@ -50,25 +53,28 @@
 
           <!-- Testo -->
           <div class="flex flex-col leading-tight">
-            <span class="text-[11px] uppercase tracking-wider text-[#c19a6b] font-bold mb-0.5"
+            <span class="text-xs uppercase tracking-wider text-accent font-black mb-0.5"
               >Orari di Apertura</span
             >
-            <span class="text-white text-xs sm:text-sm font-medium">
-              Lun - Sab: <strong class="text-[#c19a6b] font-bold">05:30</strong> | Dom:
-              <strong class="text-[#c19a6b] font-bold">06:30</strong>
+            <span class="text-stone-900 text-xs sm:text-sm font-bold">
+              Lun - Sab: <strong class="text-accent font-black">05:30</strong> | Dom:
+              <strong class="text-accent font-black">06:30</strong>
             </span>
           </div>
         </div>
 
         <!-- BADGE POSIZIONE / INDIRIZZO -->
         <div
-          class="flex items-center gap-3 bg-stone-950/25 p-4 rounded-xl border border-[#c19a6b]/50 backdrop-blur-2xl shadow-2xl transition-transform hover:scale-105 w-full text-left"
-          style="backdrop-filter: blur(22px); -webkit-backdrop-filter: blur(22px)"
+          class="flex items-center gap-3.5 bg-white/75 p-4 rounded-2xl border border-white shadow-[0_12px_35px_rgba(0,0,0,0.3),inset_0_1px_2px_rgba(255,255,255,0.9)] backdrop-blur-xl transition-all duration-300 hover:bg-white/85 hover:scale-105 w-full text-left"
+          style="
+            backdrop-filter: blur(24px) saturate(190%);
+            -webkit-backdrop-filter: blur(24px) saturate(190%);
+          "
         >
-          <!-- Icona nel box dedicato -->
+          <!-- Icona -->
           <div class="flex-shrink-0">
             <div
-              class="flex items-center justify-center h-12 w-12 rounded-md text-[#c19a6b] shadow-sm bg-[#c19a6b]/20 backdrop-blur-md text-xl"
+              class="flex items-center justify-center h-12 w-12 rounded-xl text-accent bg-white/90 border border-white shadow-sm text-xl font-bold"
             >
               <i class="fa-solid fa-map-pin"></i>
             </div>
@@ -76,12 +82,12 @@
 
           <!-- Testo -->
           <div class="flex flex-col leading-tight">
-            <span class="text-[11px] uppercase tracking-wider text-[#c19a6b] font-bold mb-0.5"
+            <span class="text-xs uppercase tracking-wider text-accent font-black mb-0.5"
               >Dove Siamo</span
             >
-            <span class="text-white text-xs sm:text-sm font-medium">
+            <span class="text-stone-900 text-xs sm:text-sm font-bold">
               Largo Claudio Monteverdi 19,
-              <strong class="text-[#c19a6b] font-bold">Valcanneto (RM)</strong>
+              <strong class="text-accent font-black">Valcanneto (RM)</strong>
             </span>
           </div>
         </div>
