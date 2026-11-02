@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common'; // <-- 1. Importa CommonModule
+import { CommonModule } from '@angular/common';
+import { ButtonComponent } from '../button/button.component';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule], // <-- 2. Aggiungilo agli imports del componente
+  imports: [CommonModule, ButtonComponent],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
