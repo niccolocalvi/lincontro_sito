@@ -1,20 +1,11 @@
-import PocketBase from 'pocketbase';
 import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root',
 })
 export class Dati_attivitaService {
-  constructor() {}
-
-  pb = new PocketBase('https://api.lincontrobar.it');
-
-  getOrari() {
-    return this.pb.collection('opening_hours').getFullList({
-      sort: 'legacy_id',
-    });
-  }
-
+  // Dati anagrafici statici. Gli orari reali arrivano da PocketBase
+  // (vedi PocketbaseService.getOrari): il campo `orari` qui sotto non è usato.
   datiAttivita = {
     via: 'Largo Claudio Monteverdi',
     civico: '19',

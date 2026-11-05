@@ -54,17 +54,31 @@
           <!-- Testo -->
           <div class="flex flex-col leading-tight">
             <span class="text-xs uppercase tracking-wider text-accent font-black mb-0.5"
-              >Orari di Apertura</span
+              >Orari di oggi</span
             >
+            <!-- Orario del giorno corrente da PocketBase (collezione opening_hours) -->
             <span class="text-stone-900 text-xs sm:text-sm font-bold">
-              Lun - Sab: <strong class="text-accent font-black">05:30</strong> | Dom:
-              <strong class="text-accent font-black">06:30</strong>
+              @if (caricamento()) {
+                Caricamento…
+              } @else if (orarioOggi(); as oggi) {
+                {{ oggi.day }}:
+                @if (isChiuso(oggi)) {
+                  <strong class="text-accent font-black">Chiuso</strong>
+                } @else {
+                  <strong class="text-accent font-black"
+                    >{{ formattaOra(oggi.from) }} – {{ formattaOra(oggi.to) }}</strong
+                  >
+                }
+              } @else {
+                <a href="#info-e-contatti" class="hover:text-accent">Vedi tutti gli orari</a>
+              }
             </span>
           </div>
         </div>
 
-        <!-- BADGE POSIZIONE / INDIRIZZO -->
-        <div
+        <!-- BADGE PROSSIMO EVENTO (da PocketBase, collezione events) -->
+        <a
+          href="#lista-eventi"
           class="flex items-center gap-3.5 bg-white/75 p-4 rounded-2xl border border-white shadow-[0_12px_35px_rgba(0,0,0,0.3),inset_0_1px_2px_rgba(255,255,255,0.9)] backdrop-blur-xl transition-all duration-300 hover:bg-white/85 hover:scale-105 w-full text-left"
           style="
             backdrop-filter: blur(24px) saturate(190%);
@@ -76,21 +90,29 @@
             <div
               class="flex items-center justify-center h-12 w-12 rounded-xl text-accent bg-white/90 border border-white shadow-sm text-xl font-bold"
             >
-              <i class="fa-solid fa-map-pin"></i>
+              <i class="fa-solid fa-music"></i>
             </div>
           </div>
 
           <!-- Testo -->
-          <div class="flex flex-col leading-tight">
+          <div class="flex flex-col leading-tight min-w-0">
             <span class="text-xs uppercase tracking-wider text-accent font-black mb-0.5"
-              >Dove Siamo</span
+              >Prossimo evento</span
             >
             <span class="text-stone-900 text-xs sm:text-sm font-bold">
-              Largo Claudio Monteverdi 19,
-              <strong class="text-accent font-black">Valcanneto (RM)</strong>
+              @if (caricamento()) {
+                Caricamento…
+              } @else if (prossimoEvento(); as evento) {
+                {{ evento.title }} ·
+                <strong class="text-accent font-black">{{
+                  evento.start_at | date: 'EEE d MMM, HH:mm'
+                }}</strong>
+              } @else {
+                Nessun evento in programma, seguici sui social!
+              }
             </span>
           </div>
-        </div>
+        </a>
       </div>
     </div>
   </div>

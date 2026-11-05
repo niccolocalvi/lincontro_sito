@@ -228,10 +228,30 @@
           </div>
           <div class="ml-4">
             <dd class="text-sm sm:text-base text-gray-200 leading-snug">
-              <div>
-                <!-- Il pipe date estrae solo l'ora e i minuti "05:30" -->
-                <p>Apertura: {{ formattaOrari(orari[0]['from']) }}</p>
-              </div>
+              <!-- Orari caricati da PocketBase (collezione opening_hours) -->
+              @if (caricamento()) {
+                <p class="text-gray-400">Caricamento orari…</p>
+              } @else if (errore() || orari().length === 0) {
+                <p>Orari non disponibili, chiamaci per info.</p>
+              } @else {
+                <ul class="space-y-0.5">
+                  @for (orario of orari(); track orario.id) {
+                    <li
+                      class="flex justify-between gap-4"
+                      [class.text-accent]="orario.id === idOggi()"
+                      [class.font-bold]="orario.id === idOggi()"
+                      [attr.aria-current]="orario.id === idOggi() ? 'date' : null"
+                    >
+                      <span class="font-medium">{{ orario.day }}</span>
+                      @if (isChiuso(orario)) {
+                        <span [class.text-gray-400]="orario.id !== idOggi()">Chiuso</span>
+                      } @else {
+                        <span>{{ formattaOra(orario.from) }} – {{ formattaOra(orario.to) }}</span>
+                      }
+                    </li>
+                  }
+                </ul>
+              }
             </dd>
           </div>
         </div>
