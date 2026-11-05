@@ -246,7 +246,7 @@
                       @if (isChiuso(orario)) {
                         <span [class.text-gray-400]="orario.id !== idOggi()">Chiuso</span>
                       } @else {
-                        <span>{{ formattaOra(orario.from) }} – {{ formattaOra(orario.to) }}</span>
+                        <span>{{ orario.from | ora }} – {{ orario.to | ora }}</span>
                       }
                     </li>
                   }

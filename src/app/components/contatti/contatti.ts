@@ -1,24 +1,33 @@
-import { Component, OnInit, computed, inject, signal } from '@angular/core';
-import { PocketbaseService } from '../../services/pocketbase/pocketbase.service';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  OnInit,
+  computed,
+  inject,
+  signal,
+} from '@angular/core';
 import { OrarioApertura } from '../../interfaces/pocketbase';
-import { formattaOra, isChiuso, orarioDelGiorno } from '../../utils/orari';
+import { OraPipe } from '../../pipes/ora.pipe';
+import { PocketbaseService } from '../../services/pocketbase/pocketbase.service';
+import { isChiuso, orarioDelGiorno } from '../../utils/orari';
 
 @Component({
   selector: 'app-contatti',
-  imports: [],
+  imports: [OraPipe],
   templateUrl: './contatti.html',
-  styleUrl: './contatti.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Contatti implements OnInit {
   private readonly pocketbase = inject(PocketbaseService);
 
-  // Signal: l'app è zoneless, un campo normale non aggiornerebbe la vista dopo l'await.
-  readonly orari = signal<OrarioApertura[]>([]);
-  readonly caricamento = signal(true);
-  readonly errore = signal(false);
+  protected readonly orari = signal<OrarioApertura[]>([]);
+  protected readonly caricamento = signal(true);
+  protected readonly errore = signal(false);
 
   /** id del record di oggi, per evidenziarlo nella lista. */
-  readonly idOggi = computed(() => orarioDelGiorno(this.orari())?.id);
+  protected readonly idOggi = computed(() => orarioDelGiorno(this.orari())?.id);
+
+  protected readonly isChiuso = isChiuso;
 
   async ngOnInit(): Promise<void> {
     try {
@@ -30,7 +39,4 @@ export class Contatti implements OnInit {
       this.caricamento.set(false);
     }
   }
-
-  readonly formattaOra = formattaOra;
-  readonly isChiuso = isChiuso;
 }

@@ -1,0 +1,119 @@
+<div>
+  <!-- Sezione Hero: min-h-[75vh] con fallback a 600px per contenere sempre tutto su mobile -->
+  <div
+    id="home"
+    class="relative bg-[url('https://img.magnific.com/foto-premium/tazza-di-caffe-con-latte-art-su-tavolo-di-legno-in-caffetteria_1103513-805.jpg?semt=ais_hybrid&w=740&q=80')] text-white py-8 px-4 text-center w-full min-h-[75vh] min-h-[600px] bg-cover bg-center bg-no-repeat shadow-2xl mb-12 sm:mb-16 flex flex-col justify-center items-start overflow-hidden"
+  >
+    <!-- Overlay scuro -->
+    <div class="absolute inset-0 bg-overlay z-0"></div>
+
+    <!-- Contenuto in primo piano: Grid a 2 colonne su desktop (testo a sinistra, badge a destra) -->
+    <div
+      class="relative z-10 w-full container mx-auto px-2 sm:px-4 lg:px-8 lg:grid lg:grid-cols-2 lg:gap-8 lg:items-center text-left"
+    >
+      <!-- Colonna Sinistra: Testo e Pulsante -->
+      <div class="flex flex-col items-start justify-center gap-3 sm:gap-5 w-full">
+        <h1
+          class="text-3xl sm:text-5xl lg:text-7xl font-bold font-custom leading-tight text-left pl-2 sm:pl-4 lg:pl-0"
+        >
+          Perch<span class="font-custom">e'</span> la vita <span class="font-custom">e'</span> fatta
+          di <span class="text-accent font-custom">Incontri</span>
+        </h1>
+
+        <p class="text-base sm:text-2xl font-medium pl-2 sm:pl-4 lg:pl-0">
+          Scopri come ogni incontro può cambiare la tua vita
+        </p>
+
+        <!-- Pulsante -->
+        <div class="pl-2 sm:pl-4 lg:pl-0">
+          <app-button text="Vai al Menu" href="#menu" />
+        </div>
+      </div>
+
+      <!-- Colonna Destra: Badge Liquid Glass Luminoso ad Alta Leggibilità -->
+      <div
+        class="flex flex-col gap-3 sm:gap-4 mt-6 lg:mt-0 w-full max-w-sm lg:ml-auto pl-2 sm:pl-4 lg:pl-0"
+      >
+        <!-- BADGE ORARI DI APERTURA -->
+        <div
+          class="flex items-center gap-3.5 bg-white/75 p-4 rounded-2xl border border-white shadow-[0_12px_35px_rgba(0,0,0,0.3),inset_0_1px_2px_rgba(255,255,255,0.9)] backdrop-blur-xl transition-all duration-300 hover:bg-white/85 hover:scale-105 w-full text-left"
+          style="
+            backdrop-filter: blur(24px) saturate(190%);
+            -webkit-backdrop-filter: blur(24px) saturate(190%);
+          "
+        >
+          <!-- Icona -->
+          <div class="flex-shrink-0">
+            <div
+              class="flex items-center justify-center h-12 w-12 rounded-xl text-accent bg-white/90 border border-white shadow-sm text-xl font-bold"
+            >
+              <i class="fa-regular fa-clock"></i>
+            </div>
+          </div>
+
+          <!-- Testo -->
+          <div class="flex flex-col leading-tight">
+            <span class="text-xs uppercase tracking-wider text-accent font-black mb-0.5"
+              >Orari di oggi</span
+            >
+            <!-- Orario del giorno corrente da PocketBase (collezione opening_hours) -->
+            <span class="text-stone-900 text-xs sm:text-sm font-bold">
+              @if (caricamento()) {
+                Caricamento…
+              } @else if (orarioOggi(); as oggi) {
+                {{ oggi.day }}:
+                @if (isChiuso(oggi)) {
+                  <strong class="text-accent font-black">Chiuso</strong>
+                } @else {
+                  <strong class="text-accent font-black"
+                    >{{ oggi.from | ora }} – {{ oggi.to | ora }}</strong
+                  >
+                }
+              } @else {
+                <a href="#info-e-contatti" class="hover:text-accent">Vedi tutti gli orari</a>
+              }
+            </span>
+          </div>
+        </div>
+
+        <!-- BADGE PROSSIMO EVENTO (da PocketBase, collezione events) -->
+        <a
+          href="#lista-eventi"
+          class="flex items-center gap-3.5 bg-white/75 p-4 rounded-2xl border border-white shadow-[0_12px_35px_rgba(0,0,0,0.3),inset_0_1px_2px_rgba(255,255,255,0.9)] backdrop-blur-xl transition-all duration-300 hover:bg-white/85 hover:scale-105 w-full text-left"
+          style="
+            backdrop-filter: blur(24px) saturate(190%);
+            -webkit-backdrop-filter: blur(24px) saturate(190%);
+          "
+        >
+          <!-- Icona -->
+          <div class="flex-shrink-0">
+            <div
+              class="flex items-center justify-center h-12 w-12 rounded-xl text-accent bg-white/90 border border-white shadow-sm text-xl font-bold"
+            >
+              <i class="fa-solid fa-music"></i>
+            </div>
+          </div>
+
+          <!-- Testo -->
+          <div class="flex flex-col leading-tight min-w-0">
+            <span class="text-xs uppercase tracking-wider text-accent font-black mb-0.5"
+              >Prossimo evento</span
+            >
+            <span class="text-stone-900 text-xs sm:text-sm font-bold">
+              @if (caricamento()) {
+                Caricamento…
+              } @else if (prossimoEvento(); as evento) {
+                {{ evento.title }} ·
+                <strong class="text-accent font-black">{{
+                  evento.start_at | date: 'EEE d MMM, HH:mm'
+                }}</strong>
+              } @else {
+                Nessun evento in programma, seguici sui social!
+              }
+            </span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

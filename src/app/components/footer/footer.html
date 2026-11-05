@@ -23,11 +23,11 @@
       <p class="text-base font-bold tracking-wide text-gray-900">Contatti</p>
       <div class="flex">
         <a
-          href="tel:{{ getdatiAttivita().telefono.trim() }}"
+          [href]="'tel:' + telefonoLink"
           aria-label="Our phone"
           title="Our phone"
           class="transition-colors duration-300 text-deep-purple-accent-400 hover:text-deep-purple-800"
-          >{{ getdatiAttivita().telefono }}</a
+          >{{ dati.telefono }}</a
         >
       </div>
       <div class="flex">
@@ -39,8 +39,7 @@
           title="Our address"
           class="transition-colors duration-300 text-deep-purple-accent-400 hover:text-deep-purple-800"
         >
-          {{ getdatiAttivita().via }} {{ getdatiAttivita().civico }}, {{ getdatiAttivita().cap }}
-          {{ getdatiAttivita().citta }} {{ getdatiAttivita().provincia }}
+          {{ dati.via }} {{ dati.civico }}, {{ dati.cap }} {{ dati.citta }} {{ dati.provincia }}
         </a>
       </div>
     </div>
@@ -103,7 +102,7 @@
     </div>
   </div>
 
-  <div class="flex flex-col-reverse justify-between pt-5 pb-10 border-t lg:flex-row">
+  <div class="flex flex-col-reverse justify-between pt-5 pb-10 lg:flex-row">
     <p class="text-sm text-gray-600"></p>
   </div>
 </div>

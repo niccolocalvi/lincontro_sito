@@ -1,18 +1,14 @@
-import { Component } from '@angular/core';
-import { Dati_attivitaService } from '../../services/dati_attivita/dati_attivita.service';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { DatiAttivitaService } from '../../services/dati-attivita/dati-attivita.service';
 
 @Component({
   selector: 'app-footer',
-  imports: [],
   templateUrl: './footer.html',
-  styleUrl: './footer.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Footer {
-  dataAttivita: any;
+  private readonly datiAttivita = inject(DatiAttivitaService);
 
-  constructor(private datiAttivitaService: Dati_attivitaService) {}
-
-  getdatiAttivita() {
-    return this.datiAttivitaService.datiAttivita;
-  }
+  protected readonly dati = this.datiAttivita.dati;
+  protected readonly telefonoLink = this.datiAttivita.telefonoLink;
 }
