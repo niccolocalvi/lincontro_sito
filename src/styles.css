@@ -1,17 +1,31 @@
+@import 'tailwindcss';
+@import './theme.css';
+
 @font-face {
-  font-family: 'MioFontPersonalizzato';
+  font-family: 'Stars&Love';
   src: url('./assets/fonts/Stars&Love-BottomHeavy.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
-/* Questa classe collega il nome del font all'HTML */
-.font-custom {
-  font-family: 'MioFontPersonalizzato', sans-serif !important;
+@font-face {
+  font-family: 'Stars&Love';
+  src: url('./assets/fonts/Stars&Love-BottomHeavy.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Classi utility per il font personalizzato Stars&Love */
+.font-custom,
+.font-stars,
+.font-stars-love {
+  font-family: 'Stars&Love', 'Stars&Love', cursive, sans-serif !important;
 }
 
 body {
-  font-family: 'Trocchi', serif;
+  font-family: var(--font-body);
+  background-color: var(--color-page);
+  color: var(--color-body);
 }
 
 /* 1. Definizione dei fotogrammi dell'animazione */
@@ -35,6 +49,3 @@ body {
 .animate-infinite-scroll:hover {
   animation-play-state: paused;
 }
-
-
-@import 'tailwindcss';

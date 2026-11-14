@@ -1,22 +1,11 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { TestBed } from '@angular/core/testing';
 import { Footer } from './footer';
 
 describe('Footer', () => {
-  let component: Footer;
-  let fixture: ComponentFixture<Footer>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [Footer],
-    }).compileComponents();
-
-    fixture = TestBed.createComponent(Footer);
-    component = fixture.componentInstance;
+  it('mostra il telefono con link tel: senza spazi', async () => {
+    const fixture = TestBed.createComponent(Footer);
     await fixture.whenStable();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
+    const link = (fixture.nativeElement as HTMLElement).querySelector('a[href^="tel:"]');
+    expect(link?.getAttribute('href')).toBe('tel:+393343874529');
   });
 });
