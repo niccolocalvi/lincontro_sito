@@ -15,47 +15,44 @@
     <app-modal-drink class="w-full lg:w-1/2" />
   </div>
 
-  <!-- SEZIONE CARD COMBO: Carosello su Mobile, 3 colonne su PC -->
+  <!-- SEZIONE CARD COMBO: Carosello su Mobile, 3 card quasi attaccate e centrate su PC -->
   <div class="w-full max-w-7xl mx-auto">
     <div
-      class="flex md:grid md:grid-cols-3 gap-6 overflow-x-auto md:overflow-visible snap-x snap-mandatory pb-6 md:pb-0 px-2 md:px-0 scrollbar-hide"
+      class="flex md:justify-center items-stretch gap-2 overflow-x-auto md:overflow-visible snap-x snap-mandatory pb-6 md:pb-0 px-2 md:px-0 scrollbar-hide"
     >
       <!-- CARD 1: Mattina / Colazione (Chiara) -->
       <div
-        class="snap-center shrink-0 w-[88%] sm:w-[65%] md:w-full bg-[#fbf8f2] rounded-3xl p-4 sm:p-5 shadow-xl border border-stone-200/80 flex flex-col justify-between transition-all duration-300 hover:shadow-2xl relative text-stone-900"
+        class="snap-center shrink-0 w-[75%] sm:w-[50%] md:w-[270px] bg-[#fbf8f2] rounded-2xl p-3.5 sm:p-4 shadow-lg border border-stone-200/80 flex flex-col justify-between transition-all duration-300 hover:shadow-xl relative text-stone-900"
       >
         <div>
-          <!-- Header Card: Categoria e Logo Combo -->
-          <div class="flex items-start justify-between mb-2">
-            <span class="font-custom text-xl text-[#c19a6b] italic font-semibold"> Combo </span>
+          <div class="flex items-start justify-between mb-1.5">
+            <span class="font-custom text-base text-[#c19a6b] italic font-semibold"> Combo </span>
           </div>
 
-          <h3 class="text-2xl sm:text-3xl font-bold font-custom text-stone-900 mb-4">Colazione</h3>
+          <h3 class="text-xl sm:text-2xl font-bold font-custom text-stone-900 mb-3">Colazione</h3>
 
-          <!-- Lista puntata -->
-          <ul class="space-y-2 text-stone-700 text-sm sm:text-base mb-6">
-            <li class="flex items-center gap-3">
+          <ul class="space-y-1.5 text-stone-700 text-xs sm:text-sm mb-4">
+            <li class="flex items-center gap-2.5">
               <span class="w-1.5 h-1.5 rounded-full bg-[#c19a6b]"></span>
               <span>Caffè o Cappuccino</span>
             </li>
-            <li class="flex items-center gap-3">
+            <li class="flex items-center gap-2.5">
               <span class="w-1.5 h-1.5 rounded-full bg-[#c19a6b]"></span>
               <span>Cornetto</span>
             </li>
-            <li class="flex items-center gap-3">
+            <li class="flex items-center gap-2.5">
               <span class="w-1.5 h-1.5 rounded-full bg-[#c19a6b]"></span>
               <span>Succo o Spremuta</span>
             </li>
           </ul>
         </div>
 
-        <!-- Footer Card: Prezzo e Fascia oraria -->
         <div>
-          <div class="border-t border-dashed border-stone-300 pt-3 mb-3"></div>
+          <div class="border-t border-dashed border-stone-300 pt-2.5 mb-2.5"></div>
           <div class="flex items-end justify-between">
             <div>
-              <span class="text-xs text-stone-500 block mb-0.5">Prezzo combo</span>
-              <span class="text-2xl sm:text-3xl font-extrabold font-custom text-stone-900"
+              <span class="text-[11px] text-stone-500 block mb-0.5">Prezzo combo</span>
+              <span class="text-xl sm:text-2xl font-extrabold font-custom text-stone-900"
                 >4,00 €</span
               >
             </div>
@@ -65,40 +62,37 @@
 
       <!-- CARD 2: Mezzogiorno / Pranzo (Scura a contrasto) -->
       <div
-        class="snap-center shrink-0 w-[88%] sm:w-[65%] md:w-full bg-[#C19A6B] rounded-3xl p-4 sm:p-5 shadow-xl border border-stone-800 flex flex-col justify-between transition-all duration-300 hover:shadow-2xl relative text-white"
+        class="snap-center shrink-0 w-[75%] sm:w-[50%] md:w-[270px] bg-[#C19A6B] rounded-2xl p-3.5 sm:p-4 shadow-lg border border-stone-800 flex flex-col justify-between transition-all duration-300 hover:shadow-xl relative text-white"
       >
         <div>
-          <!-- Header Card: Categoria e Logo Combo -->
-          <div class="flex items-start justify-between mb-2">
-            <span class="font-custom text-xl text-white italic font-semibold"> Combo </span>
+          <div class="flex items-start justify-between mb-1.5">
+            <span class="font-custom text-base text-white italic font-semibold"> Combo </span>
           </div>
 
-          <h3 class="text-2xl sm:text-3xl font-bold font-custom text-white mb-4">Pranzo</h3>
+          <h3 class="text-xl sm:text-2xl font-bold font-custom text-white mb-3">Pranzo</h3>
 
-          <!-- Lista puntata -->
-          <ul class="space-y-2 text-stone-200 text-sm sm:text-base mb-6">
-            <li class="flex items-center gap-3">
+          <ul class="space-y-1.5 text-stone-200 text-xs sm:text-sm mb-4">
+            <li class="flex items-center gap-2.5">
               <span class="w-1.5 h-1.5 rounded-full bg-white"></span>
               <span>Primo o Secondo</span>
             </li>
-            <li class="flex items-center gap-3">
+            <li class="flex items-center gap-2.5">
               <span class="w-1.5 h-1.5 rounded-full bg-white"></span>
               <span>Bibita</span>
             </li>
-            <li class="flex items-center gap-3">
+            <li class="flex items-center gap-2.5">
               <span class="w-1.5 h-1.5 rounded-full bg-white"></span>
               <span>Caffè</span>
             </li>
           </ul>
         </div>
 
-        <!-- Footer Card: Prezzo e Fascia oraria -->
         <div>
-          <div class="border-t border-dashed border-stone-700 pt-3 mb-3"></div>
+          <div class="border-t border-dashed border-stone-700 pt-2.5 mb-2.5"></div>
           <div class="flex items-end justify-between">
             <div>
-              <span class="text-xs text-white block mb-0.5">Prezzo combo</span>
-              <span class="text-2xl sm:text-3xl font-extrabold font-custom text-white">9,00 €</span>
+              <span class="text-[11px] text-white block mb-0.5">Prezzo combo</span>
+              <span class="text-xl sm:text-2xl font-extrabold font-custom text-white">9,00 €</span>
             </div>
           </div>
         </div>
@@ -106,47 +100,44 @@
 
       <!-- CARD 3: Sera / Aperitivo (Chiara) -->
       <div
-        class="snap-center shrink-0 w-[88%] sm:w-[65%] md:w-full bg-[#fbf8f2] rounded-3xl p-4 sm:p-5 shadow-xl border border-stone-200/80 flex flex-col justify-between transition-all duration-300 hover:shadow-2xl relative text-stone-900"
+        class="snap-center shrink-0 w-[75%] sm:w-[50%] md:w-[270px] bg-[#fbf8f2] rounded-2xl p-3.5 sm:p-4 shadow-lg border border-stone-200/80 flex flex-col justify-between transition-all duration-300 hover:shadow-xl relative text-stone-900"
       >
         <div>
-          <!-- Header Card: Categoria e Logo Combo -->
-          <div class="flex items-start justify-between mb-2">
-            <span class="font-custom text-xl text-[#c19a6b] italic font-semibold"> Combo </span>
+          <div class="flex items-start justify-between mb-1.5">
+            <span class="font-custom text-base text-[#c19a6b] italic font-semibold"> Combo </span>
           </div>
 
-          <h3 class="text-2xl sm:text-3xl font-bold font-custom text-stone-900 mb-4">Aperitivo</h3>
+          <h3 class="text-xl sm:text-2xl font-bold font-custom text-stone-900 mb-3">Aperitivo</h3>
 
-          <!-- Lista puntata -->
-          <ul class="space-y-2 text-stone-700 text-sm sm:text-base mb-6">
-            <li class="flex items-center gap-3">
+          <ul class="space-y-1.5 text-stone-700 text-xs sm:text-sm mb-4">
+            <li class="flex items-center gap-2.5">
               <span class="w-1.5 h-1.5 rounded-full bg-[#c19a6b]"></span>
               <span>Tagliere per 2 persone</span>
             </li>
-            <li class="flex items-center gap-3">
+            <li class="flex items-center gap-2.5">
               <span class="w-1.5 h-1.5 rounded-full bg-[#c19a6b]"></span>
               <span>2 Spritz</span>
             </li>
           </ul>
         </div>
 
-        <!-- Footer Card: Prezzo e Fascia oraria -->
         <div>
-          <div class="border-t border-dashed border-stone-300 pt-3 mb-3"></div>
+          <div class="border-t border-dashed border-stone-300 pt-2.5 mb-2.5"></div>
           <div class="flex items-end justify-between">
             <div>
-              <span class="text-xs text-stone-500 block mb-0.5">Prezzo combo</span>
-              <span class="text-2xl sm:text-3xl font-extrabold font-custom text-stone-900"
+              <span class="text-[11px] text-stone-500 block mb-0.5">Prezzo combo</span>
+              <span class="text-xl sm:text-2xl font-extrabold font-custom text-stone-900"
                 >22,00 €</span
               >
             </div>
           </div>
         </div>
-
-        <!-- Indicatore visivo di scorrimento visibile solo su mobile -->
-        <div
-          class="flex md:hidden justify-center items-center gap-1.5 mt-3 text-xs text-stone-400 font-medium"
-        ></div>
       </div>
     </div>
+
+    <!-- Indicatore visivo di scorrimento visibile solo su mobile -->
+    <div
+      class="flex md:hidden justify-center items-center gap-1.5 mt-3 text-xs text-stone-400 font-medium"
+    ></div>
   </div>
 </div>
