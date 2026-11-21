@@ -8,6 +8,6 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 export class Button {
   readonly text = input('Clicca qui');
   readonly href = input('#');
-  /** Classi aggiuntive; il default è pensato per la hero. */
-  readonly customClass = input('text-2xl px-6 py-3');
+  /** Classi aggiuntive rispetto allo stile base .btn-primary. */
+  readonly customClass = input('');
 }

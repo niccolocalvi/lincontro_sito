@@ -17,9 +17,10 @@
   /* ── 1. Tipografia & Font Ufficiali ───────────────────────── */
 
   /* Font Primario del Brand (Trocchi) – per body, titoli e navigazione */
-  --font-body: 'Trocchi', Georgia, serif;
+  /* Redesign: testo corrente in sans moderno (Manrope), Trocchi resta per i titoli */
+  --font-body: 'Manrope', system-ui, sans-serif;
   --font-serif: 'Trocchi', Georgia, serif;
-  --font-sans: 'Trocchi', Georgia, serif;
+  --font-sans: 'Manrope', system-ui, sans-serif;
   --font-heading: 'Trocchi', Georgia, serif;
   --font-trocchi: 'Trocchi', Georgia, serif;
 

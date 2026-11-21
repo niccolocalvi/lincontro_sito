@@ -1,104 +1,69 @@
-<header class="w-full bg-surface shadow-md relative z-50 sticky top-0">
-  <div class="w-full grid grid-cols-[auto_1fr_auto] items-center px-6 py-4">
+<header class="sticky top-0 z-50 w-full border-b border-border/70">
+  <!-- Sfondo sfocato su un layer separato: un backdrop-filter sull'header
+       farebbe da containing block al menu mobile `fixed`, tagliandolo -->
+  <div
+    class="absolute inset-0 -z-10 bg-surface/80 backdrop-blur-xl backdrop-saturate-150"
+    aria-hidden="true"
+  ></div>
+
+  <div class="container-page grid h-16 grid-cols-[auto_1fr_auto] items-center sm:h-[72px]">
     <!-- 1. SINISTRA: Logo -->
-    <div class="flex items-center justify-start">
+    <a href="#home" class="flex items-center" aria-label="L'Incontro, torna all'inizio">
       <img
         src="incontro_logo_orizzontale.png"
-        alt="incontro_logo_orizzontale"
-        class="h-12 w-auto"
+        alt="L'Incontro Café & Bistrot"
+        class="h-10 w-auto sm:h-11"
       />
-    </div>
+    </a>
 
     <!-- 2. CENTRO: Navigazione Desktop (Nascosta su mobile, visibile da md in su) -->
-    <nav class="flex justify-center">
-      <ul class="hidden md:flex space-x-8 items-center text-lg">
-        <li>
-          <a
-            href="#chi-siamo"
-            class="text-gray-900 font-semibold hover:text-accent transition-colors"
-            >Chi siamo</a
-          >
-        </li>
-        <li>
-          <a href="#menu" class="text-gray-900 font-semibold hover:text-accent transition-colors"
-            >Menu</a
-          >
-        </li>
-        <li>
-          <a href="#eventi" class="text-gray-900 font-semibold hover:text-accent transition-colors"
-            >Eventi</a
-          >
-        </li>
-        <li>
-          <a
-            href="#dove-trovarci"
-            class="text-gray-900 font-semibold hover:text-accent transition-colors"
-            >Dove trovarci</a
-          >
-        </li>
-        <li>
-          <a
-            href="#info-e-contatti"
-            class="text-gray-900 font-semibold hover:text-accent transition-colors"
-            >Info e contatti</a
-          >
-        </li>
+    <nav class="flex justify-center" aria-label="Navigazione principale">
+      <ul class="hidden items-center gap-1 text-[15px] md:flex lg:gap-2">
+        @for (voce of vociMenu; track voce.href) {
+          <li>
+            <a
+              [href]="voce.href"
+              class="group relative rounded-full px-3 py-2 font-medium text-body transition-colors hover:text-heading"
+            >
+              {{ voce.label }}
+              <span
+                class="absolute inset-x-3 -bottom-0.5 h-px origin-left scale-x-0 bg-primary transition-transform duration-300 group-hover:scale-x-100"
+              ></span>
+            </a>
+          </li>
+        }
       </ul>
     </nav>
 
-    <!-- 3. DESTRA: Pulsante Eventi (Desktop) + Hamburger/X (SOLO Mobile) -->
-    <div class="flex items-center justify-end space-x-4">
-      <!-- Pulsante Eventi (Visibile solo da lg in su) -->
+    <!-- 3. DESTRA: Pulsante Prenota (Desktop) + Hamburger/X (SOLO Mobile) -->
+    <div class="flex items-center justify-end gap-2">
       <a
-        href="https://wa.me/393343874529?text=Ciao!%20Vorrei%20prenotare%20un%20tavolo.%0A%0A%2ANome%2A:%20%0A%2AData%2A:%20%0A%2AOra%2A:%20%0A%2ANumero%20persone%2A:%20"
-        class="hidden lg:flex items-center space-x-3 py-2 px-4 bg-primary text-white rounded-btn transition-all duration-normal transform hover:scale-105 hover:bg-primary-hover cursor-pointer hover:shadow-lg no-underline"
+        [href]="linkPrenota"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-primary hidden !py-2.5 lg:inline-flex"
       >
-        <span>Prenota Ora</span>
-        <span>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-5 w-5"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M11 19l-7-7 7-7m8 14l-7-7 7-7"
-            />
-          </svg>
-        </span>
+        <i class="fa-brands fa-whatsapp text-base"></i>
+        <span>Prenota un tavolo</span>
       </a>
 
       <!-- Pulsante Hamburger / X: visibile SOLO su telefono -->
       <button
         type="button"
         (click)="toggleMenu()"
-        aria-label="Menu"
+        [attr.aria-label]="isMenuOpen() ? 'Chiudi menu' : 'Apri menu'"
         [attr.aria-expanded]="isMenuOpen()"
-        class="md:hidden text-gray-800 hover:text-accent focus:outline-none p-2 relative z-50"
+        class="relative z-50 -mr-2 flex h-11 w-11 items-center justify-center rounded-full text-heading transition-colors hover:bg-surface-soft md:hidden"
       >
         @if (!isMenuOpen()) {
           <!-- Icona Hamburger -->
-          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M4 6h16M4 12h16M4 18h16"
-            />
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-width="1.75" d="M4 8h16M4 16h16" />
           </svg>
         } @else {
           <!-- Icona a "X" (Chiudi) -->
-          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M6 18L18 6M6 6l12 12"
-            />
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-width="1.75" d="M6 18L18 6M6 6l12 12" />
           </svg>
         }
       </button>
@@ -108,53 +73,32 @@
   <!-- 4. MENU A TENDINA MOBILE A SCHERMO INTERO: visibile SOLO su telefono quando isMenuOpen è true -->
   @if (isMenuOpen()) {
     <div
-      class="md:hidden fixed inset-x-0 top-[73px] bottom-0 bg-surface z-40 px-6 py-8 flex flex-col justify-between shadow-2xl overflow-y-auto"
+      class="fixed inset-x-0 top-16 bottom-0 z-40 flex flex-col justify-between overflow-y-auto bg-surface px-6 pt-6 pb-10 md:hidden"
     >
-      <ul class="flex flex-col space-y-6 text-xl font-semibold text-gray-900 text-center mt-4">
-        <li>
-          <a
-            href="#chi-siamo"
-            (click)="closeMenu()"
-            class="block hover:text-accent transition-colors"
-            >Chi siamo</a
-          >
-        </li>
-        <li>
-          <a href="#menu" (click)="closeMenu()" class="block hover:text-accent transition-colors"
-            >Menu</a
-          >
-        </li>
-        <li>
-          <a href="#eventi" (click)="closeMenu()" class="block hover:text-accent transition-colors"
-            >Eventi</a
-          >
-        </li>
-        <li>
-          <a
-            href="#dove-trovarci"
-            (click)="closeMenu()"
-            class="block hover:text-accent transition-colors"
-            >Dove trovarci</a
-          >
-        </li>
-        <li>
-          <a
-            href="#info-e-contatti"
-            (click)="closeMenu()"
-            class="block hover:text-accent transition-colors"
-            >Info e contatti</a
-          >
-        </li>
+      <ul class="flex flex-col divide-y divide-border-subtle">
+        @for (voce of vociMenu; track voce.href) {
+          <li>
+            <a
+              [href]="voce.href"
+              (click)="closeMenu()"
+              class="flex items-center justify-between py-4 font-heading text-2xl text-heading transition-colors hover:text-primary"
+            >
+              {{ voce.label }}
+              <i class="fa-solid fa-arrow-right text-sm text-muted-lighter"></i>
+            </a>
+          </li>
+        }
       </ul>
 
-      <div class="mt-8 pt-6 border-t border-gray-200 text-center pb-8">
-        <app-button
-          text="Prenota Ora"
-          href="https://wa.me/393343874529?text=Ciao!%20Vorrei%20prenotare%20un%20tavolo.%0A%0A%2ANome%2A:%20%0A%2AData%2A:%20%0A%2AOra%2A:%20%0A%2ANumero%20persone%2A:%20"
-          customClass="text-base px-4 py-2 w-full text-center"
-        >
-        </app-button>
-      </div>
+      <a
+        [href]="linkPrenota"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-primary mt-8 w-full !py-4 text-base"
+      >
+        <i class="fa-brands fa-whatsapp text-lg"></i>
+        <span>Prenota un tavolo</span>
+      </a>
     </div>
   }
 </header>
