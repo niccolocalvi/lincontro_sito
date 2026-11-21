@@ -1,5 +1,15 @@
-<section id="eventi" class="section w-full bg-surface">
-  <div class="container-page">
+<section id="eventi" class="section relative w-full overflow-hidden bg-surface">
+  <!-- Bagliori morbidi di sfondo per valorizzare la trasparenza effetto vetro -->
+  <div
+    class="pointer-events-none absolute -top-24 left-1/4 h-72 w-72 rounded-full bg-primary/15 blur-3xl"
+    aria-hidden="true"
+  ></div>
+  <div
+    class="pointer-events-none absolute right-1/4 -bottom-24 h-72 w-72 rounded-full bg-amber-300/20 blur-3xl"
+    aria-hidden="true"
+  ></div>
+
+  <div class="container-page relative z-10">
     <div class="mx-auto max-w-2xl text-center">
       <span class="eyebrow">Musica dal vivo e serate a tema</span>
       <h2 class="section-title">
@@ -18,12 +28,16 @@
       @if (caricamento()) {
         <p class="text-center text-muted">Caricamento eventi…</p>
       } @else if (errore()) {
-        <p class="rounded-2xl border border-dashed border-border px-6 py-10 text-center text-muted">
+        <p
+          class="rounded-2xl border border-white/60 bg-white/40 px-6 py-10 text-center text-muted backdrop-blur-md"
+        >
           Non riusciamo a caricare gli eventi in questo momento. Seguici sui social per gli
           aggiornamenti!
         </p>
       } @else if (eventi().length === 0) {
-        <p class="rounded-2xl border border-dashed border-border px-6 py-10 text-center text-muted">
+        <p
+          class="rounded-2xl border border-white/60 bg-white/40 px-6 py-10 text-center text-muted backdrop-blur-md"
+        >
           Al momento non ci sono eventi in programma. Seguici sui social per non perderti i
           prossimi!
         </p>
@@ -32,19 +46,21 @@
         <ul class="flex flex-wrap justify-center gap-5">
           @for (evento of eventi(); track evento.id) {
             <li
-              class="flex w-full items-start gap-5 rounded-3xl border border-border bg-page/50 p-5 text-left transition-shadow duration-300 hover:shadow-card sm:w-[calc(50%-0.625rem)] sm:p-6"
+              class="group relative flex w-full items-start gap-5 rounded-3xl border border-white/80 bg-gradient-to-br from-white/75 via-white/55 to-primary/[0.06] p-5 text-left shadow-[0_8px_32px_rgba(45,28,14,0.08),inset_0_1px_0_rgba(255,255,255,0.9)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-primary/35 hover:shadow-[0_14px_36px_rgba(234,132,35,0.14),inset_0_1px_0_rgba(255,255,255,1)] sm:w-[calc(50%-0.625rem)] sm:p-6"
             >
+              <!-- Badge data in vetro caldo con bordo arancione -->
               <div
-                class="flex h-16 w-16 shrink-0 flex-col items-center justify-center rounded-2xl bg-dark text-white"
+                class="flex h-16 w-16 shrink-0 flex-col items-center justify-center rounded-2xl border border-primary/25 bg-primary/12 text-dark shadow-inner backdrop-blur-md transition-colors duration-300 group-hover:bg-primary group-hover:text-white"
               >
-                <span class="font-heading text-2xl leading-none">{{
+                <span class="font-heading text-2xl leading-none font-semibold">{{
                   evento.start_at | date: 'd'
                 }}</span>
                 <span
-                  class="mt-1 text-[10px] font-semibold tracking-[0.15em] text-primary-light uppercase"
+                  class="mt-1 text-[10px] font-bold tracking-[0.15em] text-primary uppercase group-hover:text-white/90"
                   >{{ evento.start_at | date: 'MMM' }}</span
                 >
               </div>
+
               <div class="min-w-0 flex-1">
                 <h3 class="font-heading text-xl text-heading">{{ evento.title }}</h3>
                 <p class="mt-1 flex items-center gap-2 text-sm text-muted capitalize">
