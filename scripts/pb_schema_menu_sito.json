@@ -52,12 +52,12 @@
       },
       {
         "name": "card_image",
-        "type": "file",
-        "maxSelect": 1,
-        "maxSize": 5242880,
-        "mimeTypes": ["image/jpeg", "image/png", "image/webp"],
+        "type": "url",
+        "required": false,
+        "exceptDomains": [],
+        "onlyDomains": ["cdn.lincontrobar.it"],
         "system": false,
-        "id": "sitemenu_card_image"
+        "id": "sitemenu_card_image_url"
       },
       {
         "name": "card_image_alt",

@@ -64,7 +64,7 @@ export interface MenuSito extends RecordModel {
   card_title: string;
   card_badge: string;
   card_description: string;
-  /** Nome del file immagine (campo file PocketBase) */
+  /** URL completo dell'immagine sulla CDN, es. "https://cdn.lincontrobar.it/img/foto.webp" */
   card_image: string;
   card_image_alt: string;
   title: string;

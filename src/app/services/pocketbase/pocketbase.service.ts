@@ -88,7 +88,7 @@ export class PocketbaseService {
     ]);
     return menu.map((m) => ({
       menu: m,
-      immagine: m.card_image ? this.pb.files.getURL(m, m.card_image) : '',
+      immagine: m.card_image || '',
       sezioni: sezioni
         .filter((s) => s.menu === m.id)
         .map((sezione) => ({ sezione, voci: voci.filter((v) => v.section === sezione.id) })),
