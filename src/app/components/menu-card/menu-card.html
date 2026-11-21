@@ -1,117 +1,121 @@
 @let menu = dati().menu;
 <!-- CARD MENU -->
-<div
-  class="max-w-2xl w-full h-full bg-[#f8f4ed] rounded-3xl overflow-hidden shadow-lg border border-stone-200 flex flex-col sm:flex-row items-stretch"
+<article
+  class="group flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-surface transition-shadow duration-300 hover:shadow-card-hover"
 >
-  <!-- Colonna di Sinistra: Foto -->
-  <div class="relative w-full sm:w-1/2 min-h-[220px] bg-[#C19A6B] flex items-end p-4">
+  <!-- Foto -->
+  <div class="relative aspect-[16/10] w-full overflow-hidden bg-surface-soft">
     @if (dati().immagine) {
       <img
         [src]="dati().immagine"
         [alt]="menu.card_image_alt"
-        class="w-full h-full object-cover rounded-3xl"
+        class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+        loading="lazy"
       />
     }
   </div>
 
-  <!-- Colonna di Destra: Dettagli -->
-  <div class="w-full sm:w-1/2 p-6 sm:p-8 flex flex-col justify-between gap-6">
+  <!-- Dettagli -->
+  <div class="flex flex-1 flex-col justify-between gap-8 p-7 sm:flex-row sm:items-end sm:p-8">
     <div>
       @if (menu.card_badge) {
-        <span class="text-xs font-medium tracking-widest text-stone-500 uppercase block mb-2">
-          {{ menu.card_badge }}
-        </span>
+        <span class="eyebrow">{{ menu.card_badge }}</span>
       }
-      <h3
-        class="text-3xl sm:text-4xl font-serif text-stone-900 leading-tight mb-3 whitespace-pre-line"
-      >
+      <h3 class="mt-3 font-heading text-3xl leading-tight whitespace-pre-line text-heading">
         {{ menu.card_title }}
       </h3>
       @if (menu.card_description) {
-        <p class="text-stone-600 text-sm sm:text-base leading-relaxed">
-          {{ menu.card_description }}
-        </p>
+        <p class="mt-3 text-[15px] leading-relaxed text-muted">{{ menu.card_description }}</p>
       }
     </div>
 
     <!-- BOTTONE: apre il modale -->
-    <div class="pt-2">
-      <button
-        type="button"
-        (click)="modale.showModal()"
-        class="inline-flex items-center gap-2 bg-[#221710] hover:bg-[#35251b] text-white text-sm font-semibold px-6 py-3 rounded-full transition-all shadow-sm cursor-pointer"
+    <button
+      type="button"
+      (click)="modale.showModal()"
+      class="btn-dark group/btn shrink-0 self-start sm:self-auto"
+    >
+      <span>Sfoglia il menu</span>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="2"
+        stroke="currentColor"
+        class="h-4 w-4 transition-transform group-hover/btn:translate-x-0.5"
       >
-        <span>Sfoglia il menu</span>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="2"
-          stroke="currentColor"
-          class="w-4 h-4"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
-          />
-        </svg>
-      </button>
-    </div>
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+        />
+      </svg>
+    </button>
   </div>
-</div>
+</article>
 
 <!-- MODALE MENU -->
 <dialog
   #modale
   [id]="'modale-' + menu.slug"
-  class="p-8 bg-[#faf8f5] rounded-3xl shadow-2xl w-[90%] max-w-5xl max-h-[90vh] overflow-y-auto m-auto backdrop:bg-black/50"
+  [attr.aria-labelledby]="'modale-' + menu.slug + '-titolo'"
+  class="m-auto max-h-[88vh] w-[92%] max-w-4xl overflow-y-auto rounded-3xl bg-surface p-0 text-body shadow-modal"
 >
-  <!-- Tasto di Chiusura -->
-  <div class="flex justify-end">
+  <!-- Intestazione fissa con tasto di chiusura -->
+  <div
+    class="sticky top-0 z-10 flex items-start justify-between gap-4 border-b border-border-subtle bg-surface/95 px-6 py-5 backdrop-blur sm:px-10 sm:py-6"
+  >
+    <div>
+      <span class="eyebrow">I nostri menu</span>
+      <h2
+        [id]="'modale-' + menu.slug + '-titolo'"
+        class="mt-2 font-heading text-2xl text-heading sm:text-3xl"
+      >
+        {{ menu.title }}
+      </h2>
+      @if (menu.subtitle) {
+        <p class="mt-1 text-sm text-muted">{{ menu.subtitle }}</p>
+      }
+    </div>
     <button
       type="button"
       (click)="modale.close()"
-      aria-label="Chiudi"
-      class="w-10 h-10 rounded-full bg-stone-200 hover:bg-stone-300 flex items-center justify-center text-gray-700 text-2xl font-bold cursor-pointer transition"
+      aria-label="Chiudi menu"
+      class="flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center rounded-full bg-surface-soft text-heading transition-colors hover:bg-border"
     >
-      &times;
+      <i class="fa-solid fa-xmark"></i>
     </button>
   </div>
 
-  <!-- Intestazione -->
-  <div class="mb-6">
-    <p class="italic text-amber-700 font-serif text-lg">/ i nostri menu</p>
-    <h2 class="text-3xl md:text-4xl font-serif font-bold text-stone-900">{{ menu.title }}</h2>
-    @if (menu.subtitle) {
-      <p class="text-sm text-stone-500 mt-1">{{ menu.subtitle }}</p>
+  <div class="px-6 py-8 sm:px-10">
+    <!-- Banner promozionale (opzionale) -->
+    @if (menu.banner_text) {
+      <div
+        class="mb-10 flex items-center justify-between gap-4 rounded-2xl bg-dark p-5 text-white sm:p-6"
+      >
+        <div>
+          @if (menu.banner_label) {
+            <span
+              class="mb-1 block text-[11px] font-semibold tracking-[0.2em] text-primary-light uppercase"
+              >{{ menu.banner_label }}</span
+            >
+          }
+          <span class="text-sm text-text-on-dark-body md:text-base">{{ menu.banner_text }}</span>
+        </div>
+        @if (menu.banner_price) {
+          <span class="shrink-0 font-heading text-2xl text-white"
+            >+{{ menu.banner_price | prezzo }}</span
+          >
+        }
+      </div>
+    }
+
+    <app-menu-sezioni [sezioni]="dati().sezioni" />
+
+    @if (menu.footnote) {
+      <p class="mt-10 border-t border-border-subtle pt-5 text-xs text-muted-lighter">
+        {{ menu.footnote }}
+      </p>
     }
   </div>
-
-  <!-- Banner promozionale (opzionale) -->
-  @if (menu.banner_text) {
-    <div
-      class="bg-[#241712] text-white p-4 rounded-xl flex justify-between items-center gap-4 shadow-md mb-6"
-    >
-      <div>
-        @if (menu.banner_label) {
-          <span class="text-xs uppercase tracking-wider text-amber-500 font-bold block mb-1">
-            {{ menu.banner_label }}
-          </span>
-        }
-        <span class="text-sm md:text-base font-semibold">{{ menu.banner_text }}</span>
-      </div>
-      @if (menu.banner_price) {
-        <span class="text-2xl font-serif font-bold text-amber-100 whitespace-nowrap">
-          +{{ menu.banner_price | prezzo }}
-        </span>
-      }
-    </div>
-  }
-
-  <app-menu-sezioni [sezioni]="dati().sezioni" />
-
-  @if (menu.footnote) {
-    <p class="text-xs text-stone-500 pt-4 border-t border-stone-200">{{ menu.footnote }}</p>
-  }
 </dialog>

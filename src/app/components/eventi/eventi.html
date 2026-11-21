@@ -1,12 +1,12 @@
-<section id="eventi" class="w-full py-16 sm:py-24 bg-surface">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div class="mx-auto max-w-prose text-center">
-      <h1 class="text-4xl font-bold text-heading sm:text-5xl font-custom">
-        Scopri i nostri
-        <strong class="text-accent font-custom"> fantastici eventi </strong>
-      </h1>
+<section id="eventi" class="section w-full bg-surface">
+  <div class="container-page">
+    <div class="mx-auto max-w-2xl text-center">
+      <span class="eyebrow">Musica dal vivo e serate a tema</span>
+      <h2 class="section-title">
+        Scopri i nostri <span class="font-custom text-primary">fantastici eventi</span>
+      </h2>
 
-      <p class="mt-4 text-base text-pretty text-muted sm:text-lg/relaxed">
+      <p class="mt-6 text-base leading-relaxed text-pretty text-muted sm:text-lg">
         Vieni a scoprire i nostri eventi a tema e le serate con musica dal vivo, per un'esperienza
         indimenticabile. Unisciti a noi per momenti di divertimento e socializzazione, dove la buona
         compagnia e l'atmosfera accogliente sono garantite.
@@ -14,44 +14,46 @@
     </div>
 
     <!-- Eventi in programma, caricati da PocketBase (collezione events) -->
-    <div id="lista-eventi" class="mx-auto mt-12 max-w-4xl scroll-mt-24">
+    <div id="lista-eventi" class="mx-auto mt-14 max-w-4xl scroll-mt-24">
       @if (caricamento()) {
         <p class="text-center text-muted">Caricamento eventi…</p>
       } @else if (errore()) {
-        <p class="text-center text-muted">
+        <p class="rounded-2xl border border-dashed border-border px-6 py-10 text-center text-muted">
           Non riusciamo a caricare gli eventi in questo momento. Seguici sui social per gli
           aggiornamenti!
         </p>
       } @else if (eventi().length === 0) {
-        <p class="text-center text-muted">
+        <p class="rounded-2xl border border-dashed border-border px-6 py-10 text-center text-muted">
           Al momento non ci sono eventi in programma. Seguici sui social per non perderti i
           prossimi!
         </p>
       } @else {
-        <!-- Sostituito grid con flex-wrap e justify-center per centrare anche 1 solo evento -->
-        <ul class="flex flex-wrap justify-center gap-6">
+        <!-- flex-wrap + justify-center per centrare anche 1 solo evento -->
+        <ul class="flex flex-wrap justify-center gap-5">
           @for (evento of eventi(); track evento.id) {
             <li
-              class="flex w-full sm:w-[calc(50%-0.75rem)] items-center gap-4 rounded-2xl border border-stone-200 bg-white p-5 shadow-sm text-left"
+              class="flex w-full items-start gap-5 rounded-3xl border border-border bg-page/50 p-5 text-left transition-shadow duration-300 hover:shadow-card sm:w-[calc(50%-0.625rem)] sm:p-6"
             >
               <div
-                class="flex h-16 w-16 flex-shrink-0 flex-col items-center justify-center rounded-xl bg-primary text-white"
+                class="flex h-16 w-16 shrink-0 flex-col items-center justify-center rounded-2xl bg-dark text-white"
               >
-                <span class="text-2xl font-bold leading-none">{{
+                <span class="font-heading text-2xl leading-none">{{
                   evento.start_at | date: 'd'
                 }}</span>
-                <span class="text-xs uppercase tracking-wide">{{
-                  evento.start_at | date: 'MMM'
-                }}</span>
+                <span
+                  class="mt-1 text-[10px] font-semibold tracking-[0.15em] text-primary-light uppercase"
+                  >{{ evento.start_at | date: 'MMM' }}</span
+                >
               </div>
               <div class="min-w-0 flex-1">
-                <h3 class="text-lg font-bold text-heading">{{ evento.title }}</h3>
-                <p class="text-sm text-muted capitalize">
+                <h3 class="font-heading text-xl text-heading">{{ evento.title }}</h3>
+                <p class="mt-1 flex items-center gap-2 text-sm text-muted capitalize">
+                  <i class="fa-regular fa-clock text-xs text-primary"></i>
                   {{ evento.start_at | date: 'EEEE d MMMM, HH:mm' }}
                 </p>
                 @if (evento.body) {
                   <!-- body può contenere <b>/<i>: Angular sanifica innerHTML -->
-                  <p class="mt-1 text-sm text-stone-700" [innerHTML]="evento.body"></p>
+                  <p class="mt-3 text-sm leading-relaxed text-body" [innerHTML]="evento.body"></p>
                 }
               </div>
             </li>
