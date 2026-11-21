@@ -84,11 +84,14 @@ export class Posizione {
   private async creaMappa(el: HTMLElement): Promise<void> {
     rimuoviVecchioConsenso();
     try {
-      const [maplibre, risposta] = await Promise.all([
+      const [modulo, risposta] = await Promise.all([
         import('maplibre-gl'),
         fetch(URL_STILE_MAPPA),
         caricaCssMappa(),
       ]);
+      // maplibre-gl è CommonJS: nella build di produzione l'import dinamico restituisce
+      // il modulo dentro `default`, mentre in sviluppo (ng serve) espone direttamente le classi.
+      const maplibre = 'Map' in modulo ? modulo : (modulo as { default: typeof modulo }).default;
       if (!risposta.ok) throw new Error(`Stile mappa: HTTP ${risposta.status}`);
       const stile = applicaTemaMappa(await risposta.json());
 
