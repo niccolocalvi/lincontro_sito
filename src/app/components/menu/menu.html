@@ -1,143 +1,77 @@
 <!-- Contenitore unico per la sezione menu -->
-<div id="menu" class="block w-full clear-both h-auto min-h-fit mt-12 sm:mt-24 py-8 px-4">
-  <!-- Titolo fisso -->
-  <h1
-    class="text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-6 sm:mb-8 text-accent font-custom drop-shadow-md items-center justify-center text-center"
-  >
-    Scopri i nostri <strong>menu</strong>
-  </h1>
-
-  <!-- Blocco dei popup dei menu fissi -->
-  <div
-    class="flex flex-col lg:flex-row items-center justify-center w-full gap-6 sm:gap-8 max-w-7xl mx-auto mb-12"
-  >
-    <app-modal-caffetteria class="w-full lg:w-1/2" />
-    <app-modal-drink class="w-full lg:w-1/2" />
-  </div>
-
-  <!-- SEZIONE CARD COMBO: Carosello su Mobile, 3 card quasi attaccate e centrate su PC -->
-  <div class="w-full max-w-7xl mx-auto">
-    <div
-      class="flex md:justify-center items-stretch gap-2 overflow-x-auto md:overflow-visible snap-x snap-mandatory pb-6 md:pb-0 px-2 md:px-0 scrollbar-hide"
-    >
-      <!-- CARD 1: Mattina / Colazione (Chiara) -->
-      <div
-        class="snap-center shrink-0 w-[75%] sm:w-[50%] md:w-[270px] bg-[#fbf8f2] rounded-2xl p-3.5 sm:p-4 shadow-lg border border-stone-200/80 flex flex-col justify-between transition-all duration-300 hover:shadow-xl relative text-stone-900"
-      >
-        <div>
-          <div class="flex items-start justify-between mb-1.5">
-            <span class="font-custom text-base text-[#c19a6b] italic font-semibold"> Combo </span>
-          </div>
-
-          <h3 class="text-xl sm:text-2xl font-bold font-custom text-stone-900 mb-3">Colazione</h3>
-
-          <ul class="space-y-1.5 text-stone-700 text-xs sm:text-sm mb-4">
-            <li class="flex items-center gap-2.5">
-              <span class="w-1.5 h-1.5 rounded-full bg-[#c19a6b]"></span>
-              <span>Caffè o Cappuccino</span>
-            </li>
-            <li class="flex items-center gap-2.5">
-              <span class="w-1.5 h-1.5 rounded-full bg-[#c19a6b]"></span>
-              <span>Cornetto</span>
-            </li>
-            <li class="flex items-center gap-2.5">
-              <span class="w-1.5 h-1.5 rounded-full bg-[#c19a6b]"></span>
-              <span>Succo o Spremuta</span>
-            </li>
-          </ul>
-        </div>
-
-        <div>
-          <div class="border-t border-dashed border-stone-300 pt-2.5 mb-2.5"></div>
-          <div class="flex items-end justify-between">
-            <div>
-              <span class="text-[11px] text-stone-500 block mb-0.5">Prezzo combo</span>
-              <span class="text-xl sm:text-2xl font-extrabold font-custom text-stone-900"
-                >4,00 €</span
-              >
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- CARD 2: Mezzogiorno / Pranzo (Scura a contrasto) -->
-      <div
-        class="snap-center shrink-0 w-[75%] sm:w-[50%] md:w-[270px] bg-[#C19A6B] rounded-2xl p-3.5 sm:p-4 shadow-lg border border-stone-800 flex flex-col justify-between transition-all duration-300 hover:shadow-xl relative text-white"
-      >
-        <div>
-          <div class="flex items-start justify-between mb-1.5">
-            <span class="font-custom text-base text-white italic font-semibold"> Combo </span>
-          </div>
-
-          <h3 class="text-xl sm:text-2xl font-bold font-custom text-white mb-3">Pranzo</h3>
-
-          <ul class="space-y-1.5 text-stone-200 text-xs sm:text-sm mb-4">
-            <li class="flex items-center gap-2.5">
-              <span class="w-1.5 h-1.5 rounded-full bg-white"></span>
-              <span>Primo o Secondo</span>
-            </li>
-            <li class="flex items-center gap-2.5">
-              <span class="w-1.5 h-1.5 rounded-full bg-white"></span>
-              <span>Bibita</span>
-            </li>
-            <li class="flex items-center gap-2.5">
-              <span class="w-1.5 h-1.5 rounded-full bg-white"></span>
-              <span>Caffè</span>
-            </li>
-          </ul>
-        </div>
-
-        <div>
-          <div class="border-t border-dashed border-stone-700 pt-2.5 mb-2.5"></div>
-          <div class="flex items-end justify-between">
-            <div>
-              <span class="text-[11px] text-white block mb-0.5">Prezzo combo</span>
-              <span class="text-xl sm:text-2xl font-extrabold font-custom text-white">9,00 €</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- CARD 3: Sera / Aperitivo (Chiara) -->
-      <div
-        class="snap-center shrink-0 w-[75%] sm:w-[50%] md:w-[270px] bg-[#fbf8f2] rounded-2xl p-3.5 sm:p-4 shadow-lg border border-stone-200/80 flex flex-col justify-between transition-all duration-300 hover:shadow-xl relative text-stone-900"
-      >
-        <div>
-          <div class="flex items-start justify-between mb-1.5">
-            <span class="font-custom text-base text-[#c19a6b] italic font-semibold"> Combo </span>
-          </div>
-
-          <h3 class="text-xl sm:text-2xl font-bold font-custom text-stone-900 mb-3">Aperitivo</h3>
-
-          <ul class="space-y-1.5 text-stone-700 text-xs sm:text-sm mb-4">
-            <li class="flex items-center gap-2.5">
-              <span class="w-1.5 h-1.5 rounded-full bg-[#c19a6b]"></span>
-              <span>Tagliere per 2 persone</span>
-            </li>
-            <li class="flex items-center gap-2.5">
-              <span class="w-1.5 h-1.5 rounded-full bg-[#c19a6b]"></span>
-              <span>2 Spritz</span>
-            </li>
-          </ul>
-        </div>
-
-        <div>
-          <div class="border-t border-dashed border-stone-300 pt-2.5 mb-2.5"></div>
-          <div class="flex items-end justify-between">
-            <div>
-              <span class="text-[11px] text-stone-500 block mb-0.5">Prezzo combo</span>
-              <span class="text-xl sm:text-2xl font-extrabold font-custom text-stone-900"
-                >22,00 €</span
-              >
-            </div>
-          </div>
-        </div>
-      </div>
+<section id="menu" class="section w-full bg-page">
+  <div class="container-page">
+    <!-- Intestazione -->
+    <div class="mx-auto max-w-2xl text-center">
+      <span class="eyebrow">Dalla colazione all'aperitivo</span>
+      <h2 class="section-title">
+        Scopri i nostri <span class="font-custom text-primary">menu</span>
+      </h2>
     </div>
 
-    <!-- Indicatore visivo di scorrimento visibile solo su mobile -->
-    <div
-      class="flex md:hidden justify-center items-center gap-1.5 mt-3 text-xs text-stone-400 font-medium"
-    ></div>
+    <!-- Card dei menu (aprono le modali) -->
+    <div class="mt-14 grid grid-cols-1 gap-6 lg:grid-cols-2">
+      <app-modal-caffetteria />
+      <app-modal-drink />
+    </div>
+
+    <!-- SEZIONE CARD COMBO: Carosello su Mobile, 3 colonne su desktop -->
+    <div class="mt-20">
+      <div class="mb-8 flex items-end justify-between gap-4">
+        <h3 class="font-heading text-2xl text-heading sm:text-3xl">Le nostre combo</h3>
+        <span class="text-sm text-muted md:hidden"
+          >Scorri <i class="fa-solid fa-arrow-right ml-1 text-xs"></i
+        ></span>
+      </div>
+
+      <div
+        class="scrollbar-hide -mx-5 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-2 sm:-mx-8 sm:px-8 md:mx-0 md:grid md:grid-cols-3 md:gap-6 md:overflow-visible md:px-0"
+      >
+        @for (c of combo; track c.titolo) {
+          <article
+            class="flex w-[78%] shrink-0 snap-center flex-col rounded-3xl p-7 transition-all duration-300 sm:w-[55%] md:w-auto"
+            [class]="
+              c.inEvidenza
+                ? 'bg-dark text-white shadow-card-hover'
+                : 'border border-border bg-surface text-heading hover:shadow-card'
+            "
+          >
+            <span
+              class="text-[11px] font-semibold tracking-[0.2em] uppercase"
+              [class]="c.inEvidenza ? 'text-primary-light' : 'text-primary'"
+              >Combo · {{ c.momento }}</span
+            >
+            <h4 class="mt-3 font-custom text-3xl">{{ c.titolo }}</h4>
+
+            <ul class="mt-6 flex-1 space-y-2.5 text-[15px]">
+              @for (voce of c.voci; track voce) {
+                <li
+                  class="flex items-center gap-3"
+                  [class]="c.inEvidenza ? 'text-text-on-dark-body' : 'text-body'"
+                >
+                  <i
+                    class="fa-solid fa-check text-xs"
+                    [class]="c.inEvidenza ? 'text-primary-light' : 'text-primary'"
+                  ></i>
+                  <span>{{ voce }}</span>
+                </li>
+              }
+            </ul>
+
+            <div
+              class="mt-8 flex items-baseline justify-between border-t pt-5"
+              [class]="c.inEvidenza ? 'border-white/15' : 'border-border'"
+            >
+              <span
+                class="text-xs"
+                [class]="c.inEvidenza ? 'text-text-on-dark-subtle' : 'text-muted-lighter'"
+                >Prezzo combo</span
+              >
+              <span class="font-heading text-3xl tabular-nums">{{ c.prezzo }}</span>
+            </div>
+          </article>
+        }
+      </div>
+    </div>
   </div>
-</div>
+</section>

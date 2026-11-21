@@ -6,7 +6,7 @@ describe('Header', () => {
     const fixture = TestBed.createComponent(Header);
     await fixture.whenStable();
     const el = fixture.nativeElement as HTMLElement;
-    const toggle = el.querySelector('button[aria-label="Menu"]') as HTMLButtonElement;
+    const toggle = el.querySelector('button[aria-expanded]') as HTMLButtonElement;
 
     expect(toggle.getAttribute('aria-expanded')).toBe('false');
     toggle.click();

@@ -11,4 +11,5 @@ export class Footer {
 
   protected readonly dati = this.datiAttivita.dati;
   protected readonly telefonoLink = this.datiAttivita.telefonoLink;
+  protected readonly anno = new Date().getFullYear();
 }

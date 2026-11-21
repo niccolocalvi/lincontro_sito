@@ -1,257 +1,181 @@
 <!-- CARD MENU COLAZIONE -->
-<div
-  class="max-w-2xl w-full bg-[#f8f4ed] rounded-3xl overflow-hidden shadow-lg border border-stone-200 flex flex-col sm:flex-row items-stretch"
+<article
+  class="group flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-surface transition-shadow duration-300 hover:shadow-card-hover"
 >
-  <!-- Colonna di Sinistra: Foto -->
-  <div class="relative w-full sm:w-1/2 min-h-[220px] bg-[#C19A6B] flex items-end p-4">
-    <!-- <img src="assets/images/colazione.jpg" alt="Cornetto e cappuccino" class="absolute inset-0 w-full h-full object-cover" /> -->
-    <span class="relative z-10 text-white/90 text-xs font-mono tracking-wide">
-      <img
-        src="foto-cappuccino-menu.jpeg"
-        alt="Cornetto e cappuccino"
-        class="w-full h-full object-cover rounded-3xl"
-      />
-    </span>
+  <!-- Foto -->
+  <div class="relative aspect-[16/10] w-full overflow-hidden">
+    <img
+      src="foto-cappuccino-menu.jpeg"
+      alt="Cornetto e cappuccino"
+      class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+      loading="lazy"
+    />
   </div>
 
-  <!-- Colonna di Destra: Dettagli -->
-  <div class="w-full sm:w-1/2 p-6 sm:p-8 flex flex-col justify-between gap-6">
+  <!-- Dettagli -->
+  <div class="flex flex-1 flex-col justify-between gap-8 p-7 sm:flex-row sm:items-end sm:p-8">
     <div>
-      <span class="text-xs font-medium tracking-widest text-stone-500 uppercase block mb-2"
-        >DALLE 5:30</span
-      >
-      <h3 class="text-3xl sm:text-4xl font-serif text-stone-900 leading-tight mb-3">
-        Menu<br />Colazione
+      <span class="eyebrow">Dalle 5:30</span>
+      <h3 class="mt-3 font-heading text-3xl leading-tight text-heading">
+        Colazione &amp; Caffetteria
       </h3>
-      <p class="text-stone-600 text-sm sm:text-base leading-relaxed">
+      <p class="mt-3 text-[15px] leading-relaxed text-muted">
         Caffetteria, cornetti e pasticceria per iniziare la giornata.
       </p>
     </div>
 
-    <!-- BOTTONE: Apre il modale al click via (click)="modalCaffetteria.showModal()" -->
-    <div class="pt-2">
-      <button
-        type="button"
-        (click)="modalCaffetteria.showModal()"
-        class="inline-flex items-center gap-2 bg-[#221710] hover:bg-[#35251b] text-white text-sm font-semibold px-6 py-3 rounded-full transition-all shadow-sm cursor-pointer"
+    <!-- BOTTONE: apre il modale -->
+    <button
+      type="button"
+      (click)="modalCaffetteria.showModal()"
+      class="btn-dark group/btn shrink-0 self-start sm:self-auto"
+    >
+      <span>Sfoglia il menu</span>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="2"
+        stroke="currentColor"
+        class="h-4 w-4 transition-transform group-hover/btn:translate-x-0.5"
       >
-        <span>Sfoglia il menu</span>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="2"
-          stroke="currentColor"
-          class="w-4 h-4"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
-          />
-        </svg>
-      </button>
-    </div>
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+        />
+      </svg>
+    </button>
   </div>
-</div>
+</article>
 
 <!-- MODALE CAFFETTERIA (con variabile locale #modalCaffetteria) -->
 <dialog
   #modalCaffetteria
   id="modalCaffetteria"
-  class="p-8 bg-[#faf8f5] rounded-3xl shadow-2xl w-[90%] max-w-5xl max-h-[90vh] overflow-y-auto m-auto backdrop:bg-black/50"
+  aria-labelledby="modalCaffetteria-titolo"
+  class="m-auto max-h-[88vh] w-[92%] max-w-4xl overflow-y-auto rounded-3xl bg-surface p-0 text-body shadow-modal"
 >
-  <!-- Tasto di Chiusura -->
-  <div class="flex justify-end">
+  <!-- Intestazione fissa con tasto di chiusura -->
+  <div
+    class="sticky top-0 z-10 flex items-start justify-between gap-4 border-b border-border-subtle bg-surface/95 px-6 py-5 backdrop-blur sm:px-10 sm:py-6"
+  >
+    <div>
+      <span class="eyebrow">I nostri menu</span>
+      <h2 id="modalCaffetteria-titolo" class="mt-2 font-heading text-2xl text-heading sm:text-3xl">
+        Colazione &amp; Caffetteria
+      </h2>
+      <p class="mt-1 text-sm text-muted">Tutti i giorni dalle 5:30 · domenica dalle 6:30</p>
+    </div>
     <button
       type="button"
       (click)="modalCaffetteria.close()"
-      class="w-10 h-10 rounded-full bg-stone-200 hover:bg-stone-300 flex items-center justify-center text-gray-700 text-2xl font-bold cursor-pointer transition"
+      aria-label="Chiudi menu"
+      class="flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center rounded-full bg-surface-soft text-heading transition-colors hover:bg-border"
     >
-      &times;
+      <i class="fa-solid fa-xmark"></i>
     </button>
   </div>
 
-  <!-- Intestazione -->
-  <div class="mb-6">
-    <p class="italic text-amber-700 font-serif text-lg">/ i nostri menu</p>
-    <h2 class="text-3xl md:text-4xl font-serif font-bold text-stone-900">
-      Colazione & Caffetteria
-    </h2>
-    <p class="text-sm text-stone-500 mt-1">Tutti i giorni dalle 5:30 · domenica dalle 6:30</p>
-  </div>
+  <div class="px-6 py-8 sm:px-10">
+    <!-- Griglia 2 Colonne -->
+    <div class="grid grid-cols-1 gap-x-12 gap-y-8 md:grid-cols-2">
+      <!-- Colonna Sinistra -->
+      <div class="space-y-8">
+        <!-- Caffè -->
+        <div>
+          <h3 class="menu-category">Caffè</h3>
+          <div>
+            <div class="menu-row"><span>Caffè</span><span>1,20 €</span></div>
+            <div class="menu-row"><span>Decaffeinato</span><span>1,50 €</span></div>
+            <div class="menu-row"><span>Doppio</span><span>2,20 €</span></div>
+            <div class="menu-row"><span>Corretto</span><span>1,70 €</span></div>
+            <div class="menu-row"><span>Freddo</span><span>1,80 €</span></div>
+            <div class="menu-row"><span>Americano</span><span>1,70 €</span></div>
+          </div>
+        </div>
 
-  <!-- Griglia 2 Colonne -->
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6 text-stone-800">
-    <!-- Colonna Sinistra -->
-    <div class="space-y-6">
-      <!-- Caffè -->
-      <div>
-        <h3 class="text-lg font-serif font-bold mb-2">Caffè</h3>
-        <div class="space-y-1.5 text-sm">
-          <div class="flex justify-between border-b border-dotted border-stone-300 pb-1">
-            <span>Caffè</span><span class="font-semibold">1,20 €</span>
+        <!-- Latte -->
+        <div>
+          <h3 class="menu-category">Latte</h3>
+          <div>
+            <div class="menu-row"><span>Latte</span><span>1,50 €</span></div>
+            <div class="menu-row"><span>Macchiato</span><span>1,80 €</span></div>
+            <div class="menu-row"><span>Al cioccolato</span><span>1,70 €</span></div>
+            <div class="menu-row"><span>Caffellatte</span><span>1,80 €</span></div>
+            <div class="menu-row"><span>Freddo</span><span>1,70 €</span></div>
+            <div class="menu-row"><span>Senza lattosio</span><span>1,80 €</span></div>
           </div>
-          <div class="flex justify-between border-b border-dotted border-stone-300 pb-1">
-            <span>Decaffeinato</span><span class="font-semibold">1,50 €</span>
-          </div>
-          <div class="flex justify-between border-b border-dotted border-stone-300 pb-1">
-            <span>Doppio</span><span class="font-semibold">2,20 €</span>
-          </div>
-          <div class="flex justify-between border-b border-dotted border-stone-300 pb-1">
-            <span>Corretto</span><span class="font-semibold">1,70 €</span>
-          </div>
-          <div class="flex justify-between border-b border-dotted border-stone-300 pb-1">
-            <span>Freddo</span><span class="font-semibold">1,80 €</span>
-          </div>
-          <div class="flex justify-between border-b border-dotted border-stone-300 pb-1">
-            <span>Americano</span><span class="font-semibold">1,70 €</span>
+        </div>
+
+        <!-- Cornetteria e Dolci -->
+        <div>
+          <h3 class="menu-category">Cornetteria e dolci</h3>
+          <div>
+            <div class="menu-row"><span>Cornetto</span><span>1,00 €</span></div>
+            <div class="menu-row"><span>Cornetto farcito</span><span>1,30 €</span></div>
+            <div class="menu-row"><span>Cornetto special</span><span>1,50 €</span></div>
+            <div class="menu-row"><span>Mini cornetto</span><span>0,80 €</span></div>
+            <div class="menu-row"><span>Ciambellone</span><span>1,50 €</span></div>
+            <div class="menu-row"><span>Crostata</span><span>2,00 €</span></div>
+            <div class="menu-row"><span>Crostata vegana</span><span>2,00 €</span></div>
+            <div class="menu-row"><span>Torta</span><span>2,00 €</span></div>
+            <div class="menu-row"><span>Biscotti</span><span>da 0,30 €</span></div>
+            <div class="menu-row"><span>Biscotti al kg</span><span>[€ / kg]</span></div>
           </div>
         </div>
       </div>
 
-      <!-- Latte -->
-      <div>
-        <h3 class="text-lg font-serif font-bold mb-2">Latte</h3>
-        <div class="space-y-1.5 text-sm">
-          <div class="flex justify-between border-b border-dotted border-stone-300 pb-1">
-            <span>Latte</span><span class="font-semibold">1,50 €</span>
-          </div>
-          <div class="flex justify-between border-b border-dotted border-stone-300 pb-1">
-            <span>Macchiato</span><span class="font-semibold">1,80 €</span>
-          </div>
-          <div class="flex justify-between border-b border-dotted border-stone-300 pb-1">
-            <span>Al cioccolato</span><span class="font-semibold">1,70 €</span>
-          </div>
-          <div class="flex justify-between border-b border-dotted border-stone-300 pb-1">
-            <span>Caffellatte</span><span class="font-semibold">1,80 €</span>
-          </div>
-          <div class="flex justify-between border-b border-dotted border-stone-300 pb-1">
-            <span>Freddo</span><span class="font-semibold">1,70 €</span>
-          </div>
-          <div class="flex justify-between border-b border-dotted border-stone-300 pb-1">
-            <span>Senza lattosio</span><span class="font-semibold">1,80 €</span>
+      <!-- Colonna Destra -->
+      <div class="space-y-8">
+        <!-- Cappuccino -->
+        <div>
+          <h3 class="menu-category">Cappuccino</h3>
+          <div>
+            <div class="menu-row"><span>Cappuccino</span><span>1,50 €</span></div>
+            <div class="menu-row"><span>Decaffeinato</span><span>1,80 €</span></div>
+            <div class="menu-row"><span>Senza lattosio</span><span>1,80 €</span></div>
+            <div class="menu-row"><span>D'orzo</span><span>1,80 €</span></div>
           </div>
         </div>
-      </div>
 
-      <!-- Cornetteria e Dolci -->
-      <div>
-        <h3 class="text-lg font-serif font-bold mb-2">Cornetteria e dolci</h3>
-        <div class="space-y-1.5 text-sm">
-          <div class="flex justify-between border-b border-dotted border-stone-300 pb-1">
-            <span>Cornetto</span><span class="font-semibold">1,00 €</span>
+        <!-- Ginseng, Tè e Cioccolata -->
+        <div>
+          <h3 class="menu-category">Ginseng, tè e cioccolata</h3>
+          <div>
+            <div class="menu-row"><span>Ginseng o orzo</span><span>1,30 €</span></div>
+            <div class="menu-row"><span>Ginseng o orzo grande</span><span>1,50 €</span></div>
+            <div class="menu-row"><span>Tè e infusi</span><span>2,00 €</span></div>
+            <div class="menu-row"><span>Cioccolata calda</span><span>3,00 €</span></div>
+            <div class="menu-row"><span>Cioccolata con panna</span><span>3,50 €</span></div>
           </div>
-          <div class="flex justify-between border-b border-dotted border-stone-300 pb-1">
-            <span>Cornetto farcito</span><span class="font-semibold">1,30 €</span>
+        </div>
+
+        <!--Spremute, Centrifughe e Succhi-->
+        <div>
+          <h3 class="menu-category">Spremute, Centrifughe e Succhi</h3>
+          <div>
+            <div class="menu-row"><span>Spremuta d'arancia espressa</span><span>3,00 €</span></div>
+            <div class="menu-row"><span>Centrifuga fresca</span><span>4,00 €</span></div>
+            <div class="menu-row"><span>Succo di frutta</span><span>2,50 €</span></div>
+            <div class="menu-row"><span>Succo di frutta al mirtillo</span><span>3,00 €</span></div>
           </div>
-          <div class="flex justify-between border-b border-dotted border-stone-300 pb-1">
-            <span>Cornetto special</span><span class="font-semibold">1,50 €</span>
-          </div>
-          <div class="flex justify-between border-b border-dotted border-stone-300 pb-1">
-            <span>Mini cornetto</span><span class="font-semibold">0,80 €</span>
-          </div>
-          <div class="flex justify-between border-b border-dotted border-stone-300 pb-1">
-            <span>Ciambellone</span><span class="font-semibold">1,50 €</span>
-          </div>
-          <div class="flex justify-between border-b border-dotted border-stone-300 pb-1">
-            <span>Crostata</span><span class="font-semibold">2,00 €</span>
-          </div>
-          <div class="flex justify-between border-b border-dotted border-stone-300 pb-1">
-            <span>Crostata vegana</span><span class="font-semibold">2,00 €</span>
-          </div>
-          <div class="flex justify-between border-b border-dotted border-stone-300 pb-1">
-            <span>Torta</span><span class="font-semibold">2,00 €</span>
-          </div>
-          <div class="flex justify-between border-b border-dotted border-stone-300 pb-1">
-            <span>Biscotti</span><span class="font-semibold">da 0,30 €</span>
-          </div>
-          <div class="flex justify-between border-b border-dotted border-stone-300 pb-1">
-            <span>Biscotti al kg</span><span class="font-semibold">[€ / kg]</span>
+        </div>
+
+        <!-- Salato -->
+        <div>
+          <h3 class="menu-category">Salato</h3>
+          <div>
+            <div class="menu-row"><span>Tramezzino</span><span>2,50 €</span></div>
+            <div class="menu-row"><span>Toast</span><span>3,50 €</span></div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Colonna Destra -->
-    <div class="space-y-6">
-      <!-- Cappuccino -->
-      <div>
-        <h3 class="text-lg font-serif font-bold mb-2">Cappuccino</h3>
-        <div class="space-y-1.5 text-sm">
-          <div class="flex justify-between border-b border-dotted border-stone-300 pb-1">
-            <span>Cappuccino</span><span class="font-semibold">1,50 €</span>
-          </div>
-          <div class="flex justify-between border-b border-dotted border-stone-300 pb-1">
-            <span>Decaffeinato</span><span class="font-semibold">1,80 €</span>
-          </div>
-          <div class="flex justify-between border-b border-dotted border-stone-300 pb-1">
-            <span>Senza lattosio</span><span class="font-semibold">1,80 €</span>
-          </div>
-          <div class="flex justify-between border-b border-dotted border-stone-300 pb-1">
-            <span>D'orzo</span><span class="font-semibold">1,80 €</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Ginseng, Tè e Cioccolata -->
-      <div>
-        <h3 class="text-lg font-serif font-bold mb-2">Ginseng, tè e cioccolata</h3>
-        <div class="space-y-1.5 text-sm">
-          <div class="flex justify-between border-b border-dotted border-stone-300 pb-1">
-            <span>Ginseng o orzo</span><span class="font-semibold">1,30 €</span>
-          </div>
-          <div class="flex justify-between border-b border-dotted border-stone-300 pb-1">
-            <span>Ginseng o orzo grande</span><span class="font-semibold">1,50 €</span>
-          </div>
-          <div class="flex justify-between border-b border-dotted border-stone-300 pb-1">
-            <span>Tè e infusi</span><span class="font-semibold">2,00 €</span>
-          </div>
-          <div class="flex justify-between border-b border-dotted border-stone-300 pb-1">
-            <span>Cioccolata calda</span><span class="font-semibold">3,00 €</span>
-          </div>
-          <div class="flex justify-between border-b border-dotted border-stone-300 pb-1">
-            <span>Cioccolata con panna</span><span class="font-semibold">3,50 €</span>
-          </div>
-        </div>
-      </div>
-
-      <!--Spremute, Centrifughe e Succhi-->
-      <div>
-        <h3 class="text-lg font-serif font-bold mb-2">Spremute, Centrifughe e Succhi</h3>
-        <div class="space-y-1.5 text-sm">
-          <div class="flex justify-between border-b border-dotted border-stone-300 pb-1">
-            <span>Spremuta d'arancia espressa</span><span class="font-semibold">3,00 €</span>
-          </div>
-          <div class="flex justify-between border-b border-dotted border-stone-300 pb-1">
-            <span>Centrifuga fresca</span><span class="font-semibold">4,00 €</span>
-          </div>
-          <div class="flex justify-between border-b border-dotted border-stone-300 pb-1">
-            <span>Succo di frutta</span><span class="font-semibold">2,50 €</span>
-          </div>
-          <div class="flex justify-between border-b border-dotted border-stone-300 pb-1">
-            <span>Succo di frutta al mirtillo</span><span class="font-semibold">3,00 €</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Salato -->
-      <div>
-        <h3 class="text-lg font-serif font-bold mb-2">Salato</h3>
-        <div class="space-y-1.5 text-sm">
-          <div class="flex justify-between border-b border-dotted border-stone-300 pb-1">
-            <span>Tramezzino</span><span class="font-semibold">2,50 €</span>
-          </div>
-          <div class="flex justify-between border-b border-dotted border-stone-300 pb-1">
-            <span>Toast</span><span class="font-semibold">3,50 €</span>
-          </div>
-        </div>
-      </div>
-    </div>
+    <!-- Note Allergeni -->
+    <p class="mt-10 border-t border-border-subtle pt-5 text-xs text-muted-lighter">
+      [Nota allergeni: chiedi al personale l'elenco degli allergeni presenti nei prodotti.]
+    </p>
   </div>
-
-  <!-- Note Allergeni -->
-  <p class="text-xs text-stone-500 pt-4 border-t border-stone-200">
-    [Nota allergeni: chiedi al personale l'elenco degli allergeni presenti nei prodotti.]
-  </p>
 </dialog>

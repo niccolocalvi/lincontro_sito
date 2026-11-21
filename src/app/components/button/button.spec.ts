@@ -13,6 +13,6 @@ describe('Button', () => {
     expect(link.textContent?.trim()).toBe('Prenota');
     expect(link.getAttribute('href')).toBe('#menu');
     expect(link.classList).toContain('w-full');
-    expect(link.classList).toContain('bg-primary');
+    expect(link.classList).toContain('btn-primary');
   });
 });

@@ -1,119 +1,116 @@
-<div>
-  <!-- Sezione Hero: min-h-[75vh] con fallback a 600px per contenere sempre tutto su mobile -->
+<!-- Sezione Hero: alta quasi quanto lo schermo, con minimo per contenere tutto su mobile -->
+<section
+  id="home"
+  class="relative isolate flex min-h-[calc(100svh-4rem)] w-full items-end overflow-hidden bg-dark text-white sm:min-h-[calc(100svh-72px)] lg:items-center"
+>
+  <!-- Foto di sfondo -->
+  <img
+    src="https://img.magnific.com/foto-premium/tazza-di-caffe-con-latte-art-su-tavolo-di-legno-in-caffetteria_1103513-805.jpg?semt=ais_hybrid&w=740&q=80"
+    alt=""
+    class="absolute inset-0 -z-20 h-full w-full scale-105 object-cover"
+    fetchpriority="high"
+  />
+
+  <!-- Overlay sfumato: più scuro in basso/a sinistra dove c'è il testo -->
   <div
-    id="home"
-    class="relative bg-[url('https://img.magnific.com/foto-premium/tazza-di-caffe-con-latte-art-su-tavolo-di-legno-in-caffetteria_1103513-805.jpg?semt=ais_hybrid&w=740&q=80')] text-white py-8 px-4 text-center w-full min-h-[75vh] min-h-[600px] bg-cover bg-center bg-no-repeat shadow-2xl mb-12 sm:mb-16 flex flex-col justify-center items-start overflow-hidden"
+    class="absolute inset-0 -z-10 bg-gradient-to-t from-dark via-dark/70 to-dark/30 lg:bg-gradient-to-r lg:from-dark/95 lg:via-dark/70 lg:to-dark/20"
+  ></div>
+
+  <div
+    class="container-page grid gap-10 pt-24 pb-12 sm:pb-16 lg:grid-cols-[1.4fr_1fr] lg:items-end lg:gap-16 lg:py-24"
   >
-    <!-- Overlay scuro -->
-    <div class="absolute inset-0 bg-overlay z-0"></div>
+    <!-- Colonna Sinistra: Testo e Pulsanti -->
+    <div class="flex flex-col items-start gap-6">
+      <span class="eyebrow !text-accent-gold">Café & Bistrot · Valcanneto</span>
 
-    <!-- Contenuto in primo piano: Grid a 2 colonne su desktop (testo a sinistra, badge a destra) -->
-    <div
-      class="relative z-10 w-full container mx-auto px-2 sm:px-4 lg:px-8 lg:grid lg:grid-cols-2 lg:gap-8 lg:items-center text-left"
-    >
-      <!-- Colonna Sinistra: Testo e Pulsante -->
-      <div class="flex flex-col items-start justify-center gap-3 sm:gap-5 w-full">
-        <h1
-          class="text-3xl sm:text-5xl lg:text-7xl font-bold font-custom leading-tight text-left pl-2 sm:pl-4 lg:pl-0"
-        >
-          Perch<span class="font-custom">e'</span> la vita <span class="font-custom">e'</span> fatta
-          di <span class="text-accent font-custom">Incontri</span>
-        </h1>
+      <h1 class="font-custom text-5xl leading-[1.05] sm:text-6xl lg:text-7xl">
+        Perch<span class="font-custom">e'</span> la vita <span class="font-custom">e'</span> fatta
+        di <span class="font-custom text-primary">Incontri</span>
+      </h1>
 
-        <p class="text-base sm:text-2xl font-medium pl-2 sm:pl-4 lg:pl-0">
-          Scopri come ogni incontro può cambiare la tua vita
-        </p>
+      <p class="max-w-md text-base leading-relaxed text-text-on-dark-body sm:text-lg">
+        Scopri come ogni incontro può cambiare la tua vita.
+      </p>
 
-        <!-- Pulsante -->
-        <div class="pl-2 sm:pl-4 lg:pl-0">
-          <app-button text="Vai al Menu" href="#menu" />
-        </div>
-      </div>
-
-      <!-- Colonna Destra: Badge Liquid Glass Luminoso ad Alta Leggibilità -->
-      <div
-        class="flex flex-col gap-3 sm:gap-4 mt-6 lg:mt-0 w-full max-w-sm lg:ml-auto pl-2 sm:pl-4 lg:pl-0"
-      >
-        <!-- BADGE ORARI DI APERTURA -->
-        <div
-          class="flex items-center gap-3.5 bg-white/75 p-4 rounded-2xl border border-white shadow-[0_12px_35px_rgba(0,0,0,0.3),inset_0_1px_2px_rgba(255,255,255,0.9)] backdrop-blur-xl transition-all duration-300 hover:bg-white/85 hover:scale-105 w-full text-left"
-          style="
-            backdrop-filter: blur(24px) saturate(190%);
-            -webkit-backdrop-filter: blur(24px) saturate(190%);
-          "
-        >
-          <!-- Icona -->
-          <div class="flex-shrink-0">
-            <div
-              class="flex items-center justify-center h-12 w-12 rounded-xl text-accent bg-white/90 border border-white shadow-sm text-xl font-bold"
-            >
-              <i class="fa-regular fa-clock"></i>
-            </div>
-          </div>
-
-          <!-- Testo -->
-          <div class="flex flex-col leading-tight">
-            <span class="text-xs uppercase tracking-wider text-accent font-black mb-0.5"
-              >Orari di oggi</span
-            >
-            <!-- Orario del giorno corrente da PocketBase (collezione opening_hours) -->
-            <span class="text-stone-900 text-xs sm:text-sm font-bold">
-              @if (caricamento()) {
-                Caricamento…
-              } @else if (orarioOggi(); as oggi) {
-                {{ oggi.day }}:
-                @if (isChiuso(oggi)) {
-                  <strong class="text-accent font-black">Chiuso</strong>
-                } @else {
-                  <strong class="text-accent font-black"
-                    >{{ oggi.from | ora }} – {{ oggi.to | ora }}</strong
-                  >
-                }
-              } @else {
-                <a href="#info-e-contatti" class="hover:text-accent">Vedi tutti gli orari</a>
-              }
-            </span>
-          </div>
-        </div>
-
-        <!-- BADGE PROSSIMO EVENTO (da PocketBase, collezione events) -->
+      <div class="flex flex-wrap items-center gap-3 pt-2">
+        <app-button text="Scopri il menu" href="#menu" customClass="!px-7 !py-3.5 text-base" />
         <a
-          href="#lista-eventi"
-          class="flex items-center gap-3.5 bg-white/75 p-4 rounded-2xl border border-white shadow-[0_12px_35px_rgba(0,0,0,0.3),inset_0_1px_2px_rgba(255,255,255,0.9)] backdrop-blur-xl transition-all duration-300 hover:bg-white/85 hover:scale-105 w-full text-left"
-          style="
-            backdrop-filter: blur(24px) saturate(190%);
-            -webkit-backdrop-filter: blur(24px) saturate(190%);
-          "
+          href="#eventi"
+          class="inline-flex items-center gap-2 rounded-full border border-white/25 px-7 py-3.5 text-base font-semibold text-white transition-colors hover:border-white/60 hover:bg-white/10"
         >
-          <!-- Icona -->
-          <div class="flex-shrink-0">
-            <div
-              class="flex items-center justify-center h-12 w-12 rounded-xl text-accent bg-white/90 border border-white shadow-sm text-xl font-bold"
-            >
-              <i class="fa-solid fa-music"></i>
-            </div>
-          </div>
-
-          <!-- Testo -->
-          <div class="flex flex-col leading-tight min-w-0">
-            <span class="text-xs uppercase tracking-wider text-accent font-black mb-0.5"
-              >Prossimo evento</span
-            >
-            <span class="text-stone-900 text-xs sm:text-sm font-bold">
-              @if (caricamento()) {
-                Caricamento…
-              } @else if (prossimoEvento(); as evento) {
-                {{ evento.title }} ·
-                <strong class="text-accent font-black">{{
-                  evento.start_at | date: 'EEE d MMM, HH:mm'
-                }}</strong>
-              } @else {
-                Nessun evento in programma, seguici sui social!
-              }
-            </span>
-          </div>
+          Prossimi eventi
         </a>
       </div>
     </div>
+
+    <!-- Colonna Destra: info rapide (orari di oggi e prossimo evento) -->
+    <div
+      class="w-full divide-y divide-white/10 overflow-hidden rounded-2xl border border-white/15 bg-white/[0.07] backdrop-blur-md lg:max-w-sm lg:justify-self-end"
+    >
+      <!-- ORARI DI OGGI -->
+      <a
+        href="#info-e-contatti"
+        class="flex items-center gap-4 px-5 py-4 transition-colors hover:bg-white/[0.06]"
+      >
+        <span
+          class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/15 text-primary-light"
+        >
+          <i class="fa-regular fa-clock"></i>
+        </span>
+        <span class="flex min-w-0 flex-col leading-snug">
+          <span
+            class="text-[11px] font-semibold tracking-[0.18em] text-text-on-dark-subtle uppercase"
+            >Orari di oggi</span
+          >
+          <!-- Orario del giorno corrente da PocketBase (collezione opening_hours) -->
+          <span class="text-sm font-medium text-white">
+            @if (caricamento()) {
+              Caricamento…
+            } @else if (orarioOggi(); as oggi) {
+              {{ oggi.day }} ·
+              @if (isChiuso(oggi)) {
+                <strong class="font-semibold text-primary-light">Chiuso</strong>
+              } @else {
+                <strong class="font-semibold text-primary-light"
+                  >{{ oggi.from | ora }} – {{ oggi.to | ora }}</strong
+                >
+              }
+            } @else {
+              Vedi tutti gli orari
+            }
+          </span>
+        </span>
+      </a>
+
+      <!-- PROSSIMO EVENTO (da PocketBase, collezione events) -->
+      <a
+        href="#lista-eventi"
+        class="flex items-center gap-4 px-5 py-4 transition-colors hover:bg-white/[0.06]"
+      >
+        <span
+          class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/15 text-primary-light"
+        >
+          <i class="fa-solid fa-music"></i>
+        </span>
+        <span class="flex min-w-0 flex-col leading-snug">
+          <span
+            class="text-[11px] font-semibold tracking-[0.18em] text-text-on-dark-subtle uppercase"
+            >Prossimo evento</span
+          >
+          <span class="text-sm font-medium text-white">
+            @if (caricamento()) {
+              Caricamento…
+            } @else if (prossimoEvento(); as evento) {
+              {{ evento.title }} ·
+              <strong class="font-semibold text-primary-light">{{
+                evento.start_at | date: 'EEE d MMM, HH:mm'
+              }}</strong>
+            } @else {
+              Nessun evento in programma, seguici sui social!
+            }
+          </span>
+        </span>
+      </a>
+    </div>
   </div>
-</div>
+</section>
