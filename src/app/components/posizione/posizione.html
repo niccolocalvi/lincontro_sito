@@ -9,54 +9,99 @@
           Largo Claudio Monteverdi 19, Valcanneto (RM)
         </p>
       </div>
-      <a
-        href="https://maps.app.goo.gl/g7GVx5YMuNBBDDkMA"
-        target="_blank"
-        rel="noopener noreferrer"
+      <button
+        type="button"
+        (click)="apriIndicazioni()"
+        aria-haspopup="dialog"
         class="btn-dark self-start sm:self-auto"
       >
         <i class="fa-solid fa-diamond-turn-right"></i>
         <span>Indicazioni stradali</span>
-      </a>
+      </button>
     </div>
 
-    <!-- Container della mappa con gestione cookie -->
+    <!-- Mappa OpenStreetMap (MapLibre + OpenFreeMap) con i colori del sito -->
     <div
-      class="relative h-[380px] w-full overflow-hidden rounded-3xl border border-border sm:h-[460px]"
+      class="relative h-[380px] w-full overflow-hidden rounded-3xl border border-border bg-surface-map sm:h-[460px]"
     >
-      <!-- Se NON c'è il consenso, mostra il box dei cookie -->
-      @if (!mapConsent()) {
+      <div
+        #mappa
+        class="h-full w-full"
+        role="region"
+        aria-label="Mappa di L'Incontro a Valcanneto"
+      ></div>
+
+      @if (stato() !== 'pronta') {
         <div
-          class="absolute inset-0 z-10 flex flex-col items-center justify-center bg-surface-map p-6 text-center"
+          class="pointer-events-none absolute inset-0 flex flex-col items-center justify-center p-6 text-center"
         >
           <span
-            class="mb-5 flex h-14 w-14 items-center justify-center rounded-full bg-surface text-xl text-primary shadow-card"
+            class="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-surface text-xl text-primary shadow-card"
           >
             <i class="fa-solid fa-location-dot"></i>
           </span>
-          <p class="mb-6 max-w-md text-sm text-body md:text-base">
-            Per visualizzare la mappa di Google Maps e accettare i cookie associati, clicca sul
-            pulsante sottostante.
-          </p>
-          <button type="button" (click)="acceptMap()" class="btn-primary cursor-pointer">
-            Attiva Mappa e Consenti Cookie
-          </button>
+          @if (stato() === 'errore') {
+            <p class="max-w-md text-sm text-body md:text-base">
+              Mappa non disponibile al momento. Ci trovi in {{ dati.via }} {{ dati.civico }},
+              {{ dati.citta }}.
+            </p>
+          } @else {
+            <p class="text-sm text-muted">Caricamento mappa…</p>
+          }
         </div>
-      } @else {
-        <!-- Consenso dato: mostra la mappa -->
-        <iframe
-          title="Mappa di L'Incontro a Valcanneto"
-          class="h-full w-full border-0"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2967.467843697647!2d12.152816775886183!3d41.94728516107992!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132f542c37f4964f%3A0x6da1167ae50c4914!2sLargo%20Claudio%20Monteverdi%2C%2019%2C%2000052%20Valcanneto%20RM!5e0!3m2!1sit!2sit!4v1791898820851!5m2!1sit!2sit"
-          width="600"
-          height="450"
-          style="border: 0"
-          allowfullscreen=""
-          loading="lazy"
-          referrerpolicy="strict-origin-when-cross-origin"
-        >
-        </iframe>
       }
     </div>
   </div>
+
+  <!-- Popup scelta app di navigazione: foglio dal basso su mobile, riquadro al centro su desktop -->
+  <dialog
+    #indicazioni
+    aria-labelledby="indicazioni-titolo"
+    (click)="clickPopup($event)"
+    class="popup-indicazioni mx-auto mt-auto mb-0 w-full max-w-md rounded-t-3xl bg-surface p-0 text-body shadow-modal sm:my-auto sm:w-[92%] sm:rounded-3xl"
+  >
+    <div class="px-6 pt-6 pb-8 sm:p-8">
+      <div class="flex items-start justify-between gap-4">
+        <div>
+          <h2 id="indicazioni-titolo" class="font-heading text-2xl text-heading">
+            Indicazioni stradali
+          </h2>
+          <p class="mt-1 text-sm text-muted">
+            {{ dati.via }} {{ dati.civico }}, {{ dati.citta }} ({{ dati.provincia }})
+          </p>
+        </div>
+        <button
+          type="button"
+          (click)="chiudiIndicazioni()"
+          aria-label="Chiudi"
+          class="flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center rounded-full bg-surface-soft text-heading transition-colors hover:bg-border"
+        >
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <p class="mt-6 text-[11px] font-semibold tracking-[0.2em] text-muted uppercase">Apri con</p>
+      <ul class="mt-3 space-y-2">
+        @for (app of appNavigazione; track app.nome) {
+          <li>
+            <a
+              [href]="app.url"
+              target="_blank"
+              rel="noopener noreferrer"
+              (click)="chiudiIndicazioni()"
+              class="flex items-center gap-4 rounded-2xl border border-border bg-surface px-4 py-3.5 font-semibold text-heading transition-colors hover:border-primary hover:bg-surface-soft"
+            >
+              <span
+                class="flex h-10 w-10 items-center justify-center rounded-full bg-surface-soft text-lg text-primary"
+              >
+                <i [class]="app.icona" aria-hidden="true"></i>
+              </span>
+              <span class="flex-1">{{ app.nome }}</span>
+              <i class="fa-solid fa-chevron-right text-xs text-muted" aria-hidden="true"></i>
+            </a>
+          </li>
+        }
+      </ul>
+    </div>
+  </dialog>
 </section>

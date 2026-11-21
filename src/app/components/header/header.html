@@ -8,7 +8,12 @@
 
   <div class="container-page grid h-16 grid-cols-[auto_1fr_auto] items-center sm:h-[72px]">
     <!-- 1. SINISTRA: Logo -->
-    <a href="#home" class="flex items-center" aria-label="L'Incontro, torna all'inizio">
+    <a
+      routerLink="/"
+      fragment="home"
+      class="flex items-center"
+      aria-label="L'Incontro, torna all'inizio"
+    >
       <img
         src="https://cdn.lincontrobar.it/img/incontro_logo_orizzontale.webp"
         alt="L'Incontro Café & Bistrot"
@@ -19,10 +24,11 @@
     <!-- 2. CENTRO: Navigazione Desktop (Nascosta su mobile, visibile da md in su) -->
     <nav class="flex justify-center" aria-label="Navigazione principale">
       <ul class="hidden items-center gap-1 text-[15px] md:flex lg:gap-2">
-        @for (voce of vociMenu; track voce.href) {
+        @for (voce of vociMenu; track voce.fragment) {
           <li>
             <a
-              [href]="voce.href"
+              routerLink="/"
+              [fragment]="voce.fragment"
               class="group relative rounded-full px-3 py-2 font-medium text-body transition-colors hover:text-heading"
             >
               {{ voce.label }}
@@ -76,10 +82,11 @@
       class="fixed inset-x-0 top-16 bottom-0 z-40 flex flex-col justify-between overflow-y-auto bg-surface px-6 pt-6 pb-10 md:hidden"
     >
       <ul class="flex flex-col divide-y divide-border-subtle">
-        @for (voce of vociMenu; track voce.href) {
+        @for (voce of vociMenu; track voce.fragment) {
           <li>
             <a
-              [href]="voce.href"
+              routerLink="/"
+              [fragment]="voce.fragment"
               (click)="closeMenu()"
               class="flex items-center justify-between py-4 font-heading text-2xl text-heading transition-colors hover:text-primary"
             >

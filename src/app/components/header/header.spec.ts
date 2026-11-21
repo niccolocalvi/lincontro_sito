@@ -1,7 +1,10 @@
 import { TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
 import { Header } from './header';
 
 describe('Header', () => {
+  beforeEach(() => TestBed.configureTestingModule({ providers: [provideRouter([])] }));
+
   it('apre e chiude il menu mobile', async () => {
     const fixture = TestBed.createComponent(Header);
     await fixture.whenStable();

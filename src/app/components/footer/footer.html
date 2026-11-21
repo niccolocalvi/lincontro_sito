@@ -3,11 +3,16 @@
     <div class="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
       <!-- Brand -->
       <div class="sm:col-span-2">
-        <a href="#home" aria-label="Torna all'inizio" class="inline-flex flex-col">
-          <span class="font-custom text-4xl leading-none text-white">L'Incontro</span>
-          <span class="mt-2 text-xs tracking-[0.2em] text-accent-gold uppercase"
-            >Café & Bistrot</span
-          >
+        <a routerLink="/" fragment="home" aria-label="Torna all'inizio" class="inline-flex">
+          <!-- Logo marrone reso bianco per lo sfondo scuro -->
+          <img
+            src="https://cdn.lincontrobar.it/img/incontro_logo_orizzontale.webp"
+            alt="L'Incontro Café & Bistrot"
+            width="1800"
+            height="599"
+            class="h-14 w-auto brightness-0 invert"
+            loading="lazy"
+          />
         </a>
         <p class="mt-6 max-w-sm text-sm leading-relaxed">
           Bar, caffetteria e bistrot a Valcanneto: dalla colazione all'aperitivo, con eventi a tema
@@ -24,6 +29,11 @@
           [href]="'tel:' + telefonoLink"
           class="block text-white transition-colors hover:text-primary-light"
           >{{ dati.telefono }}</a
+        >
+        <a
+          [href]="'mailto:' + dati.email"
+          class="block break-all text-white transition-colors hover:text-primary-light"
+          >{{ dati.email }}</a
         >
         <a
           href="https://maps.app.goo.gl/J79WPkw8Fy7UP7zr9"
@@ -80,9 +90,36 @@
     </div>
 
     <div
-      class="mt-14 flex flex-col gap-2 border-t border-white/10 pt-6 text-xs text-text-on-dark-subtle sm:flex-row sm:justify-between"
+      class="mt-14 flex flex-col gap-4 border-t border-white/10 pt-6 text-xs leading-relaxed text-text-on-dark-subtle lg:flex-row lg:items-center lg:justify-between lg:gap-8"
     >
-      <p>© {{ anno }} {{ dati.nomeCommerciale }} · Valcanneto (RM)</p>
+      <!-- Dati societari obbligatori (art. 2250 c.c., art. 35 DPR 633/1972), su una sola riga -->
+      <p class="lg:whitespace-nowrap">
+        © {{ anno }} {{ dati.nomeCommerciale }} è un marchio di
+        <span class="text-text-on-dark-muted">{{ dati.nomeLegale }}</span>
+        · P. IVA {{ dati.partitaIva }}
+        @if (dati.rea) {
+          · REA {{ dati.rea }}
+        }
+        · Capitale sociale {{ dati.capitaleSociale }} · PEC
+        <a
+          [href]="'mailto:' + dati.pec"
+          class="underline-offset-2 transition-colors hover:text-primary-light hover:underline"
+          >{{ dati.pec }}</a
+        >
+      </p>
+
+      <nav aria-label="Link legali" class="flex shrink-0 gap-5">
+        <a
+          routerLink="/note-legali"
+          class="underline-offset-2 transition-colors hover:text-primary-light hover:underline"
+          >Note legali</a
+        >
+        <a
+          routerLink="/privacy-policy"
+          class="underline-offset-2 transition-colors hover:text-primary-light hover:underline"
+          >Privacy e cookie</a
+        >
+      </nav>
     </div>
   </div>
 </footer>

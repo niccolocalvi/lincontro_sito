@@ -151,3 +151,85 @@ dialog::backdrop {
     animation: none !important;
   }
 }
+
+/* ── Mappa "Dove trovarci" (MapLibre): segnaposto e controlli nei colori del brand ── */
+.segnaposto-mappa {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 0 0 10px; /* spazio per la punta della goccia: l'ancora "bottom" cade sulla punta */
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+.segnaposto-etichetta {
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: var(--color-dark);
+  color: var(--color-surface);
+  font-family: var(--font-heading);
+  font-size: 14px;
+  line-height: 1.4;
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(36, 23, 15, 0.25);
+}
+.segnaposto-goccia {
+  display: flex;
+  height: 46px;
+  width: 46px;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid var(--color-surface);
+  border-radius: 50% 50% 50% 0;
+  background: var(--color-primary);
+  color: var(--color-surface);
+  font-size: 18px;
+  transform: rotate(-45deg);
+  box-shadow: 0 8px 20px rgba(36, 23, 15, 0.3);
+  transition: background-color 200ms;
+}
+.segnaposto-goccia i {
+  transform: rotate(45deg);
+}
+.segnaposto-mappa:hover .segnaposto-goccia {
+  background: var(--color-primary-hover);
+}
+
+.maplibregl-ctrl-group {
+  overflow: hidden;
+  border-radius: 14px !important;
+  background: var(--color-surface) !important;
+  box-shadow: 0 4px 14px rgba(36, 23, 15, 0.15) !important;
+}
+.maplibregl-ctrl-group button + button {
+  border-top-color: var(--color-border) !important;
+}
+.maplibregl-ctrl-attrib {
+  background: rgba(255, 252, 247, 0.85) !important;
+  color: var(--color-muted);
+  font-family: var(--font-sans, inherit);
+}
+.maplibregl-ctrl-attrib a {
+  color: var(--color-body);
+}
+.maplibregl-cooperative-gesture-screen {
+  background: rgba(36, 23, 15, 0.55);
+  font-family: inherit;
+}
+
+/* Popup indicazioni: su mobile sale dal basso */
+@media (max-width: 639px) {
+  dialog.popup-indicazioni[open] {
+    max-width: 100%;
+    animation: fogliodalBasso 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+@keyframes fogliodalBasso {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: none;
+  }
+}

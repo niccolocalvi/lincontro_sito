@@ -1,0 +1,161 @@
+<section class="section w-full bg-surface">
+  <div class="container-page">
+    <div class="mx-auto max-w-3xl">
+      <span class="eyebrow">Informazioni legali</span>
+      <h1 class="section-title">Note legali</h1>
+      <p class="mt-6 text-base leading-relaxed text-pretty text-muted sm:text-lg">
+        Chi gestisce {{ dati.nomeCommerciale }}, le condizioni d'uso di questo sito e chi ha
+        contribuito a realizzarlo.
+      </p>
+
+      <div class="legal mt-14 space-y-12 text-[15px] leading-relaxed text-body">
+        <!-- Dati della società -->
+        <section aria-labelledby="dati-societa">
+          <h2 id="dati-societa" class="font-heading text-2xl text-heading">Dati della società</h2>
+          <dl class="mt-5 divide-y divide-border-subtle border-y border-border-subtle">
+            <div class="grid gap-1 py-3 sm:grid-cols-[200px_1fr] sm:gap-4">
+              <dt class="font-semibold text-heading">Insegna</dt>
+              <dd>{{ dati.nomeCommerciale }} Café &amp; Bistrot</dd>
+            </div>
+            <div class="grid gap-1 py-3 sm:grid-cols-[200px_1fr] sm:gap-4">
+              <dt class="font-semibold text-heading">Ragione sociale</dt>
+              <dd>{{ dati.nomeLegale }}</dd>
+            </div>
+            <div class="grid gap-1 py-3 sm:grid-cols-[200px_1fr] sm:gap-4">
+              <dt class="font-semibold text-heading">Sede legale e operativa</dt>
+              <dd>
+                {{ dati.via }} {{ dati.civico }}, {{ dati.cap }} {{ dati.citta }} ({{
+                  dati.provincia
+                }})
+              </dd>
+            </div>
+            <div class="grid gap-1 py-3 sm:grid-cols-[200px_1fr] sm:gap-4">
+              <dt class="font-semibold text-heading">Partita IVA e C.F.</dt>
+              <dd>{{ dati.partitaIva }}</dd>
+            </div>
+            @if (dati.rea) {
+              <div class="grid gap-1 py-3 sm:grid-cols-[200px_1fr] sm:gap-4">
+                <dt class="font-semibold text-heading">Numero REA</dt>
+                <dd>{{ dati.rea }} (Registro Imprese di Roma)</dd>
+              </div>
+            }
+            <div class="grid gap-1 py-3 sm:grid-cols-[200px_1fr] sm:gap-4">
+              <dt class="font-semibold text-heading">Capitale sociale</dt>
+              <dd>{{ dati.capitaleSociale }}</dd>
+            </div>
+            <div class="grid gap-1 py-3 sm:grid-cols-[200px_1fr] sm:gap-4">
+              <dt class="font-semibold text-heading">Email</dt>
+              <dd>
+                <a [href]="'mailto:' + dati.email" class="break-all text-primary hover:underline">{{
+                  dati.email
+                }}</a>
+              </dd>
+            </div>
+            <div class="grid gap-1 py-3 sm:grid-cols-[200px_1fr] sm:gap-4">
+              <dt class="font-semibold text-heading">PEC</dt>
+              <dd>
+                <a [href]="'mailto:' + dati.pec" class="break-all text-primary hover:underline">{{
+                  dati.pec
+                }}</a>
+              </dd>
+            </div>
+            <div class="grid gap-1 py-3 sm:grid-cols-[200px_1fr] sm:gap-4">
+              <dt class="font-semibold text-heading">Telefono</dt>
+              <dd>
+                <a [href]="'tel:' + telefonoLink" class="text-primary hover:underline">{{
+                  dati.telefono
+                }}</a>
+              </dd>
+            </div>
+          </dl>
+        </section>
+
+        <!-- Prenotazioni e prezzi -->
+        <section aria-labelledby="prenotazioni">
+          <h2 id="prenotazioni" class="font-heading text-2xl text-heading">
+            Prenotazioni e prezzi
+          </h2>
+          <p class="mt-4">
+            Le richieste di prenotazione inviate tramite WhatsApp o per telefono si intendono
+            confermate solo dopo la nostra risposta. Sul sito non si effettuano acquisti né
+            pagamenti.
+          </p>
+          <p class="mt-3">
+            Menu e prezzi pubblicati sul sito sono indicativi e possono cambiare senza preavviso.
+            Fanno fede il menu e i prezzi esposti nel locale al momento della consumazione. Le
+            stesse regole valgono per programma e orari degli eventi.
+          </p>
+        </section>
+
+        <!-- Allergeni -->
+        <section aria-labelledby="allergeni">
+          <h2 id="allergeni" class="font-heading text-2xl text-heading">Allergeni</h2>
+          <p class="mt-4">
+            Le informazioni sulle sostanze che provocano allergie o intolleranze (Reg. UE 1169/2011)
+            sono disponibili nel locale: chiedi al nostro personale prima di ordinare. Il menu
+            online non sostituisce queste informazioni.
+          </p>
+        </section>
+
+        <!-- Responsabilità e link esterni -->
+        <section aria-labelledby="responsabilita">
+          <h2 id="responsabilita" class="font-heading text-2xl text-heading">
+            Contenuti e link esterni
+          </h2>
+          <p class="mt-4">
+            Curiamo con attenzione i contenuti del sito, ma non possiamo garantire che siano sempre
+            completi e aggiornati. Il sito contiene link a servizi di terzi (WhatsApp, Google Maps,
+            Instagram, Facebook, TikTok): questi servizi hanno condizioni e informative proprie e
+            non siamo responsabili dei loro contenuti.
+          </p>
+        </section>
+
+        <!-- Copyright -->
+        <section aria-labelledby="copyright">
+          <h2 id="copyright" class="font-heading text-2xl text-heading">Copyright</h2>
+          <p class="mt-4">
+            © {{ anno }} {{ dati.nomeLegale }}. Testi, fotografie, logo e grafica di questo sito
+            sono protetti dal diritto d'autore (L. 633/1941). Non è consentito copiarli o
+            riutilizzarli senza autorizzazione scritta. I contenuti di terzi restano soggetti alle
+            licenze dei rispettivi autori.
+          </p>
+        </section>
+
+        <!-- Legge applicabile -->
+        <section aria-labelledby="legge">
+          <h2 id="legge" class="font-heading text-2xl text-heading">Legge applicabile e reclami</h2>
+          <p class="mt-4">
+            Le presenti note sono regolate dalla legge italiana. Per segnalazioni o reclami scrivi
+            all'email o alla PEC indicate sopra. Se sei un consumatore, è competente il foro del tuo
+            luogo di residenza o domicilio (art. 66-bis D.Lgs. 206/2005).
+          </p>
+        </section>
+
+        <!-- Riconoscimenti -->
+        <section aria-labelledby="riconoscimenti">
+          <h2 id="riconoscimenti" class="font-heading text-2xl text-heading">Riconoscimenti</h2>
+          <ul class="mt-4 list-disc space-y-2 pl-5">
+            <li>Font: Manrope e Trocchi (SIL Open Font License).</li>
+            <li>Icone: Font Awesome Free (icone CC BY 4.0, font SIL OFL, codice MIT).</li>
+            <li>
+              Mappa: dati © contributori
+              <a
+                href="https://www.openstreetmap.org/copyright"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-primary hover:underline"
+                >OpenStreetMap</a
+              >
+              (ODbL), riquadri OpenFreeMap e OpenMapTiles, libreria MapLibre GL JS (BSD).
+            </li>
+            <li>Sito realizzato con Angular.</li>
+          </ul>
+        </section>
+
+        <p class="border-t border-border-subtle pt-6 text-sm text-muted">
+          Ultimo aggiornamento: {{ ultimoAggiornamento }}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

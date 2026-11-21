@@ -1,0 +1,207 @@
+<section class="section w-full bg-surface">
+  <div class="container-page">
+    <div class="mx-auto max-w-3xl">
+      <span class="eyebrow">Informazioni legali</span>
+      <h1 class="section-title">Privacy e cookie</h1>
+      <p class="mt-6 text-base leading-relaxed text-pretty text-muted sm:text-lg">
+        Come trattiamo i dati di chi visita questo sito o ci contatta per prenotare, ai sensi
+        dell'art. 13 del Regolamento UE 2016/679 (GDPR).
+      </p>
+
+      <div class="mt-14 space-y-12 text-[15px] leading-relaxed text-body">
+        <!-- Titolare -->
+        <section aria-labelledby="titolare">
+          <h2 id="titolare" class="font-heading text-2xl text-heading">Titolare del trattamento</h2>
+          <p class="mt-4">
+            {{ dati.nomeLegale }}, che gestisce {{ dati.nomeCommerciale }} in {{ dati.via }}
+            {{ dati.civico }}, {{ dati.cap }} {{ dati.citta }} ({{ dati.provincia }}). P. IVA
+            {{ dati.partitaIva }}. Per qualsiasi richiesta sulla privacy scrivi a
+            <a [href]="'mailto:' + dati.email" class="break-all text-primary hover:underline">{{
+              dati.email
+            }}</a>
+            o alla PEC
+            <a [href]="'mailto:' + dati.pec" class="break-all text-primary hover:underline">{{
+              dati.pec
+            }}</a
+            >. Altri dati della società sono nelle
+            <a routerLink="/note-legali" class="text-primary hover:underline">note legali</a>.
+          </p>
+        </section>
+
+        <!-- Dati trattati -->
+        <section aria-labelledby="dati-trattati">
+          <h2 id="dati-trattati" class="font-heading text-2xl text-heading">
+            Quali dati trattiamo e perché
+          </h2>
+
+          <h3 class="mt-6 font-semibold text-heading">Dati di navigazione</h3>
+          <p class="mt-2">
+            Quando visiti il sito, i server che lo erogano registrano in automatico alcuni dati
+            tecnici: indirizzo IP, tipo di browser e dispositivo, data e ora della richiesta, pagine
+            e file richiesti. Servono a mostrarti il sito e a proteggerlo da abusi e attacchi. Non
+            li usiamo per identificarti né per profilarti.
+          </p>
+          <p class="mt-2">
+            <strong class="text-heading">Base giuridica:</strong> legittimo interesse al
+            funzionamento e alla sicurezza del sito (art. 6.1.f GDPR).
+            <strong class="text-heading">Conservazione:</strong> per il tempo strettamente
+            necessario, secondo le politiche dei fornitori indicati più sotto.
+          </p>
+
+          <h3 class="mt-6 font-semibold text-heading">Prenotazioni e contatti</h3>
+          <p class="mt-2">
+            Se prenoti un tavolo via WhatsApp o per telefono, trattiamo i dati che ci fornisci:
+            nome, numero di telefono, data, ora e numero di persone, più quanto scrivi nel
+            messaggio. Li usiamo solo per gestire la prenotazione e risponderti.
+          </p>
+          <p class="mt-2">
+            <strong class="text-heading">Base giuridica:</strong> esecuzione di misure
+            precontrattuali richieste da te (art. 6.1.b GDPR).
+            <strong class="text-heading">Conservazione:</strong> per il tempo necessario a gestire
+            la prenotazione. Fornire i dati è facoltativo, ma senza non possiamo prenotare.
+          </p>
+          <p class="mt-2">
+            WhatsApp è un servizio di WhatsApp Ireland Ltd., che tratta i dati come titolare
+            autonomo secondo la propria
+            <a
+              href="https://www.whatsapp.com/legal/privacy-policy-eea"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-primary hover:underline"
+              >informativa</a
+            >.
+          </p>
+
+          <h3 class="mt-6 font-semibold text-heading">Social network</h3>
+          <p class="mt-2">
+            Le icone di Instagram, Facebook e TikTok sono semplici link: il sito non carica plugin
+            dei social. Se li apri, il trattamento è regolato dalle informative di quei servizi.
+          </p>
+        </section>
+
+        <!-- Fornitori -->
+        <section aria-labelledby="fornitori">
+          <h2 id="fornitori" class="font-heading text-2xl text-heading">
+            Servizi di terze parti usati dal sito
+          </h2>
+          <p class="mt-4">
+            Per funzionare, il sito si appoggia ai servizi seguenti, che trattano i dati per nostro
+            conto o come titolari autonomi. Ciascuno riceve il tuo indirizzo IP quando il browser
+            carica i relativi contenuti.
+          </p>
+          <ul class="mt-4 list-disc space-y-3 pl-5">
+            <li>
+              <strong class="text-heading">Server del sito</strong>: il sito e il database di menu
+              ed eventi sono ospitati su un server dedicato gestito dal nostro fornitore tecnico,
+              che registra i dati di navigazione nei log. Caratteri tipografici e icone sono
+              ospitati sullo stesso server.
+            </li>
+            <li>
+              <strong class="text-heading">Cloudflare</strong> (Cloudflare, Inc.): protegge il sito
+              e ne distribuisce il traffico (CDN); conserva le immagini del sito.
+              <a
+                href="https://www.cloudflare.com/privacypolicy/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-primary hover:underline"
+                >Informativa</a
+              >.
+            </li>
+            <li>
+              <strong class="text-heading">Google</strong> (Google Ireland Ltd.): alcune fotografie
+              sono ospitate sui server Google.
+              <a
+                href="https://policies.google.com/privacy"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-primary hover:underline"
+                >Informativa</a
+              >.
+            </li>
+            <li>
+              <strong class="text-heading">Freepik</strong> (Freepik Company S.L.): una fotografia
+              della pagina iniziale è caricata dai suoi server.
+            </li>
+            <li>
+              <strong class="text-heading">OpenFreeMap</strong> (openfreemap.org): fornisce la mappa
+              della sezione "Dove trovarci", basata su dati OpenStreetMap. Non installa cookie.
+            </li>
+          </ul>
+          <p class="mt-4">
+            Alcuni di questi fornitori possono trattare dati anche fuori dall'Unione europea. Google
+            e Cloudflare aderiscono all'EU-US Data Privacy Framework, riconosciuto adeguato dalla
+            Commissione europea.
+          </p>
+          <p class="mt-3">
+            I dati non vengono venduti, né diffusi, né usati per decisioni automatizzate o
+            profilazione.
+          </p>
+        </section>
+
+        <!-- Cookie -->
+        <section id="cookie" aria-labelledby="cookie-titolo">
+          <h2 id="cookie-titolo" class="font-heading text-2xl text-heading">Cookie</h2>
+          <p class="mt-4">
+            Questo sito <strong class="text-heading">non usa cookie</strong>: né tecnici, né di
+            profilazione, né di statistica, e i servizi di terze parti elencati sopra non ne
+            installano. Per questo non ti chiediamo alcun consenso. L'unico dato salvato nel browser
+            è una copia temporanea dei riquadri della mappa (cache tecnica), che serve a caricarla
+            più in fretta e non contiene dati personali.
+          </p>
+          <p class="mt-3">
+            Il pulsante "Indicazioni stradali" apre Google Maps in una nuova scheda: da quel momento
+            si applicano la
+            <a
+              href="https://policies.google.com/privacy"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-primary hover:underline"
+              >privacy</a
+            >
+            e la
+            <a
+              href="https://policies.google.com/technologies/cookies"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-primary hover:underline"
+              >cookie policy di Google</a
+            >.
+          </p>
+        </section>
+
+        <!-- Diritti -->
+        <section aria-labelledby="diritti">
+          <h2 id="diritti" class="font-heading text-2xl text-heading">I tuoi diritti</h2>
+          <p class="mt-4">
+            Puoi chiedere in ogni momento l'accesso ai tuoi dati, la rettifica, la cancellazione, la
+            limitazione del trattamento, la portabilità, e opporti al trattamento basato sul
+            legittimo interesse (artt. 15-22 GDPR). Scrivi a
+            <a [href]="'mailto:' + dati.email" class="break-all text-primary hover:underline">{{
+              dati.email
+            }}</a>
+            o alla PEC
+            <a [href]="'mailto:' + dati.pec" class="break-all text-primary hover:underline">{{
+              dati.pec
+            }}</a
+            >.
+          </p>
+          <p class="mt-3">
+            Se ritieni che il trattamento violi il GDPR, puoi presentare reclamo al
+            <a
+              href="https://www.garanteprivacy.it"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-primary hover:underline"
+              >Garante per la protezione dei dati personali</a
+            >.
+          </p>
+        </section>
+
+        <p class="border-t border-border-subtle pt-6 text-sm text-muted">
+          Ultimo aggiornamento: {{ ultimoAggiornamento }}. Aggiorneremo questa pagina se cambiano i
+          servizi usati dal sito.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

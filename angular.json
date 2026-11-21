@@ -26,7 +26,27 @@
                 "input": "public"
               }
             ],
+            "allowedCommonJsDependencies": ["maplibre-gl"],
             "styles": [
+              "node_modules/@fontsource/manrope/latin-400.css",
+              "node_modules/@fontsource/manrope/latin-ext-400.css",
+              "node_modules/@fontsource/manrope/latin-500.css",
+              "node_modules/@fontsource/manrope/latin-ext-500.css",
+              "node_modules/@fontsource/manrope/latin-600.css",
+              "node_modules/@fontsource/manrope/latin-ext-600.css",
+              "node_modules/@fontsource/manrope/latin-700.css",
+              "node_modules/@fontsource/manrope/latin-ext-700.css",
+              "node_modules/@fontsource/trocchi/latin-400.css",
+              "node_modules/@fontsource/trocchi/latin-ext-400.css",
+              "node_modules/@fortawesome/fontawesome-free/css/fontawesome.min.css",
+              "node_modules/@fortawesome/fontawesome-free/css/solid.min.css",
+              "node_modules/@fortawesome/fontawesome-free/css/regular.min.css",
+              "node_modules/@fortawesome/fontawesome-free/css/brands.min.css",
+              {
+                "input": "node_modules/maplibre-gl/dist/maplibre-gl.css",
+                "bundleName": "maplibre",
+                "inject": false
+              },
               "src/styles.css"
             ]
           },

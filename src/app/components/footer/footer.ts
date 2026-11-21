@@ -1,8 +1,10 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { DatiAttivitaService } from '../../services/dati-attivita/dati-attivita.service';
 
 @Component({
   selector: 'app-footer',
+  imports: [RouterLink],
   templateUrl: './footer.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
