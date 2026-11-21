@@ -7,137 +7,83 @@
     Scopri i nostri <strong>menu</strong>
   </h1>
 
-  <!-- Blocco dei popup dei menu fissi -->
-  <div
-    class="flex flex-col lg:flex-row items-center justify-center w-full gap-6 sm:gap-8 max-w-7xl mx-auto mb-12"
-  >
-    <app-modal-caffetteria class="w-full lg:w-1/2" />
-    <app-modal-drink class="w-full lg:w-1/2" />
-  </div>
-
-  <!-- SEZIONE CARD COMBO: Carosello su Mobile, 3 card quasi attaccate e centrate su PC -->
-  <div class="w-full max-w-7xl mx-auto">
+  <!-- Menu caricati da PocketBase (collezioni site_menus, site_menu_sections, site_menu_items) -->
+  @if (caricamento()) {
+    <p class="text-center text-stone-400 mb-12">Caricamento menu…</p>
+  } @else if (errore() || menu().length === 0) {
+    <p class="text-center text-stone-400 mb-12">
+      Menu non disponibile al momento, chiedi al bancone.
+    </p>
+  } @else {
     <div
-      class="flex md:justify-center items-stretch gap-2 overflow-x-auto md:overflow-visible snap-x snap-mandatory pb-6 md:pb-0 px-2 md:px-0 scrollbar-hide"
+      class="flex flex-col lg:flex-row items-stretch justify-center w-full gap-6 sm:gap-8 max-w-7xl mx-auto mb-12"
     >
-      <!-- CARD 1: Mattina / Colazione (Chiara) -->
+      @for (m of menu(); track m.menu.id) {
+        <app-menu-card class="w-full lg:w-1/2 flex justify-center" [dati]="m" />
+      }
+    </div>
+  }
+
+  <!-- SEZIONE CARD COMBO (collezione site_combos): Carosello su Mobile, card centrate su PC -->
+  @if (combo().length) {
+    <div class="w-full max-w-7xl mx-auto">
       <div
-        class="snap-center shrink-0 w-[75%] sm:w-[50%] md:w-[270px] bg-[#fbf8f2] rounded-2xl p-3.5 sm:p-4 shadow-lg border border-stone-200/80 flex flex-col justify-between transition-all duration-300 hover:shadow-xl relative text-stone-900"
+        class="flex md:justify-center items-stretch gap-2 overflow-x-auto md:overflow-visible snap-x snap-mandatory pb-6 md:pb-0 px-2 md:px-0 scrollbar-hide"
       >
-        <div>
-          <div class="flex items-start justify-between mb-1.5">
-            <span class="font-custom text-base text-[#c19a6b] italic font-semibold"> Combo </span>
-          </div>
-
-          <h3 class="text-xl sm:text-2xl font-bold font-custom text-stone-900 mb-3">Colazione</h3>
-
-          <ul class="space-y-1.5 text-stone-700 text-xs sm:text-sm mb-4">
-            <li class="flex items-center gap-2.5">
-              <span class="w-1.5 h-1.5 rounded-full bg-[#c19a6b]"></span>
-              <span>Caffè o Cappuccino</span>
-            </li>
-            <li class="flex items-center gap-2.5">
-              <span class="w-1.5 h-1.5 rounded-full bg-[#c19a6b]"></span>
-              <span>Cornetto</span>
-            </li>
-            <li class="flex items-center gap-2.5">
-              <span class="w-1.5 h-1.5 rounded-full bg-[#c19a6b]"></span>
-              <span>Succo o Spremuta</span>
-            </li>
-          </ul>
-        </div>
-
-        <div>
-          <div class="border-t border-dashed border-stone-300 pt-2.5 mb-2.5"></div>
-          <div class="flex items-end justify-between">
+        @for (c of combo(); track c.id) {
+          <div
+            class="snap-center shrink-0 w-[75%] sm:w-[50%] md:w-[270px] rounded-2xl p-3.5 sm:p-4 shadow-lg border flex flex-col justify-between transition-all duration-300 hover:shadow-xl relative"
+            [class]="
+              c.highlight
+                ? 'bg-[#C19A6B] border-stone-800 text-white'
+                : 'bg-[#fbf8f2] border-stone-200/80 text-stone-900'
+            "
+          >
             <div>
-              <span class="text-[11px] text-stone-500 block mb-0.5">Prezzo combo</span>
-              <span class="text-xl sm:text-2xl font-extrabold font-custom text-stone-900"
-                >4,00 €</span
+              <div class="flex items-start justify-between mb-1.5">
+                <span
+                  class="font-custom text-base italic font-semibold"
+                  [class]="c.highlight ? 'text-white' : 'text-[#c19a6b]'"
+                >
+                  {{ c.label || 'Combo' }}
+                </span>
+              </div>
+
+              <h3 class="text-xl sm:text-2xl font-bold font-custom mb-3">{{ c.name }}</h3>
+
+              <ul
+                class="space-y-1.5 text-xs sm:text-sm mb-4"
+                [class]="c.highlight ? 'text-stone-200' : 'text-stone-700'"
               >
+                @for (voce of c.items; track $index) {
+                  <li class="flex items-center gap-2.5">
+                    <span
+                      class="w-1.5 h-1.5 rounded-full"
+                      [class]="c.highlight ? 'bg-white' : 'bg-[#c19a6b]'"
+                    ></span>
+                    <span>{{ voce }}</span>
+                  </li>
+                }
+              </ul>
             </div>
-          </div>
-        </div>
-      </div>
 
-      <!-- CARD 2: Mezzogiorno / Pranzo (Scura a contrasto) -->
-      <div
-        class="snap-center shrink-0 w-[75%] sm:w-[50%] md:w-[270px] bg-[#C19A6B] rounded-2xl p-3.5 sm:p-4 shadow-lg border border-stone-800 flex flex-col justify-between transition-all duration-300 hover:shadow-xl relative text-white"
-      >
-        <div>
-          <div class="flex items-start justify-between mb-1.5">
-            <span class="font-custom text-base text-white italic font-semibold"> Combo </span>
-          </div>
-
-          <h3 class="text-xl sm:text-2xl font-bold font-custom text-white mb-3">Pranzo</h3>
-
-          <ul class="space-y-1.5 text-stone-200 text-xs sm:text-sm mb-4">
-            <li class="flex items-center gap-2.5">
-              <span class="w-1.5 h-1.5 rounded-full bg-white"></span>
-              <span>Primo o Secondo</span>
-            </li>
-            <li class="flex items-center gap-2.5">
-              <span class="w-1.5 h-1.5 rounded-full bg-white"></span>
-              <span>Bibita</span>
-            </li>
-            <li class="flex items-center gap-2.5">
-              <span class="w-1.5 h-1.5 rounded-full bg-white"></span>
-              <span>Caffè</span>
-            </li>
-          </ul>
-        </div>
-
-        <div>
-          <div class="border-t border-dashed border-stone-700 pt-2.5 mb-2.5"></div>
-          <div class="flex items-end justify-between">
             <div>
-              <span class="text-[11px] text-white block mb-0.5">Prezzo combo</span>
-              <span class="text-xl sm:text-2xl font-extrabold font-custom text-white">9,00 €</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- CARD 3: Sera / Aperitivo (Chiara) -->
-      <div
-        class="snap-center shrink-0 w-[75%] sm:w-[50%] md:w-[270px] bg-[#fbf8f2] rounded-2xl p-3.5 sm:p-4 shadow-lg border border-stone-200/80 flex flex-col justify-between transition-all duration-300 hover:shadow-xl relative text-stone-900"
-      >
-        <div>
-          <div class="flex items-start justify-between mb-1.5">
-            <span class="font-custom text-base text-[#c19a6b] italic font-semibold"> Combo </span>
-          </div>
-
-          <h3 class="text-xl sm:text-2xl font-bold font-custom text-stone-900 mb-3">Aperitivo</h3>
-
-          <ul class="space-y-1.5 text-stone-700 text-xs sm:text-sm mb-4">
-            <li class="flex items-center gap-2.5">
-              <span class="w-1.5 h-1.5 rounded-full bg-[#c19a6b]"></span>
-              <span>Tagliere per 2 persone</span>
-            </li>
-            <li class="flex items-center gap-2.5">
-              <span class="w-1.5 h-1.5 rounded-full bg-[#c19a6b]"></span>
-              <span>2 Spritz</span>
-            </li>
-          </ul>
-        </div>
-
-        <div>
-          <div class="border-t border-dashed border-stone-300 pt-2.5 mb-2.5"></div>
-          <div class="flex items-end justify-between">
-            <div>
-              <span class="text-[11px] text-stone-500 block mb-0.5">Prezzo combo</span>
-              <span class="text-xl sm:text-2xl font-extrabold font-custom text-stone-900"
-                >22,00 €</span
+              <div
+                class="border-t border-dashed pt-2.5 mb-2.5"
+                [class]="c.highlight ? 'border-stone-700' : 'border-stone-300'"
+              ></div>
+              <span
+                class="text-[11px] block mb-0.5"
+                [class]="c.highlight ? 'text-white' : 'text-stone-500'"
+                >Prezzo combo</span
               >
+              <span class="text-xl sm:text-2xl font-extrabold font-custom">{{
+                c.price | prezzo
+              }}</span>
             </div>
           </div>
-        </div>
+        }
       </div>
     </div>
-
-    <!-- Indicatore visivo di scorrimento visibile solo su mobile -->
-    <div
-      class="flex md:hidden justify-center items-center gap-1.5 mt-3 text-xs text-stone-400 font-medium"
-    ></div>
-  </div>
+  }
 </div>

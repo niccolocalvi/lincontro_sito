@@ -1,0 +1,32 @@
+<!-- Sezioni e voci da PocketBase (site_menu_sections, site_menu_items) -->
+<div class="columns-1 md:columns-2 gap-x-12 text-stone-800">
+  @for (s of sezioni(); track s.sezione.id) {
+    @if (s.voci.length) {
+      <div class="break-inside-avoid mb-6">
+        <h3 class="text-lg font-serif font-bold mb-2">{{ s.sezione.name }}</h3>
+        <div class="space-y-1.5 text-sm">
+          @for (voce of s.voci; track voce.id) {
+            <div class="flex justify-between gap-4 border-b border-dotted border-stone-300 pb-1">
+              <span>
+                {{ voce.name }}
+                @if (voce.note) {
+                  <span class="text-xs text-stone-500">· {{ voce.note }}</span>
+                }
+              </span>
+              <span class="font-semibold whitespace-nowrap">
+                @if (voce.price_label) {
+                  {{ voce.price_label }}
+                } @else {
+                  @if (voce.starting_from) {
+                    da
+                  }
+                  {{ voce.price | prezzo }}
+                }
+              </span>
+            </div>
+          }
+        </div>
+      </div>
+    }
+  }
+</div>

@@ -3,9 +3,14 @@ import PocketBase from 'pocketbase';
 import {
   Categoria,
   CategoriaConProdotti,
+  Combo,
   Evento,
+  MenuSito,
+  MenuSitoCompleto,
   OrarioApertura,
   Prodotto,
+  SezioneMenu,
+  VoceMenu,
 } from '../../interfaces/pocketbase';
 
 export const POCKETBASE_URL = 'https://api.lincontrobar.it';
@@ -60,6 +65,42 @@ export class PocketbaseService {
       categoria,
       prodotti: prodotti.filter((p) => p.category === categoria.id),
     }));
+  }
+
+  /**
+   * Menu del sito (collezioni site_*), separato dal listino prezzi.
+   * Menu attivi con sezioni e voci attive, già ordinati e raggruppati.
+   */
+  async getMenuSito(): Promise<MenuSitoCompleto[]> {
+    const [menu, sezioni, voci] = await Promise.all([
+      this.pb.collection('site_menus').getFullList<MenuSito>({
+        filter: 'active = true',
+        sort: 'sort_order',
+      }),
+      this.pb.collection('site_menu_sections').getFullList<SezioneMenu>({
+        filter: 'active = true',
+        sort: 'sort_order',
+      }),
+      this.pb.collection('site_menu_items').getFullList<VoceMenu>({
+        filter: 'active = true',
+        sort: 'sort_order',
+      }),
+    ]);
+    return menu.map((m) => ({
+      menu: m,
+      immagine: m.card_image ? this.pb.files.getURL(m, m.card_image) : '',
+      sezioni: sezioni
+        .filter((s) => s.menu === m.id)
+        .map((sezione) => ({ sezione, voci: voci.filter((v) => v.section === sezione.id) })),
+    }));
+  }
+
+  /** Combo attive del sito, in ordine di visualizzazione. */
+  getCombo(): Promise<Combo[]> {
+    return this.pb.collection('site_combos').getFullList<Combo>({
+      filter: 'active = true',
+      sort: 'sort_order',
+    });
   }
 
   /** Eventi attivi non ancora terminati, dal più vicino. */

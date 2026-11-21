@@ -1,0 +1,405 @@
+[
+  {
+    "id": "pbc_sitemenus0",
+    "name": "site_menus",
+    "type": "base",
+    "system": false,
+    "listRule": "",
+    "viewRule": "",
+    "createRule": null,
+    "updateRule": null,
+    "deleteRule": null,
+    "fields": [
+      {
+        "id": "text_id",
+        "name": "id",
+        "type": "text",
+        "primaryKey": true,
+        "required": true,
+        "system": true,
+        "pattern": "^[a-z0-9]+$",
+        "autogeneratePattern": "[a-z0-9]{15}",
+        "min": 15,
+        "max": 15
+      },
+      {
+        "name": "slug",
+        "type": "text",
+        "required": true,
+        "system": false,
+        "id": "sitemenu_slug"
+      },
+      {
+        "name": "card_title",
+        "type": "text",
+        "required": true,
+        "system": false,
+        "id": "sitemenu_card_title"
+      },
+      {
+        "name": "card_badge",
+        "type": "text",
+        "required": false,
+        "system": false,
+        "id": "sitemenu_card_badge"
+      },
+      {
+        "name": "card_description",
+        "type": "text",
+        "required": false,
+        "system": false,
+        "id": "sitemenu_card_description"
+      },
+      {
+        "name": "card_image",
+        "type": "file",
+        "maxSelect": 1,
+        "maxSize": 5242880,
+        "mimeTypes": ["image/jpeg", "image/png", "image/webp"],
+        "system": false,
+        "id": "sitemenu_card_image"
+      },
+      {
+        "name": "card_image_alt",
+        "type": "text",
+        "required": false,
+        "system": false,
+        "id": "sitemenu_card_image_alt"
+      },
+      {
+        "name": "title",
+        "type": "text",
+        "required": true,
+        "system": false,
+        "id": "sitemenu_title"
+      },
+      {
+        "name": "subtitle",
+        "type": "text",
+        "required": false,
+        "system": false,
+        "id": "sitemenu_subtitle"
+      },
+      {
+        "name": "banner_label",
+        "type": "text",
+        "required": false,
+        "system": false,
+        "id": "sitemenu_banner_label"
+      },
+      {
+        "name": "banner_text",
+        "type": "text",
+        "required": false,
+        "system": false,
+        "id": "sitemenu_banner_text"
+      },
+      {
+        "name": "banner_price",
+        "type": "number",
+        "required": false,
+        "system": false,
+        "id": "sitemenu_banner_price"
+      },
+      {
+        "name": "footnote",
+        "type": "text",
+        "required": false,
+        "system": false,
+        "id": "sitemenu_footnote"
+      },
+      {
+        "name": "sort_order",
+        "type": "number",
+        "required": false,
+        "system": false,
+        "id": "sitemenu_sort_order"
+      },
+      {
+        "name": "active",
+        "type": "bool",
+        "system": false,
+        "id": "sitemenu_active"
+      },
+      {
+        "id": "sitemenu_created",
+        "name": "created",
+        "type": "autodate",
+        "onCreate": true,
+        "onUpdate": false,
+        "system": true
+      },
+      {
+        "id": "sitemenu_updated",
+        "name": "updated",
+        "type": "autodate",
+        "onCreate": true,
+        "onUpdate": true,
+        "system": true
+      }
+    ],
+    "indexes": ["CREATE UNIQUE INDEX `idx_site_menus_slug` ON `site_menus` (`slug`)"]
+  },
+  {
+    "id": "pbc_sitesects0",
+    "name": "site_menu_sections",
+    "type": "base",
+    "system": false,
+    "listRule": "",
+    "viewRule": "",
+    "createRule": null,
+    "updateRule": null,
+    "deleteRule": null,
+    "fields": [
+      {
+        "id": "text_id",
+        "name": "id",
+        "type": "text",
+        "primaryKey": true,
+        "required": true,
+        "system": true,
+        "pattern": "^[a-z0-9]+$",
+        "autogeneratePattern": "[a-z0-9]{15}",
+        "min": 15,
+        "max": 15
+      },
+      {
+        "name": "menu",
+        "type": "relation",
+        "required": true,
+        "collectionId": "pbc_sitemenus0",
+        "cascadeDelete": true,
+        "maxSelect": 1,
+        "minSelect": 0,
+        "system": false,
+        "id": "sitesect_menu"
+      },
+      {
+        "name": "name",
+        "type": "text",
+        "required": true,
+        "system": false,
+        "id": "sitesect_name"
+      },
+      {
+        "name": "sort_order",
+        "type": "number",
+        "required": false,
+        "system": false,
+        "id": "sitesect_sort_order"
+      },
+      {
+        "name": "active",
+        "type": "bool",
+        "system": false,
+        "id": "sitesect_active"
+      },
+      {
+        "id": "sitesect_created",
+        "name": "created",
+        "type": "autodate",
+        "onCreate": true,
+        "onUpdate": false,
+        "system": true
+      },
+      {
+        "id": "sitesect_updated",
+        "name": "updated",
+        "type": "autodate",
+        "onCreate": true,
+        "onUpdate": true,
+        "system": true
+      }
+    ],
+    "indexes": []
+  },
+  {
+    "id": "pbc_siteitems0",
+    "name": "site_menu_items",
+    "type": "base",
+    "system": false,
+    "listRule": "",
+    "viewRule": "",
+    "createRule": null,
+    "updateRule": null,
+    "deleteRule": null,
+    "fields": [
+      {
+        "id": "text_id",
+        "name": "id",
+        "type": "text",
+        "primaryKey": true,
+        "required": true,
+        "system": true,
+        "pattern": "^[a-z0-9]+$",
+        "autogeneratePattern": "[a-z0-9]{15}",
+        "min": 15,
+        "max": 15
+      },
+      {
+        "name": "section",
+        "type": "relation",
+        "required": true,
+        "collectionId": "pbc_sitesects0",
+        "cascadeDelete": true,
+        "maxSelect": 1,
+        "minSelect": 0,
+        "system": false,
+        "id": "siteitem_section"
+      },
+      {
+        "name": "name",
+        "type": "text",
+        "required": true,
+        "system": false,
+        "id": "siteitem_name"
+      },
+      {
+        "name": "note",
+        "type": "text",
+        "required": false,
+        "system": false,
+        "id": "siteitem_note"
+      },
+      {
+        "name": "price",
+        "type": "number",
+        "required": false,
+        "system": false,
+        "id": "siteitem_price"
+      },
+      {
+        "name": "price_label",
+        "type": "text",
+        "required": false,
+        "system": false,
+        "id": "siteitem_price_label"
+      },
+      {
+        "name": "starting_from",
+        "type": "bool",
+        "system": false,
+        "id": "siteitem_starting_from"
+      },
+      {
+        "name": "sort_order",
+        "type": "number",
+        "required": false,
+        "system": false,
+        "id": "siteitem_sort_order"
+      },
+      {
+        "name": "active",
+        "type": "bool",
+        "system": false,
+        "id": "siteitem_active"
+      },
+      {
+        "id": "siteitem_created",
+        "name": "created",
+        "type": "autodate",
+        "onCreate": true,
+        "onUpdate": false,
+        "system": true
+      },
+      {
+        "id": "siteitem_updated",
+        "name": "updated",
+        "type": "autodate",
+        "onCreate": true,
+        "onUpdate": true,
+        "system": true
+      }
+    ],
+    "indexes": []
+  },
+  {
+    "id": "pbc_sitecombo0",
+    "name": "site_combos",
+    "type": "base",
+    "system": false,
+    "listRule": "",
+    "viewRule": "",
+    "createRule": null,
+    "updateRule": null,
+    "deleteRule": null,
+    "fields": [
+      {
+        "id": "text_id",
+        "name": "id",
+        "type": "text",
+        "primaryKey": true,
+        "required": true,
+        "system": true,
+        "pattern": "^[a-z0-9]+$",
+        "autogeneratePattern": "[a-z0-9]{15}",
+        "min": 15,
+        "max": 15
+      },
+      {
+        "name": "name",
+        "type": "text",
+        "required": true,
+        "system": false,
+        "id": "sitecomb_name"
+      },
+      {
+        "name": "label",
+        "type": "text",
+        "required": false,
+        "system": false,
+        "id": "sitecomb_label"
+      },
+      {
+        "name": "items",
+        "type": "json",
+        "maxSize": 0,
+        "system": false,
+        "id": "sitecomb_items"
+      },
+      {
+        "name": "price",
+        "type": "number",
+        "required": true,
+        "system": false,
+        "id": "sitecomb_price"
+      },
+      {
+        "name": "highlight",
+        "type": "bool",
+        "system": false,
+        "id": "sitecomb_highlight"
+      },
+      {
+        "name": "sort_order",
+        "type": "number",
+        "required": false,
+        "system": false,
+        "id": "sitecomb_sort_order"
+      },
+      {
+        "name": "active",
+        "type": "bool",
+        "system": false,
+        "id": "sitecomb_active"
+      },
+      {
+        "id": "sitecomb_created",
+        "name": "created",
+        "type": "autodate",
+        "onCreate": true,
+        "onUpdate": false,
+        "system": true
+      },
+      {
+        "id": "sitecomb_updated",
+        "name": "updated",
+        "type": "autodate",
+        "onCreate": true,
+        "onUpdate": true,
+        "system": true
+      }
+    ],
+    "indexes": []
+  }
+]
