@@ -1,42 +1,36 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ModalCaffetteria } from '../modal-caffetteria/modal-caffetteria';
-import { ModalDrink } from '../modal-drink/modal-drink';
-
-interface Combo {
-  momento: string;
-  titolo: string;
-  voci: string[];
-  prezzo: string;
-  /** Card scura messa in evidenza al centro. */
-  inEvidenza?: boolean;
-}
+import { ChangeDetectionStrategy, Component, OnInit, inject, signal } from '@angular/core';
+import { Combo, MenuSitoCompleto } from '../../interfaces/pocketbase';
+import { PrezzoPipe } from '../../pipes/prezzo.pipe';
+import { PocketbaseService } from '../../services/pocketbase/pocketbase.service';
+import { MenuCard } from '../menu-card/menu-card';
 
 @Component({
   selector: 'app-menu',
-  imports: [ModalCaffetteria, ModalDrink],
+  imports: [MenuCard, PrezzoPipe],
   templateUrl: './menu.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class Menu {
-  protected readonly combo: Combo[] = [
-    {
-      momento: 'Mattina',
-      titolo: 'Colazione',
-      voci: ['Caffè o Cappuccino', 'Cornetto', 'Succo o Spremuta'],
-      prezzo: '4,00 €',
-    },
-    {
-      momento: 'Mezzogiorno',
-      titolo: 'Pranzo',
-      voci: ['Primo o Secondo', 'Bibita', 'Caffè'],
-      prezzo: '9,00 €',
-      inEvidenza: true,
-    },
-    {
-      momento: 'Sera',
-      titolo: 'Aperitivo',
-      voci: ['Tagliere per 2 persone', '2 Spritz'],
-      prezzo: '22,00 €',
-    },
-  ];
+export class Menu implements OnInit {
+  private readonly pocketbase = inject(PocketbaseService);
+
+  protected readonly menu = signal<MenuSitoCompleto[]>([]);
+  protected readonly combo = signal<Combo[]>([]);
+  protected readonly caricamento = signal(true);
+  protected readonly errore = signal(false);
+
+  async ngOnInit(): Promise<void> {
+    try {
+      const [menu, combo] = await Promise.all([
+        this.pocketbase.getMenuSito(),
+        this.pocketbase.getCombo(),
+      ]);
+      this.menu.set(menu);
+      this.combo.set(combo);
+    } catch (error) {
+      console.error('Errore nel caricamento del menu da PocketBase:', error);
+      this.errore.set(true);
+    } finally {
+      this.caricamento.set(false);
+    }
+  }
 }

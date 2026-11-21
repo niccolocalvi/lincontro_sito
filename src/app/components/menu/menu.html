@@ -9,69 +9,80 @@
       </h2>
     </div>
 
-    <!-- Card dei menu (aprono le modali) -->
-    <div class="mt-14 grid grid-cols-1 gap-6 lg:grid-cols-2">
-      <app-modal-caffetteria />
-      <app-modal-drink />
-    </div>
-
-    <!-- SEZIONE CARD COMBO: Carosello su Mobile, 3 colonne su desktop -->
-    <div class="mt-20">
-      <div class="mb-8 flex items-end justify-between gap-4">
-        <h3 class="font-heading text-2xl text-heading sm:text-3xl">Le nostre combo</h3>
-        <span class="text-sm text-muted md:hidden"
-          >Scorri <i class="fa-solid fa-arrow-right ml-1 text-xs"></i
-        ></span>
-      </div>
-
-      <div
-        class="scrollbar-hide -mx-5 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-2 sm:-mx-8 sm:px-8 md:mx-0 md:grid md:grid-cols-3 md:gap-6 md:overflow-visible md:px-0"
-      >
-        @for (c of combo; track c.titolo) {
-          <article
-            class="flex w-[78%] shrink-0 snap-center flex-col rounded-3xl p-7 transition-all duration-300 sm:w-[55%] md:w-auto"
-            [class]="
-              c.inEvidenza
-                ? 'bg-dark text-white shadow-card-hover'
-                : 'border border-border bg-surface text-heading hover:shadow-card'
-            "
-          >
-            <span
-              class="text-[11px] font-semibold tracking-[0.2em] uppercase"
-              [class]="c.inEvidenza ? 'text-primary-light' : 'text-primary'"
-              >Combo · {{ c.momento }}</span
-            >
-            <h4 class="mt-3 font-custom text-3xl">{{ c.titolo }}</h4>
-
-            <ul class="mt-6 flex-1 space-y-2.5 text-[15px]">
-              @for (voce of c.voci; track voce) {
-                <li
-                  class="flex items-center gap-3"
-                  [class]="c.inEvidenza ? 'text-text-on-dark-body' : 'text-body'"
-                >
-                  <i
-                    class="fa-solid fa-check text-xs"
-                    [class]="c.inEvidenza ? 'text-primary-light' : 'text-primary'"
-                  ></i>
-                  <span>{{ voce }}</span>
-                </li>
-              }
-            </ul>
-
-            <div
-              class="mt-8 flex items-baseline justify-between border-t pt-5"
-              [class]="c.inEvidenza ? 'border-white/15' : 'border-border'"
-            >
-              <span
-                class="text-xs"
-                [class]="c.inEvidenza ? 'text-text-on-dark-subtle' : 'text-muted-lighter'"
-                >Prezzo combo</span
-              >
-              <span class="font-heading text-3xl tabular-nums">{{ c.prezzo }}</span>
-            </div>
-          </article>
+    <!-- Card dei menu da PocketBase (site_menus, site_menu_sections, site_menu_items) -->
+    @if (caricamento()) {
+      <p class="mt-14 text-center text-muted">Caricamento menu…</p>
+    } @else if (errore() || menu().length === 0) {
+      <p class="mt-14 text-center text-muted">
+        Menu non disponibile al momento, chiedi al bancone.
+      </p>
+    } @else {
+      <div class="mt-14 grid grid-cols-1 gap-6 lg:grid-cols-2">
+        @for (m of menu(); track m.menu.id) {
+          <app-menu-card [dati]="m" />
         }
       </div>
-    </div>
+    }
+
+    <!-- SEZIONE CARD COMBO (site_combos): Carosello su Mobile, 3 colonne su desktop -->
+    @if (combo().length) {
+      <div class="mt-20">
+        <div class="mb-8 flex items-end justify-between gap-4">
+          <h3 class="font-heading text-2xl text-heading sm:text-3xl">Le nostre combo</h3>
+          <span class="text-sm text-muted md:hidden"
+            >Scorri <i class="fa-solid fa-arrow-right ml-1 text-xs"></i
+          ></span>
+        </div>
+
+        <div
+          class="scrollbar-hide -mx-5 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-2 sm:-mx-8 sm:px-8 md:mx-0 md:grid md:grid-cols-3 md:gap-6 md:overflow-visible md:px-0"
+        >
+          @for (c of combo(); track c.id) {
+            <article
+              class="flex w-[78%] shrink-0 snap-center flex-col rounded-3xl p-7 transition-all duration-300 sm:w-[55%] md:w-auto"
+              [class]="
+                c.highlight
+                  ? 'bg-dark text-white shadow-card-hover'
+                  : 'border border-border bg-surface text-heading hover:shadow-card'
+              "
+            >
+              <span
+                class="text-[11px] font-semibold tracking-[0.2em] uppercase"
+                [class]="c.highlight ? 'text-primary-light' : 'text-primary'"
+                >{{ c.label || 'Combo' }}</span
+              >
+              <h4 class="mt-3 font-custom text-3xl">{{ c.name }}</h4>
+
+              <ul class="mt-6 flex-1 space-y-2.5 text-[15px]">
+                @for (voce of c.items; track $index) {
+                  <li
+                    class="flex items-center gap-3"
+                    [class]="c.highlight ? 'text-text-on-dark-body' : 'text-body'"
+                  >
+                    <i
+                      class="fa-solid fa-check text-xs"
+                      [class]="c.highlight ? 'text-primary-light' : 'text-primary'"
+                    ></i>
+                    <span>{{ voce }}</span>
+                  </li>
+                }
+              </ul>
+
+              <div
+                class="mt-8 flex items-baseline justify-between border-t pt-5"
+                [class]="c.highlight ? 'border-white/15' : 'border-border'"
+              >
+                <span
+                  class="text-xs"
+                  [class]="c.highlight ? 'text-text-on-dark-subtle' : 'text-muted-lighter'"
+                  >Prezzo combo</span
+                >
+                <span class="font-heading text-3xl tabular-nums">{{ c.price | prezzo }}</span>
+              </div>
+            </article>
+          }
+        </div>
+      </div>
+    }
   </div>
 </section>

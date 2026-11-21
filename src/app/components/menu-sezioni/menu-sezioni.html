@@ -1,0 +1,32 @@
+<!-- Sezioni e voci da PocketBase (site_menu_sections, site_menu_items) -->
+<div class="columns-1 gap-x-12 md:columns-2">
+  @for (s of sezioni(); track s.sezione.id) {
+    @if (s.voci.length) {
+      <div class="mb-8 break-inside-avoid">
+        <h3 class="menu-category">{{ s.sezione.name }}</h3>
+        <div>
+          @for (voce of s.voci; track voce.id) {
+            <div class="menu-row">
+              <span>
+                {{ voce.name }}
+                @if (voce.note) {
+                  <span class="text-xs text-muted">· {{ voce.note }}</span>
+                }
+              </span>
+              <span>
+                @if (voce.price_label) {
+                  {{ voce.price_label }}
+                } @else {
+                  @if (voce.starting_from) {
+                    da
+                  }
+                  {{ voce.price | prezzo }}
+                }
+              </span>
+            </div>
+          }
+        </div>
+      </div>
+    }
+  }
+</div>
