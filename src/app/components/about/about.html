@@ -1,7 +1,7 @@
 <section id="chi-siamo" class="section scroll-mt-24 w-full bg-surface">
   <div class="container-page grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
-    <!-- 1. TITOLO, PARAGRAFO E PUNTI DI FORZA -->
-    <div class="flex flex-col">
+    <!-- 1. TITOLO, PARAGRAFO E PUNTI DI FORZA (SINISTRA) -->
+    <div class="min-w-0 flex flex-col">
       <span class="eyebrow">Dal 2023 a Valcanneto</span>
       <h2 class="section-title">Chi <span class="font-custom text-primary">siamo</span></h2>
       <p class="mt-6 max-w-xl text-base leading-relaxed text-muted sm:text-lg">
@@ -13,46 +13,50 @@
         preparare ciò che desideri.
       </p>
 
-      <!-- Punti di forza -->
-      <ul class="mt-8 flex flex-wrap gap-2.5 sm:flex-nowrap">
+      <!-- Punti di forza: uno sotto l'altro su mobile, in linea su desktop -->
+      <ul class="mt-8 flex flex-col gap-2.5 sm:flex-row">
         <li
-          class="flex shrink-0 items-center gap-2.5 rounded-full border border-border bg-page/60 py-1.5 pr-4 pl-1.5"
+          class="flex min-w-0 items-center gap-2.5 rounded-lg border border-border bg-page/60 px-3 py-2.5 sm:flex-1 sm:px-2.5 sm:py-2"
         >
           <span
-            class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary/10 text-xs text-primary"
+            class="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-primary/10 text-xs text-primary"
           >
             <i class="fa-solid fa-music"></i>
           </span>
-          <span class="whitespace-nowrap text-sm font-semibold text-heading">Musica dal vivo</span>
+          <span class="whitespace-nowrap text-sm font-semibold text-heading sm:text-xs"
+            >Musica dal vivo</span
+          >
         </li>
+
         <li
-          class="flex shrink-0 items-center gap-2.5 rounded-full border border-border bg-page/60 py-1.5 pr-4 pl-1.5"
+          class="flex min-w-0 items-center gap-2.5 rounded-lg border border-border bg-page/60 px-3 py-2.5 sm:flex-1 sm:px-2.5 sm:py-2"
         >
           <span
-            class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary/10 text-xs text-primary"
+            class="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-primary/10 text-xs text-primary"
           >
             <i class="fa-solid fa-martini-glass"></i>
           </span>
-          <span class="whitespace-nowrap text-sm font-semibold text-heading"
+          <span class="whitespace-nowrap text-sm font-semibold text-heading sm:text-xs"
             >Apericena e cocktail</span
           >
         </li>
+
         <li
-          class="flex shrink-0 items-center gap-2.5 rounded-full border border-border bg-page/60 py-1.5 pr-4 pl-1.5"
+          class="flex min-w-0 items-center gap-2.5 rounded-lg border border-border bg-page/60 px-3 py-2.5 sm:flex-1 sm:px-2.5 sm:py-2"
         >
           <span
-            class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary/10 text-xs text-primary"
+            class="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-primary/10 text-xs text-primary"
           >
             <i class="fa-solid fa-chair"></i>
           </span>
-          <span class="whitespace-nowrap text-sm font-semibold text-heading"
+          <span class="whitespace-nowrap text-sm font-semibold text-heading sm:text-xs"
             >Tavoli dentro e fuori</span
           >
         </li>
       </ul>
     </div>
 
-    <!-- 2. IMMAGINE -->
+    <!-- 2. IMMAGINE (DESTRA) -->
     <div class="relative">
       <div
         class="aspect-[4/5] w-full overflow-hidden rounded-[28px] sm:aspect-[5/4] lg:aspect-[4/5]"
