@@ -377,7 +377,6 @@ dialog::backdrop {
            article.pass-card
              button.pass-head          (.pass-day/.pass-month/.pass-meta/.pass-title)
              .pass-body > div          (.perforation, contenuto, a.pass-cta)
-         .pila-progress                → "01 / 05", solo da bloccata
        .pila-runway                    → corsa di scroll, solo da bloccata
    Variabili per pass: --bg, --fg, --cta-bg, --cta-fg.
    Variabile sul binario: --pila-bg = colore dello sfondo (per i morsi laterali).
@@ -459,8 +458,7 @@ dialog::backdrop {
 }
 
 /* ── Pila bloccata durante lo scroll ── */
-.pila-runway,
-.pila-progress {
+.pila-runway {
   display: none;
 }
 .pila-track.is-pinned .pila-runway {
@@ -471,9 +469,6 @@ dialog::backdrop {
 .pila-track.is-pinned .pila-stage {
   position: sticky;
   top: 5.5rem;
-}
-.pila-track:is(.is-pinned, .is-measuring) .pila-progress {
-  display: flex;
 }
 
 /* Testate compatte dei pass chiusi: giorno + titolo su una riga */

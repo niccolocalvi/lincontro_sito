@@ -32,7 +32,7 @@
     -->
     @if (combo().length) {
       <div
-        class="mt-24 grid grid-cols-1 gap-10 sm:mt-28 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-20"
+        class="mt-28 grid grid-cols-1 gap-12 sm:mt-36 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-20"
       >
         <header class="min-w-0 lg:sticky lg:top-28 lg:self-start">
           <span class="eyebrow">Pronte da ordinare</span>
@@ -71,7 +71,7 @@
                     <h4>
                       <button
                         type="button"
-                        class="pass-head flex w-full cursor-pointer flex-col items-start rounded-3xl px-7 pt-7 pb-4 text-left focus-visible:outline-2 focus-visible:-outline-offset-4 focus-visible:outline-current"
+                        class="pass-head flex w-full cursor-pointer flex-col items-start rounded-3xl px-7 pt-8 pb-5 text-left focus-visible:outline-2 focus-visible:-outline-offset-4 focus-visible:outline-current"
                         [attr.aria-expanded]="aperto"
                         [attr.aria-controls]="'combo-' + p.combo.id"
                         (click)="pila.seleziona(i)"
@@ -93,8 +93,8 @@
                       [attr.inert]="aperto ? null : ''"
                     >
                       <div>
-                        <div class="px-7 pt-2">
-                          <ul class="space-y-2.5 text-[15px]" role="list">
+                        <div class="px-7 pt-3 pb-3">
+                          <ul class="space-y-3.5 text-[15px]" role="list">
                             @for (voce of p.combo.items; track $index) {
                               <li
                                 class="flex items-center gap-3"
@@ -113,7 +113,7 @@
                           </ul>
 
                           <div
-                            class="mt-8 flex items-baseline justify-between border-t pt-5"
+                            class="mt-10 flex items-baseline justify-between border-t pt-6"
                             [class]="p.combo.highlight ? 'border-white/15' : 'border-border'"
                           >
                             <span
@@ -136,26 +136,6 @@
                 </li>
               }
             </ol>
-
-            <!-- Indicatore di avanzamento: visibile solo con la pila bloccata -->
-            <div
-              class="pila-progress mt-4 items-center gap-4 text-sm font-semibold text-muted"
-              aria-hidden="true"
-            >
-              <span class="tabular-nums text-heading"
-                >{{ (pila.indice() + 1).toString().padStart(2, '0') }}
-                <span class="text-muted"
-                  >/ {{ passCombo().length.toString().padStart(2, '0') }}</span
-                ></span
-              >
-              <span class="h-1 flex-1 overflow-hidden rounded-full bg-heading/10">
-                <span
-                  class="block h-full rounded-full bg-primary transition-[width] duration-300"
-                  [style.width.%]="((pila.indice() + 1) / passCombo().length) * 100"
-                ></span>
-              </span>
-              <span class="hidden sm:inline">Scorri per sfogliare</span>
-            </div>
           </div>
           <div class="pila-runway" aria-hidden="true"></div>
         </div>

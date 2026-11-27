@@ -203,24 +203,6 @@
                 </li>
               }
             </ol>
-
-            <!-- Indicatore di avanzamento: visibile solo con la pila bloccata (styles.css) -->
-            <div
-              class="pila-progress mt-4 items-center gap-4 text-sm font-semibold text-text-on-dark-dim"
-              aria-hidden="true"
-            >
-              <span class="tabular-nums text-text-on-dark"
-                >{{ (pila.indice() + 1).toString().padStart(2, '0') }}
-                <span class="text-text-on-dark-dim">/ {{ conteggio() }}</span></span
-              >
-              <span class="h-1 flex-1 overflow-hidden rounded-full bg-white/10">
-                <span
-                  class="block h-full rounded-full bg-primary transition-[width] duration-300"
-                  [style.width.%]="((pila.indice() + 1) / pass().length) * 100"
-                ></span>
-              </span>
-              <span class="hidden sm:inline">Scorri per sfogliare</span>
-            </div>
           </div>
           <div class="pila-runway" aria-hidden="true"></div>
         </div>
