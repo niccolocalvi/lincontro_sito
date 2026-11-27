@@ -1,0 +1,106 @@
+/* ── Pass impilati (stile wallet) ─────────────────────────────────
+   Ogni pass riceve --bg / --fg / --cta-bg / --cta-fg dal template.
+   I pass si sovrappongono di 24px: la parte coperta è padding vuoto. */
+.pass + .pass {
+  margin-top: -24px;
+}
+
+.pass-card {
+  background: var(--bg);
+  color: var(--fg);
+  border-radius: 28px;
+  padding-bottom: 24px;
+  box-shadow: 0 -8px 20px -10px rgba(0, 0, 0, 0.5);
+  transition: transform 300ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.pass:not([data-open]) .pass-card:hover {
+  transform: translateY(-6px);
+}
+
+/* Apertura fluida senza animare height: griglia 0fr → 1fr */
+.pass-body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 450ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.pass[data-open] .pass-body {
+  grid-template-rows: 1fr;
+}
+
+.pass-body > div {
+  overflow: hidden;
+}
+
+.pass-chevron {
+  transition: transform 300ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.pass[data-open] .pass-chevron {
+  transform: rotate(180deg);
+}
+
+.pass-cta {
+  background: var(--cta-bg);
+  color: var(--cta-fg);
+}
+
+/* L'unico dettaglio "biglietto": linea di strappo + due morsi laterali */
+.perforation {
+  position: relative;
+  height: 24px;
+}
+
+.perforation::before {
+  content: '';
+  position: absolute;
+  left: 28px;
+  right: 28px;
+  top: 50%;
+  border-top: 2px dashed color-mix(in srgb, var(--fg) 22%, transparent);
+}
+
+.perforation::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle 12px at 0 50%, var(--color-dark) 98%, transparent) left / 24px 24px
+      no-repeat,
+    radial-gradient(circle 12px at 100% 50%, var(--color-dark) 98%, transparent) right / 24px
+      24px no-repeat;
+}
+
+/* Il body arriva da PocketBase e può contenere <b>/<i> */
+.pass-descrizione :where(b, strong) {
+  font-weight: 800;
+}
+
+/* Entrata a cascata */
+.rise {
+  animation: rise 700ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  animation-delay: calc(var(--i, 0) * 70ms);
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rise,
+  .pass-card,
+  .pass-body,
+  .pass-chevron,
+  .pass-cta {
+    animation: none;
+    transition: none;
+  }
+}

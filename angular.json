@@ -36,6 +36,8 @@
               "node_modules/@fontsource/manrope/latin-ext-600.css",
               "node_modules/@fontsource/manrope/latin-700.css",
               "node_modules/@fontsource/manrope/latin-ext-700.css",
+              "node_modules/@fontsource/manrope/latin-800.css",
+              "node_modules/@fontsource/manrope/latin-ext-800.css",
               "node_modules/@fontsource/trocchi/latin-400.css",
               "node_modules/@fontsource/trocchi/latin-ext-400.css",
               "node_modules/@fortawesome/fontawesome-free/css/fontawesome.min.css",
