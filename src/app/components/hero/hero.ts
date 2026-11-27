@@ -17,6 +17,7 @@ import { Button } from '../button/button';
   selector: 'app-hero',
   imports: [Button, DatePipe, OraPipe],
   templateUrl: './hero.html',
+  styleUrl: './hero.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Hero implements OnInit {

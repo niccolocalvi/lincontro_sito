@@ -26,7 +26,8 @@ describe('Eventi', () => {
     await attendiCaricamento(fixture);
 
     const el = fixture.nativeElement as HTMLElement;
-    const bottoni = () => Array.from(el.querySelectorAll<HTMLButtonElement>('#lista-eventi button'));
+    const bottoni = () =>
+      Array.from(el.querySelectorAll<HTMLButtonElement>('#lista-eventi button'));
     const espansi = () => bottoni().map((b) => b.getAttribute('aria-expanded'));
 
     expect(espansi()).toEqual(['true', 'false']);

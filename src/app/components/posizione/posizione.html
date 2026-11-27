@@ -13,7 +13,7 @@
         type="button"
         (click)="apriIndicazioni()"
         aria-haspopup="dialog"
-        class="btn-dark self-start sm:self-auto"
+        class="btn-dark sd-reveal self-start sm:self-auto"
       >
         <i class="fa-solid fa-diamond-turn-right"></i>
         <span>Indicazioni stradali</span>
@@ -22,7 +22,8 @@
 
     <!-- Mappa OpenStreetMap (MapLibre + OpenFreeMap) con i colori del sito -->
     <div
-      class="relative h-[380px] w-full overflow-hidden rounded-3xl border border-border bg-surface-map sm:h-[460px]"
+      style="--sd-r: 24px"
+      class="sd-zoom relative h-[380px] w-full overflow-hidden rounded-3xl border border-border bg-surface-map sm:h-[460px]"
     >
       <div
         #mappa

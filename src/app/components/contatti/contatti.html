@@ -1,7 +1,7 @@
 <!-- Sezione Contatti con Carosello di Sfondo a tutto schermo -->
 <section
   id="info-e-contatti"
-  class="relative isolate flex w-full flex-col items-center justify-center overflow-hidden bg-dark py-20 sm:py-28"
+  class="relative isolate flex w-full flex-col items-center justify-center overflow-clip bg-dark py-20 sm:py-28"
 >
   <!-- 1. CAROSELLO DI SFONDO (Da bordo a bordo, continuo, non si ferma al passaggio del mouse) -->
   <div
@@ -179,7 +179,7 @@
     <!-- Griglia contatti -->
     <div class="mt-14 grid gap-5 lg:grid-cols-[1fr_1.1fr]">
       <!-- Colonna sinistra: indirizzo, telefono, social -->
-      <div class="grid gap-5">
+      <div class="sd-reveal grid gap-5">
         <!-- Indirizzo -->
         <a
           href="https://maps.app.goo.gl/g7GVx5YMuNBBDDkMA"
@@ -283,7 +283,10 @@
       </div>
 
       <!-- Colonna destra: Orari -->
-      <div class="rounded-3xl border border-white/10 bg-white/[0.05] p-6 backdrop-blur-sm sm:p-8">
+      <div
+        style="--s: 1"
+        class="sd-reveal rounded-3xl border border-white/10 bg-white/[0.05] p-6 backdrop-blur-sm sm:p-8"
+      >
         <div class="flex items-center gap-4">
           <span
             class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary text-white"

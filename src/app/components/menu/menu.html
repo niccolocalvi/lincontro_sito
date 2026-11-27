@@ -19,7 +19,7 @@
     } @else {
       <div class="mt-14 grid grid-cols-1 gap-6 lg:grid-cols-2">
         @for (m of menu(); track m.menu.id) {
-          <app-menu-card [dati]="m" />
+          <app-menu-card [dati]="m" class="sd-reveal block" [style.--s]="$index % 2" />
         }
       </div>
     }
@@ -28,7 +28,7 @@
     @if (combo().length) {
       <div class="mt-20">
         <div class="mb-8 flex items-end justify-between gap-4">
-          <h3 class="font-heading text-2xl text-heading sm:text-3xl">Le nostre combo</h3>
+          <h3 class="sd-reveal font-heading text-2xl text-heading sm:text-3xl">Le nostre combo</h3>
           <span class="text-sm text-muted md:hidden"
             >Scorri <i class="fa-solid fa-arrow-right ml-1 text-xs"></i
           ></span>
@@ -39,7 +39,8 @@
         >
           @for (c of combo(); track c.id) {
             <article
-              class="flex w-[78%] shrink-0 snap-center flex-col rounded-3xl p-7 transition-all duration-300 sm:w-[55%] md:w-auto"
+              class="sd-reveal flex w-[78%] shrink-0 snap-center flex-col rounded-3xl p-7 transition-[box-shadow] duration-300 sm:w-[55%] md:w-auto"
+              [style.--s]="$index % 3"
               [class]="
                 c.highlight
                   ? 'bg-dark text-white shadow-card-hover'

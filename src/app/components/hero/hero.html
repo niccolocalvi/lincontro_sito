@@ -1,13 +1,13 @@
 <!-- Sezione Hero: alta quasi quanto lo schermo, con minimo per contenere tutto su mobile -->
 <section
   id="home"
-  class="relative isolate flex min-h-[calc(100svh-4rem)] w-full items-end overflow-hidden bg-dark text-white sm:min-h-[calc(100svh-72px)] lg:items-center"
+  class="relative isolate flex min-h-[calc(100svh-4rem)] w-full items-end overflow-clip bg-dark text-white sm:min-h-[calc(100svh-72px)] lg:items-center"
 >
   <!-- Foto di sfondo -->
   <img
     src="https://img.magnific.com/foto-premium/tazza-di-caffe-con-latte-art-su-tavolo-di-legno-in-caffetteria_1103513-805.jpg?semt=ais_hybrid&w=740&q=80"
     alt=""
-    class="absolute inset-0 -z-20 h-full w-full scale-105 object-cover"
+    class="hero-bg absolute inset-0 -z-20 h-full w-full scale-105 object-cover"
     fetchpriority="high"
   />
 
@@ -16,30 +16,43 @@
     class="absolute inset-0 -z-10 bg-gradient-to-t from-dark via-dark/70 to-dark/30 lg:bg-gradient-to-r lg:from-dark/95 lg:via-dark/70 lg:to-dark/20"
   ></div>
 
+  <!-- Velo che scurisce la foto mentre si scorre via dall'hero (hero.css) -->
   <div
-    class="container-page grid gap-10 pt-24 pb-12 sm:pb-16 lg:grid-cols-[1.4fr_1fr] lg:items-end lg:gap-16 lg:py-24"
+    class="hero-veil pointer-events-none absolute inset-0 -z-10 bg-dark opacity-0"
+    aria-hidden="true"
+  ></div>
+
+  <div
+    class="hero-content container-page grid gap-10 pt-24 pb-12 sm:pb-16 lg:grid-cols-[1.4fr_1fr] lg:items-end lg:gap-16 lg:py-24"
   >
     <!-- Colonna Sinistra: Testo e Pulsanti -->
     <div class="flex flex-col items-start gap-6">
       <span class="eyebrow !text-accent-gold">Café & Bistrot · Valcanneto</span>
 
-      <h1 class="font-custom text-5xl leading-[1.05] sm:text-6xl lg:text-7xl">
+      <h1
+        class="sd-intro font-custom text-5xl leading-[1.05] sm:text-6xl lg:text-7xl"
+        style="--d: 1"
+      >
         Perch<span class="font-custom">e'</span> la vita <span class="font-custom">e'</span> fatta
         di <span class="font-custom text-primary">Incontri</span>
       </h1>
 
-      <p class="max-w-md text-base leading-relaxed text-text-on-dark-body sm:text-lg">
+      <p
+        class="sd-intro max-w-md text-base leading-relaxed text-text-on-dark-body sm:text-lg"
+        style="--d: 2"
+      >
         Scopri come ogni incontro può cambiare la tua vita.
       </p>
 
-      <div class="flex flex-wrap items-center gap-3 pt-2">
+      <div class="sd-intro flex flex-wrap items-center gap-3 pt-2" style="--d: 3">
         <app-button text="Scopri il menu" href="#menu" customClass="!px-7 !py-3.5 text-base" />
       </div>
     </div>
 
     <!-- Colonna Destra: info rapide (orari di oggi e prossimo evento) -->
     <div
-      class="w-full divide-y divide-white/10 overflow-hidden rounded-2xl border border-white/15 bg-white/[0.07] backdrop-blur-md lg:max-w-sm lg:justify-self-end"
+      style="--d: 4"
+      class="sd-intro w-full divide-y divide-white/10 overflow-hidden rounded-2xl border border-white/15 bg-white/[0.07] backdrop-blur-md lg:max-w-sm lg:justify-self-end"
     >
       <!-- ORARI DI OGGI -->
       <a

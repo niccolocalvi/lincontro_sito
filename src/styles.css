@@ -233,3 +233,136 @@ dialog::backdrop {
     transform: none;
   }
 }
+
+/* ============================================================
+   MOTION – animazioni legate allo scroll (stile Apple)
+   Tecnica: CSS scroll-driven animations (animation-timeline: view()).
+   - Nessuna libreria e nessun listener di scroll: gira sul compositor.
+   - Attive solo se il browser le supporta (@supports) e se l'utente non
+     chiede meno movimento. Altrimenti il contenuto resta statico e visibile.
+   Classi:
+     .sd-intro     entrata all'apertura della pagina (a tempo), --d = ritardo
+     .sd-reveal    sale, si mette a fuoco e appare entrando nello schermo
+                   (applicata anche a .eyebrow e .section-title in tutto il sito)
+                   --s = indice per sfalsare elementi sulla stessa riga
+     .sd-zoom      il riquadro si "apre" crescendo (clip-path), --sd-r = raggio
+     .sd-parallax  l'immagine scorre più lenta del riquadro che la contiene
+     .sd-word      parole che si accendono mentre si legge (direttiva appScrubWords)
+     .sd-countup   numero che conta da 0 a --target
+   ============================================================ */
+
+@property --sd-n {
+  syntax: '<integer>';
+  initial-value: 0;
+  inherits: false;
+}
+
+@keyframes sd-intro {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+    filter: blur(10px);
+  }
+}
+@keyframes sd-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(56px);
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+@keyframes sd-zoom {
+  from {
+    clip-path: inset(9% 7% round 48px);
+    transform: scale(0.96);
+  }
+  to {
+    clip-path: inset(0 round var(--sd-r, 28px));
+    transform: none;
+  }
+}
+@keyframes sd-parallax {
+  from {
+    transform: translateY(-7%) scale(1.18);
+  }
+  to {
+    transform: translateY(7%) scale(1.18);
+  }
+}
+@keyframes sd-word {
+  from {
+    opacity: 0.16;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes sd-countup {
+  from {
+    --sd-n: 0;
+  }
+  to {
+    --sd-n: var(--target, 0);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .sd-intro {
+    animation: sd-intro 1100ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: calc(var(--d, 0) * 110ms + 120ms);
+  }
+
+  @supports (animation-timeline: view()) {
+    .sd-reveal,
+    .eyebrow,
+    .section-title {
+      animation: sd-reveal linear both;
+      animation-timeline: view();
+      animation-range: entry calc(5% + var(--s, 0) * 10%) cover calc(28% + var(--s, 0) * 6%);
+    }
+
+    .sd-zoom {
+      animation: sd-zoom linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 45%;
+    }
+
+    .sd-parallax {
+      animation: sd-parallax linear both;
+      animation-timeline: view();
+      animation-range: cover;
+    }
+
+    .sd-word {
+      animation: sd-word linear both;
+      animation-timeline: view();
+      animation-range: cover 12% cover 38%;
+    }
+
+    .sd-countup {
+      counter-reset: sd-n var(--sd-n);
+      animation: sd-countup linear both;
+      animation-timeline: view();
+      animation-range: entry 30% cover 45%;
+    }
+    .sd-countup > .sd-countup-text {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+    .sd-countup::after {
+      content: counter(sd-n, decimal-leading-zero) / '';
+    }
+    .sd-countup--plain::after {
+      content: counter(sd-n) / '';
+    }
+  }
+}
