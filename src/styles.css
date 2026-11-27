@@ -366,3 +366,204 @@ dialog::backdrop {
     }
   }
 }
+
+/* ============================================================
+   PILA DI PASS – biglietti "stile Wallet" (eventi, combo)
+   Logica nella direttiva appPilaScroll (src/app/directives/pila-scroll.ts).
+   Struttura:
+     .pila-track (direttiva)           → .is-pinned / .is-measuring
+       .pila-stage                     → palco, sticky quando bloccata
+         ol.pila-stack > li.pass       → data-open, .pass--visto, .pass--lontano
+           article.pass-card
+             button.pass-head          (.pass-day/.pass-month/.pass-meta/.pass-title)
+             .pass-body > div          (.perforation, contenuto, a.pass-cta)
+         .pila-progress                → "01 / 05", solo da bloccata
+       .pila-runway                    → corsa di scroll, solo da bloccata
+   Variabili per pass: --bg, --fg, --cta-bg, --cta-fg.
+   Variabile sul binario: --pila-bg = colore dello sfondo (per i morsi laterali).
+   ============================================================ */
+
+/* I pass si sovrappongono di 24px: la parte coperta è padding vuoto */
+.pass + .pass {
+  margin-top: -24px;
+}
+
+.pass-card {
+  background: var(--bg);
+  color: var(--fg);
+  border-radius: 28px;
+  padding-bottom: 24px;
+  box-shadow: 0 -8px 20px -10px rgba(0, 0, 0, 0.5);
+  transition: transform 300ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.pass:not([data-open]) .pass-card:hover {
+  transform: translateY(-6px);
+}
+
+/* Apertura fluida senza animare height: griglia 0fr → 1fr */
+.pass-body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 450ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.pass[data-open] .pass-body {
+  grid-template-rows: 1fr;
+}
+.pass-body > div {
+  overflow: hidden;
+}
+
+.pass-chevron {
+  transition: transform 300ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.pass[data-open] .pass-chevron {
+  transform: rotate(180deg);
+}
+
+.pass-cta {
+  background: var(--cta-bg);
+  color: var(--cta-fg);
+}
+
+/* Linea di strappo + due morsi laterali del colore dello sfondo */
+.perforation {
+  position: relative;
+  height: 24px;
+}
+.perforation::before {
+  content: '';
+  position: absolute;
+  left: 28px;
+  right: 28px;
+  top: 50%;
+  border-top: 2px dashed color-mix(in srgb, var(--fg) 22%, transparent);
+}
+.perforation::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle 12px at 0 50%, var(--pila-bg, var(--color-dark)) 98%, transparent) left /
+      24px 24px no-repeat,
+    radial-gradient(circle 12px at 100% 50%, var(--pila-bg, var(--color-dark)) 98%, transparent)
+      right / 24px 24px no-repeat;
+}
+
+.pass-head,
+.pass-day,
+.pass-title {
+  transition:
+    padding 350ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    height 350ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    font-size 350ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* ── Pila bloccata durante lo scroll ── */
+.pila-runway,
+.pila-progress {
+  display: none;
+}
+.pila-track.is-pinned .pila-runway {
+  display: block;
+  /* Serve un elemento vero: lo sticky non può usare il padding del genitore */
+  height: calc((var(--n) - 1) * 55vh);
+}
+.pila-track.is-pinned .pila-stage {
+  position: sticky;
+  top: 5.5rem;
+}
+.pila-track:is(.is-pinned, .is-measuring) .pila-progress {
+  display: flex;
+}
+
+/* Testate compatte dei pass chiusi: giorno + titolo su una riga */
+.pila-track:is(.is-pinned, .is-measuring) .pass:not([data-open]) .pass-head {
+  padding-top: 0.8rem;
+  padding-bottom: 0.55rem;
+}
+.pila-track:is(.is-pinned, .is-measuring) .pass:not([data-open]) :is(.pass-month, .pass-meta) {
+  display: none;
+}
+.pila-track:is(.is-pinned, .is-measuring) .pass:not([data-open]) .pass-day {
+  margin-top: 0;
+  font-size: 1.35rem;
+  line-height: 1.75rem;
+}
+.pila-track:is(.is-pinned, .is-measuring) .pass:not([data-open]) .pass-title {
+  overflow: hidden;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Pass già visti e lontani: bordi sottili (12px visibili), come nel Wallet */
+.pila-track:is(.is-pinned, .is-measuring) :is(.pass--visto, .pass--lontano) .pass-head {
+  height: 12px;
+  padding-top: 0;
+  padding-bottom: 0;
+  overflow: hidden;
+}
+.pila-track:is(.is-pinned, .is-measuring) :is(.pass--visto, .pass--lontano) .pass-head > * {
+  visibility: hidden;
+}
+
+/* Durante la misura niente transizioni: servono i valori finali */
+.pila-track.is-measuring * {
+  transition: none !important;
+}
+
+/* Entrata: i pass vengono "distribuiti" ribaltandosi in prospettiva */
+@keyframes pila-deal {
+  from {
+    opacity: 0;
+    transform: translateY(140px) rotateX(-38deg) scale(0.9);
+  }
+  60% {
+    opacity: 1;
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .pila-stack {
+      perspective: 1400px;
+      perspective-origin: 50% 0%;
+    }
+    .pass.pila-deal {
+      transform-origin: 50% 0%;
+      animation: pila-deal linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 100%;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pass-card,
+  .pass-body,
+  .pass-chevron,
+  .pass-head,
+  .pass-day,
+  .pass-title {
+    transition: none;
+  }
+}
+
+/* Card combo (menu): design originale dentro la pila (solo l'animazione è condivisa) */
+.combo-card {
+  --bg: var(--color-surface);
+  --fg: var(--color-heading);
+  border: 1px solid var(--color-border);
+  border-radius: 24px;
+  box-shadow: 0 -10px 24px -14px rgba(36, 23, 15, 0.3);
+}
+.combo-card--evidenza {
+  --bg: var(--color-dark);
+  --fg: #fff;
+  border-color: transparent;
+}

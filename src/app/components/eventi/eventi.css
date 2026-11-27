@@ -1,83 +1,11 @@
-/* ── Pass impilati (stile wallet) ─────────────────────────────────
-   Ogni pass riceve --bg / --fg / --cta-bg / --cta-fg dal template.
-   I pass si sovrappongono di 24px: la parte coperta è padding vuoto. */
-.pass + .pass {
-  margin-top: -24px;
-}
-
-.pass-card {
-  background: var(--bg);
-  color: var(--fg);
-  border-radius: 28px;
-  padding-bottom: 24px;
-  box-shadow: 0 -8px 20px -10px rgba(0, 0, 0, 0.5);
-  transition: transform 300ms cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-
-.pass:not([data-open]) .pass-card:hover {
-  transform: translateY(-6px);
-}
-
-/* Apertura fluida senza animare height: griglia 0fr → 1fr */
-.pass-body {
-  display: grid;
-  grid-template-rows: 0fr;
-  transition: grid-template-rows 450ms cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-
-.pass[data-open] .pass-body {
-  grid-template-rows: 1fr;
-}
-
-.pass-body > div {
-  overflow: hidden;
-}
-
-.pass-chevron {
-  transition: transform 300ms cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-
-.pass[data-open] .pass-chevron {
-  transform: rotate(180deg);
-}
-
-.pass-cta {
-  background: var(--cta-bg);
-  color: var(--cta-fg);
-}
-
-/* L'unico dettaglio "biglietto": linea di strappo + due morsi laterali */
-.perforation {
-  position: relative;
-  height: 24px;
-}
-
-.perforation::before {
-  content: '';
-  position: absolute;
-  left: 28px;
-  right: 28px;
-  top: 50%;
-  border-top: 2px dashed color-mix(in srgb, var(--fg) 22%, transparent);
-}
-
-.perforation::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(circle 12px at 0 50%, var(--color-dark) 98%, transparent) left / 24px 24px
-      no-repeat,
-    radial-gradient(circle 12px at 100% 50%, var(--color-dark) 98%, transparent) right / 24px 24px
-      no-repeat;
-}
+/* Gli stili della pila di pass sono condivisi: styles.css, sezione PILA DI PASS. */
 
 /* Il body arriva da PocketBase e può contenere <b>/<i> */
 .pass-descrizione :where(b, strong) {
   font-weight: 800;
 }
 
-/* Entrata a cascata */
+/* Entrata dei testi della colonna sinistra (a tempo, se manca lo scroll-driven) */
 .rise {
   animation: rise 700ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
   animation-delay: calc(var(--i, 0) * 70ms);
@@ -94,21 +22,8 @@
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .rise,
-  .pass-card,
-  .pass-body,
-  .pass-chevron,
-  .pass-cta {
-    animation: none;
-    transition: none;
-  }
-}
-
-/* ── Scroll-scrub (stile Apple) ───────────────────────────────────
-   Solo con supporto alle scroll-driven animations e senza reduced motion:
+/* ── Scroll-scrub (stile Apple) ──────────────────────────────────
    - testi della colonna sinistra: salgono e si mettono a fuoco;
-   - pass: vengono "distribuiti" uno alla volta ribaltandosi in prospettiva;
    - scritta gigante: scorre in orizzontale mentre la sezione attraversa lo schermo. */
 .ev-section {
   view-timeline: --eventi block;
@@ -133,20 +48,6 @@
   }
 }
 
-@keyframes ev-deal {
-  from {
-    opacity: 0;
-    transform: translateY(140px) rotateX(-38deg) scale(0.9);
-  }
-  60% {
-    opacity: 1;
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
 @keyframes ev-marquee {
   from {
     transform: translateX(8%);
@@ -158,22 +59,10 @@
 
 @media (prefers-reduced-motion: no-preference) {
   @supports (animation-timeline: view()) {
-    .ev-stack {
-      perspective: 1400px;
-      perspective-origin: 50% 0%;
-    }
-
     .rise {
       animation: ev-reveal linear both;
       animation-timeline: view();
       animation-range: entry 5% cover 28%;
-    }
-
-    .pass.rise {
-      transform-origin: 50% 0%;
-      animation: ev-deal linear both;
-      animation-timeline: view();
-      animation-range: entry 0% entry 100%;
     }
 
     .ev-marquee-track {
@@ -184,92 +73,8 @@
   }
 }
 
-/* ── Wallet bloccato durante lo scroll ────────────────────────────
-   .is-pinned viene messo dal componente solo se la pila entra nello schermo.
-   .ev-runway sotto il palco è la "corsa": 55vh di scroll per ogni pass.
-   (Serve un elemento vero: lo sticky non può usare il padding del genitore.) */
-.ev-runway {
-  display: none;
-}
-.ev-track.is-pinned .ev-runway {
-  display: block;
-  height: calc((var(--n) - 1) * 55vh);
-}
-.ev-track.is-pinned .ev-stage {
-  position: sticky;
-  top: 5.5rem;
-}
-
-/* Indicatore "01 / 05": solo con la pila bloccata */
-.ev-progress {
-  display: none;
-}
-.ev-track:is(.is-pinned, .is-measuring) .ev-progress {
-  display: flex;
-}
-
-/* Pila bloccata: i pass chiusi diventano testate compatte (data + titolo),
-   così il pass aperto e tutta la pila entrano in uno schermo.
-   .is-measuring serve al componente per misurare la pila compatta. */
-.pass-head,
-.pass-day,
-.pass-title {
-  transition:
-    padding 350ms cubic-bezier(0.2, 0.8, 0.2, 1),
-    font-size 350ms cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-.ev-track:is(.is-pinned, .is-measuring) .pass:not([data-open]) .pass-head {
-  padding-top: 0.8rem;
-  padding-bottom: 0.55rem;
-}
-.ev-track:is(.is-pinned, .is-measuring) .pass:not([data-open]) .pass-month {
-  display: none;
-}
-.ev-track:is(.is-pinned, .is-measuring) .pass:not([data-open]) .pass-meta {
-  display: none;
-}
-.ev-track:is(.is-pinned, .is-measuring) .pass:not([data-open]) .pass-day {
-  margin-top: 0;
-  font-size: 1.35rem;
-  line-height: 1.75rem;
-}
-.ev-track:is(.is-pinned, .is-measuring) .pass:not([data-open]) .pass-title {
-  font-size: 1.25rem;
-  line-height: 1.75rem;
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .pass-head,
-  .pass-day,
-  .pass-title {
-    transition: none;
+  .rise {
+    animation: none;
   }
-}
-
-/* Durante la misura niente transizioni: servono i valori finali, non quelli di partenza */
-.ev-track.is-measuring * {
-  transition: none !important;
-}
-
-/* Pila bloccata, stile Wallet: i pass già visti e quelli lontani diventano
-   bordi sottili (12px visibili), così l'altezza resta limitata anche su
-   telefoni piccoli e con molti eventi. I titoli dei pass chiusi stanno su una riga. */
-.ev-track:is(.is-pinned, .is-measuring) .pass:not([data-open]) .pass-title {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-.ev-track:is(.is-pinned, .is-measuring) :is(.pass--visto, .pass--lontano) .pass-head {
-  height: 12px;
-  padding-top: 0;
-  padding-bottom: 0;
-  overflow: hidden;
-}
-.ev-track:is(.is-pinned, .is-measuring) :is(.pass--visto, .pass--lontano) .pass-head > * {
-  visibility: hidden;
-}
-.pass-head {
-  transition:
-    padding 350ms cubic-bezier(0.2, 0.8, 0.2, 1),
-    height 350ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }

@@ -24,64 +24,140 @@
       </div>
     }
 
-    <!-- SEZIONE CARD COMBO (site_combos): Carosello su Mobile, 3 colonne su desktop -->
+    <!--
+      COMBO (site_combos): card con il design originale, impilate con la stessa
+      animazione degli eventi.
+      Se entra nello schermo resta ferma e lo scroll apre una combo alla volta
+      (direttiva appPilaScroll, stili condivisi in styles.css).
+    -->
     @if (combo().length) {
-      <div class="mt-20">
-        <div class="mb-8 flex items-end justify-between gap-4">
-          <h3 class="sd-reveal font-heading text-2xl text-heading sm:text-3xl">Le nostre combo</h3>
-          <span class="text-sm text-muted md:hidden"
-            >Scorri <i class="fa-solid fa-arrow-right ml-1 text-xs"></i
-          ></span>
-        </div>
+      <div
+        class="mt-24 grid grid-cols-1 gap-10 sm:mt-28 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-20"
+      >
+        <header class="min-w-0 lg:sticky lg:top-28 lg:self-start">
+          <span class="eyebrow">Pronte da ordinare</span>
+          <h3
+            class="sd-reveal mt-4 text-3xl leading-[1.05] font-extrabold tracking-[-0.03em] text-heading sm:text-5xl"
+          >
+            Le nostre
+            <span class="font-custom font-normal tracking-normal text-primary">Combo</span>
+          </h3>
+          <p class="sd-reveal mt-5 max-w-sm text-base leading-relaxed text-muted sm:text-lg">
+            Tutto incluso, a prezzo fisso. Scorri e scopri cosa c'è dentro ogni combo.
+          </p>
+        </header>
 
         <div
-          class="scrollbar-hide -mx-5 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-2 sm:-mx-8 sm:px-8 md:mx-0 md:grid md:grid-cols-3 md:gap-6 md:overflow-visible md:px-0"
+          class="min-w-0"
+          [appPilaScroll]="passCombo().length"
+          #pila="pila"
+          style="--pila-bg: var(--color-page)"
         >
-          @for (c of combo(); track c.id) {
-            <article
-              class="sd-reveal flex w-[78%] shrink-0 snap-center flex-col rounded-3xl p-7 transition-[box-shadow] duration-300 sm:w-[55%] md:w-auto"
-              [style.--s]="$index % 3"
-              [class]="
-                c.highlight
-                  ? 'bg-dark text-white shadow-card-hover'
-                  : 'border border-border bg-surface text-heading hover:shadow-card'
-              "
-            >
-              <span
-                class="text-[11px] font-semibold tracking-[0.2em] uppercase"
-                [class]="c.highlight ? 'text-primary-light' : 'text-primary'"
-                >{{ c.label || 'Combo' }}</span
-              >
-              <h4 class="mt-3 font-custom text-3xl">{{ c.name }}</h4>
-
-              <ul class="mt-6 flex-1 space-y-2.5 text-[15px]">
-                @for (voce of c.items; track $index) {
-                  <li
-                    class="flex items-center gap-3"
-                    [class]="c.highlight ? 'text-text-on-dark-body' : 'text-body'"
-                  >
-                    <i
-                      class="fa-solid fa-check text-xs"
-                      [class]="c.highlight ? 'text-primary-light' : 'text-primary'"
-                    ></i>
-                    <span>{{ voce }}</span>
-                  </li>
-                }
-              </ul>
-
-              <div
-                class="mt-8 flex items-baseline justify-between border-t pt-5"
-                [class]="c.highlight ? 'border-white/15' : 'border-border'"
-              >
-                <span
-                  class="text-xs"
-                  [class]="c.highlight ? 'text-text-on-dark-subtle' : 'text-muted-lighter'"
-                  >Prezzo combo</span
+          <div class="pila-stage">
+            <ol class="pila-stack relative" role="list">
+              @for (p of passCombo(); track p.combo.id; let i = $index) {
+                @let aperto = pila.aperto(i);
+                <li
+                  class="pass pila-deal relative"
+                  [class.pass--visto]="pila.visto(i)"
+                  [class.pass--lontano]="pila.lontano(i)"
+                  [attr.data-open]="aperto ? '' : null"
                 >
-                <span class="font-heading text-3xl tabular-nums">{{ c.price | prezzo }}</span>
-              </div>
-            </article>
-          }
+                  <!-- Card combo con il design originale; dalla pila prende solo il comportamento -->
+                  <article
+                    class="pass-card combo-card"
+                    [class.combo-card--evidenza]="p.combo.highlight"
+                  >
+                    <h4>
+                      <button
+                        type="button"
+                        class="pass-head flex w-full cursor-pointer flex-col items-start rounded-3xl px-7 pt-7 pb-4 text-left focus-visible:outline-2 focus-visible:-outline-offset-4 focus-visible:outline-current"
+                        [attr.aria-expanded]="aperto"
+                        [attr.aria-controls]="'combo-' + p.combo.id"
+                        (click)="pila.seleziona(i)"
+                      >
+                        <span
+                          class="pass-meta text-[11px] font-semibold tracking-[0.2em] uppercase"
+                          [class]="p.combo.highlight ? 'text-primary-light' : 'text-primary'"
+                          >{{ p.combo.label || 'Combo' }}</span
+                        >
+                        <span class="pass-title mt-3 block w-full font-custom text-3xl">{{
+                          p.combo.name
+                        }}</span>
+                      </button>
+                    </h4>
+
+                    <div
+                      class="pass-body"
+                      [id]="'combo-' + p.combo.id"
+                      [attr.inert]="aperto ? null : ''"
+                    >
+                      <div>
+                        <div class="px-7 pt-2">
+                          <ul class="space-y-2.5 text-[15px]" role="list">
+                            @for (voce of p.combo.items; track $index) {
+                              <li
+                                class="flex items-center gap-3"
+                                [class]="p.combo.highlight ? 'text-text-on-dark-body' : 'text-body'"
+                              >
+                                <i
+                                  class="fa-solid fa-check text-xs"
+                                  [class]="
+                                    p.combo.highlight ? 'text-primary-light' : 'text-primary'
+                                  "
+                                  aria-hidden="true"
+                                ></i>
+                                <span>{{ voce }}</span>
+                              </li>
+                            }
+                          </ul>
+
+                          <div
+                            class="mt-8 flex items-baseline justify-between border-t pt-5"
+                            [class]="p.combo.highlight ? 'border-white/15' : 'border-border'"
+                          >
+                            <span
+                              class="text-xs"
+                              [class]="
+                                p.combo.highlight
+                                  ? 'text-text-on-dark-subtle'
+                                  : 'text-muted-lighter'
+                              "
+                              >Prezzo combo</span
+                            >
+                            <span class="font-heading text-3xl tabular-nums">{{
+                              p.combo.price | prezzo
+                            }}</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                </li>
+              }
+            </ol>
+
+            <!-- Indicatore di avanzamento: visibile solo con la pila bloccata -->
+            <div
+              class="pila-progress mt-4 items-center gap-4 text-sm font-semibold text-muted"
+              aria-hidden="true"
+            >
+              <span class="tabular-nums text-heading"
+                >{{ (pila.indice() + 1).toString().padStart(2, '0') }}
+                <span class="text-muted"
+                  >/ {{ passCombo().length.toString().padStart(2, '0') }}</span
+                ></span
+              >
+              <span class="h-1 flex-1 overflow-hidden rounded-full bg-heading/10">
+                <span
+                  class="block h-full rounded-full bg-primary transition-[width] duration-300"
+                  [style.width.%]="((pila.indice() + 1) / passCombo().length) * 100"
+                ></span>
+              </span>
+              <span class="hidden sm:inline">Scorri per sfogliare</span>
+            </div>
+          </div>
+          <div class="pila-runway" aria-hidden="true"></div>
         </div>
       </div>
     }
